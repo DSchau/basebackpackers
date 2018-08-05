@@ -15,8 +15,8 @@ module.exports = {
         apiToken: `2f10bdfdabc47fc2f76f98ef230ceb`,
         previewMode: true,
         disableLiveReload: false,
-      },
-    }
+      }
+    },
 
     {
       resolve: `gatsby-plugin-manifest`,
