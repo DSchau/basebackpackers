@@ -59,7 +59,7 @@ export default ({ data }) => (
                 <div key={block.id} className={block.model.apiKey}>
                   {
                     block.model.apiKey === 'text' &&
-                      <div>{block.text}</div>
+                      <div dangerouslySetInnerHTML={{ __html: block.text }} />
                   }
                   {
                     block.model.apiKey === 'image_block' &&

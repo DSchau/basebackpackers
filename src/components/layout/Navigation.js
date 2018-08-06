@@ -74,7 +74,7 @@ class Navigation extends React.Component {
       <NavLink to="/destinations/">Destinations</NavLink>
       <NavLink to="#">Deals</NavLink>
       <NavLink to="/about/about-us">About us</NavLink>
-      <NavButton className="icon" href="#" onClick={this.toggleMenu} class="icon" onclick="myFunction()">&#9776;</NavButton>
+      <NavButton className="icon" href="#" onClick={this.toggleMenu}>&#9776;</NavButton>
     </Menu>
   </Nav>
   )

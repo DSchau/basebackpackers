@@ -1,15 +1,42 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
+import {  Article  } from '../components/layout/index.js';
 
 import Layout from '../components/layout'
 
-const IndexPage = () => (
+const IndexPage = ( {data} ) => (
   <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Article>
+      <h1>Here is a list of blogs</h1>
+      
+      {data.allDatoCmsBlog.edges.map(({ node: blog }) => (
+      
+      <div key={blog.id}>
+     
+     <h3><Link to={`/${blog.destination.title}/${blog.slug}`}>{blog.title}</Link></h3>   
+
+      </div>
+    ))}
+
+    </Article>
   </Layout>
 )
 
 export default IndexPage
+
+export const query = graphql`
+  query IndexQuery {
+    allDatoCmsBlog {
+      edges {
+        node {
+          id
+          title
+          slug
+          destination {
+            title
+          }
+        }
+      }
+    }
+  }
+`
