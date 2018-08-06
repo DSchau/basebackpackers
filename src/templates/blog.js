@@ -75,11 +75,11 @@ export default ({ data }) => (
                 </div>
               ))
             }
-        
+            <script async defer src="https://www.instagram.com/embed.js"></script>
         </BodyContainer>
 
     </Article>
-      
+
       
   </Layout>  
 
