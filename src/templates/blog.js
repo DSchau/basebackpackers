@@ -51,6 +51,7 @@ const Attribution = styled.p`
 export default ({ data }) => (
 
   <Layout>
+  <script async defer src="https://www.instagram.com/embed.js"></script>
     <Article>
         <HelmetDatoCms seo={data.datoCmsBlog.seoMetaTags} /> 
         <BodyContainer className="article" >
@@ -75,7 +76,7 @@ export default ({ data }) => (
                 </div>
               ))
             }
-            <script async defer src="https://www.instagram.com/embed.js"></script>
+            
         </BodyContainer>
 
     </Article>
