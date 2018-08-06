@@ -13,7 +13,7 @@ const IndexPage = ( {data} ) => (
       
       <div key={blog.id}>
      
-     <h3><Link to={`/${blog.destination.title}/${blog.slug}`}>{blog.title}</Link></h3>   
+     <h3><Link to={`/${blog.destination.slug}/${blog.slug}`}>{blog.title}</Link></h3>   
 
       </div>
     ))}
@@ -33,7 +33,7 @@ export const query = graphql`
           title
           slug
           destination {
-            title
+            slug
           }
         }
       }
