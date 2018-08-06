@@ -63,7 +63,11 @@ export default ({ data }) => (
                   }
                   {
                     block.model.apiKey === 'image_block' &&
+                    <figure>
                       <Img fluid={block.image.fluid} />
+                      <figcaption>{block.caption}</figcaption>
+                      <p>{block.attribution}</p>
+                    </figure>
                   }
                 </div>
               ))
@@ -80,7 +84,7 @@ export default ({ data }) => (
 
 
 export const query = graphql`
-  query BlogPageQuery($slug: String!) {
+  query ($slug: String!) {
     datoCmsBlog(slug: { eq: $slug }) {
       title
       author {
@@ -101,8 +105,9 @@ export const query = graphql`
         }
         ... on DatoCmsImageBlock {
           model { apiKey }
+          caption
+          attribution
           image {
-            url
             fluid (maxWidth: 1000, imgixParams: { fm: "jpg", auto: "compress" }){
               ...GatsbyDatoCmsFluid
             }
