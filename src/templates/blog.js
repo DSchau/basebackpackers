@@ -44,6 +44,9 @@ const BlogHeading = styled.h1`
     margin:0;
 `;
 
+const Attribution = styled.p`
+  font-size: .7rem;
+`;
 
 export default ({ data }) => (
 
@@ -66,7 +69,7 @@ export default ({ data }) => (
                     <figure>
                       <Img fluid={block.image.fluid} />
                       <figcaption>{block.caption}</figcaption>
-                      <p>{block.attribution}</p>
+                      <Attribution dangerouslySetInnerHTML={{ __html: block.attribution }} />
                     </figure>
                   }
                 </div>
