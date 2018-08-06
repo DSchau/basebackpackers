@@ -20,7 +20,7 @@
           node {
             slug
             destination {
-              title
+              slug
             }
           }
         }
@@ -31,7 +31,7 @@
      `).then(result => {
       result.data.allDatoCmsBlog.edges.map(({ node }) => {
         createPage({
-          path: `${node.destination.title}/${node.slug}`,
+          path: `${node.destination.slug}/${node.slug}`,
           component: path.resolve(`./src/templates/blog.js`),
           context: {
             slug: node.slug,
