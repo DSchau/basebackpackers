@@ -38,6 +38,12 @@ const Author = styled.div`
   }
 `;
 
+const Figure= styled.figure`
+  max-width:900px;
+  margin: 0 auto;
+`;
+
+
 const BlogHeading = styled.h1`
   margin-top:1rem;
   @media (max-width: 500px) {
@@ -55,7 +61,7 @@ export default ({ data }) => (
     <Article>
         <HelmetDatoCms seo={data.datoCmsBlog.seoMetaTags} /> 
         <BodyContainer className="article" >
-          <Img fixed={data.datoCmsBlog.featuredImage.fixed} />
+          <Img fluid={data.datoCmsBlog.featuredImage.fluid} />
           <BlogHeading>{data.datoCmsBlog.title}</BlogHeading>
            <Author>Written by: {data.datoCmsBlog.author.name} </Author>      
             {
@@ -67,11 +73,11 @@ export default ({ data }) => (
                   }
                   {
                     block.model.apiKey === 'image_block' &&
-                    <figure>
-                      <Img fixed={block.image.fixed} />
+                    <Figure>
+                      <Img fluid={block.image.fluid} />
                       <figcaption>{block.caption}</figcaption>
                       <Attribution dangerouslySetInnerHTML={{ __html: block.attribution }} />
-                    </figure>
+                    </Figure>
                   }
                 </div>
               ))
@@ -95,8 +101,8 @@ export const query = graphql`
         name
       }
       featuredImage {
-        fixed (width: 1000, height:400, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "entropy"  }){
-          ...GatsbyDatoCmsFixed
+        fluid (maxWidth: 1000, maxHeight: 400, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces"  }){
+          ...GatsbyDatoCmsFluid
         }
       }
       seoMetaTags {
@@ -112,8 +118,8 @@ export const query = graphql`
           caption
           attribution
           image {
-            fixed (width: 1000, height:400, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "entropy"  }){
-              ...GatsbyDatoCmsFixed
+            fluid (maxWidth: 900, maxHeight: 450, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces"  }){
+              ...GatsbyDatoCmsFluid
             }
           }
         }
