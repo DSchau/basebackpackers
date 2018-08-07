@@ -55,7 +55,7 @@ export default ({ data }) => (
     <Article>
         <HelmetDatoCms seo={data.datoCmsBlog.seoMetaTags} /> 
         <BodyContainer className="article" >
-          <Img fluid={data.datoCmsBlog.featuredImage.fluid} />
+          <Img fixed={data.datoCmsBlog.featuredImage.fixed} />
           <BlogHeading>{data.datoCmsBlog.title}</BlogHeading>
            <Author>Written by: {data.datoCmsBlog.author.name} </Author>      
             {
@@ -68,7 +68,7 @@ export default ({ data }) => (
                   {
                     block.model.apiKey === 'image_block' &&
                     <figure>
-                      <Img fluid={block.image.fluid} />
+                      <Img fixed={block.image.fixed} />
                       <figcaption>{block.caption}</figcaption>
                       <Attribution dangerouslySetInnerHTML={{ __html: block.attribution }} />
                     </figure>
@@ -95,8 +95,8 @@ export const query = graphql`
         name
       }
       featuredImage {
-        fluid (maxWidth: 1000, imgixParams: { fm: "jpg", auto: "compress" }){
-          ...GatsbyDatoCmsFluid
+        fixed (width: 1000, height:400, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "entropy"  }){
+          ...GatsbyDatoCmsFixed
         }
       }
       seoMetaTags {
@@ -112,8 +112,8 @@ export const query = graphql`
           caption
           attribution
           image {
-            fluid (maxWidth: 1000, imgixParams: { fm: "jpg", auto: "compress" }){
-              ...GatsbyDatoCmsFluid
+            fixed (width: 1000, height:400, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "entropy"  }){
+              ...GatsbyDatoCmsFixed
             }
           }
         }
