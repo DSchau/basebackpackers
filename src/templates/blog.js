@@ -66,10 +66,10 @@ export default class BlogPost extends React.Component {
     const schemaOrgJSONLD = [
       {
         "@context": "http://schema.org",
-        "@type": "Blog",
+        "@type": "BlogPosting",
         "url": postURL,
         "image":`${data.datoCmsBlog.featuredImage.url}`,
-        "name":`${data.datoCmsBlog.title}`,
+        "headline":`${data.datoCmsBlog.title}`,
         
       }
     ]; 
