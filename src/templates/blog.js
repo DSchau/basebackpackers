@@ -86,8 +86,6 @@ export default ({ data }) => (
         </BodyContainer>
 
     </Article>
-
-      
   </Layout>  
 
 )
