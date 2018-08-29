@@ -18,8 +18,8 @@ export default ({ data }) => (
   </Layout>  
 
 )
-
-export const query = graphql`
+/*
+ export const query = graphql`
   query ProductPageQuery($slug: String!) {
     datoCmsProduct(slug: { eq: $slug }) {
       title
@@ -30,3 +30,4 @@ export const query = graphql`
     }
   }
 `
+*/

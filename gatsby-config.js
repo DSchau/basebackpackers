@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Default Starter',
+    siteUrl: 'https://basebackpackers.com'
+
   },
   plugins: [
     'gatsby-plugin-react-helmet',

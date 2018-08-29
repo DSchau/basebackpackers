@@ -4,6 +4,7 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { graphql } from 'gatsby' 
 import Img from 'gatsby-image'
 import styled from 'styled-components'
+import Helmet from 'react-helmet'
 import {  Article  } from '../components/layout/index.js';
 
 import Layout from '../components/layout'
@@ -54,12 +55,39 @@ const Attribution = styled.p`
   font-size: .7rem;
 `;
 
-export default ({ data }) => (
+
+export default class BlogPost extends React.Component {
+  
+  render () {
+    const { data } = this.props;
+    const rootUrl = `${data.site.siteMetadata.siteUrl}`;
+    const pagePath = `/${data.datoCmsBlog.destination.slug}/${data.datoCmsBlog.slug}`;
+    const postURL = rootUrl+pagePath;
+    const schemaOrgJSONLD = [
+      {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": postURL,
+        "image":`${data.datoCmsBlog.featuredImage.url}`,
+        "name":`${data.datoCmsBlog.title}`,
+        
+      }
+    ]; 
+
+    return (
 
   <Layout>
   <script async defer src="https://www.instagram.com/embed.js"></script>
     <Article>
         <HelmetDatoCms seo={data.datoCmsBlog.seoMetaTags} /> 
+        <Helmet>       
+       {/* Schema.org tags */}
+       <script type="application/ld+json">
+       {JSON.stringify(schemaOrgJSONLD)}    
+       </script>
+       </Helmet>
+        
+        
         <BodyContainer className="article" >
           <Img fluid={data.datoCmsBlog.featuredImage.fluid} />
           <BlogHeading>{data.datoCmsBlog.title}</BlogHeading>
@@ -88,17 +116,28 @@ export default ({ data }) => (
     </Article>
   </Layout>  
 
-)
+)}
+}
 
 
 export const query = graphql`
   query ($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     datoCmsBlog(slug: { eq: $slug }) {
       title
+      slug
+      destination {
+        slug
+      }
       author {
         name
       }
       featuredImage {
+        url
         fluid (maxWidth: 1000, maxHeight: 400, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces"  }){
           ...GatsbyDatoCmsFluid
         }
