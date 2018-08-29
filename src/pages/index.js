@@ -7,7 +7,7 @@ import Layout from '../components/layout'
 
 const IndexPage = ( {data} ) => (
   <Layout>
-    <Section lightbackround>
+    <Section lightBackground>
       <Link to="blog"> Blogs have moved here</Link>
     </Section>
   </Layout>
