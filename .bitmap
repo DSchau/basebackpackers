@@ -10,7 +10,7 @@
             }
         ],
         "mainFile": "CardImage.js",
-        "rootDir": "src/components/common/cardimage",
+        "rootDir": "src/components/common/CardImage",
         "origin": "IMPORTED",
         "originallySharedDir": "src/components/common"
     },
