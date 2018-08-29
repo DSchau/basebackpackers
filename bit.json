@@ -1,0 +1,21 @@
+{
+    "env": {},
+    "dependencies": {
+        "shansmith01.common/common/card-heading": "1.0.0",
+        "shansmith01.common/common/card-holder": "1.0.0",
+        "shansmith01.common/common/card-link": "1.0.0",
+        "shansmith01.common/common/card-price": "1.0.0",
+        "shansmith01.common/common/card-text": "1.0.0",
+        "shansmith01.common/common/container": "1.0.0",
+        "shansmith01.common/common/container-responsive": "1.0.0",
+        "shansmith01.common/common/navigation": "1.0.0",
+        "shansmith01.common/common/scroll-container": "1.0.0",
+        "shansmith01.common/common/section": "1.0.0",
+        "shansmith01.common/common/card-image": "1.0.0",
+        "shansmith01.common/common/card-body": "1.0.0",
+        "shansmith01.common/common/card": "1.0.0",
+        "shansmith01.common/common/button": "1.0.0"
+    },
+    "componentsDefaultDirectory": "src/components/common/{name}",
+    "packageManager": "npm"
+}

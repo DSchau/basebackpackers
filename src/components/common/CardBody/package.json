@@ -1,0 +1,12 @@
+{
+  "name": "@bit/shansmith01.common.common.card-body",
+  "version": "1.0.0",
+  "homepage": "https://bitsrc.io/shansmith01/common/common/card-body",
+  "main": "CardBody.js",
+  "dependencies": {
+    "styled-components": "^3.4.5"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE"
+}

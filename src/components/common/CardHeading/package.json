@@ -1,0 +1,13 @@
+{
+  "name": "@bit/shansmith01.common.common.card-heading",
+  "version": "1.0.0",
+  "homepage": "https://bitsrc.io/shansmith01/common/common/card-heading",
+  "main": "CardHeading.js",
+  "dependencies": {
+    "react": "^16.4.2",
+    "styled-components": "^3.4.5"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE"
+}
