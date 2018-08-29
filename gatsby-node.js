@@ -15,7 +15,14 @@
    return new Promise((resolve, reject) => {
      graphql(`
      {
-        allDatoCmsBlog {
+      allDatoCmsAbout {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+      allDatoCmsBlog {
         edges {
           node {
             slug
@@ -24,11 +31,20 @@
             }
           }
         }
-      
-    }
+      }
     }
     
+    
      `).then(result => {
+      result.data.allDatoCmsAbout.edges.map(({ node }) => {
+        createPage({
+          path: `about/${node.slug}`,
+          component: path.resolve(`./src/templates/aboutpages.js`),
+          context: {
+            slug: node.slug,
+          },
+        })
+      })
       result.data.allDatoCmsBlog.edges.map(({ node }) => {
         createPage({
           path: `${node.destination.slug}/${node.slug}`,

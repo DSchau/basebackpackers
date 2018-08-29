@@ -6,19 +6,32 @@ import { graphql } from 'gatsby'
 import {  Article  } from '../components/layout/index.js';
 
 import Layout from '../components/layout'
+import { Section, Container } from '../components/common/index.js';
 
 export default ({ data }) => (
 
   <Layout>
-    <Article>
-        <HelmetDatoCms seo={data.datoCmsAboutPage.seoMetaTags} /> 
-        <h1>{data.datoCmsAboutPage.heading}</h1>
-        <div dangerouslySetInnerHTML={{ __html: data.datoCmsAboutPage.childDatoCmsAboutPageBodyTextNode.childMarkdownRemark.html }} />
-        
-    </Article>
+    <Section lightBackground>
+        <HelmetDatoCms seo={data.datoCmsAbout.seoMetaTags} /> 
+        <Container maxWidth="900px">
+          <h1>{data.datoCmsAbout.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: data.datoCmsAbout.body }} />
+        </Container>
+    </Section>
       
       
   </Layout>  
 
 )
 
+export const query = graphql`
+  query AboutPageQuery($slug: String!) {
+    datoCmsAbout(slug: { eq: $slug }) {
+      title
+      body
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  }
+`
