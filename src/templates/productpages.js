@@ -5,7 +5,11 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Section, Container } from '../components/common';
 
-export default ({ data }) => (
+export default class productPage extends React.Component {
+  render () {
+    const { data } = this.props;
+    
+    return (
 
   <Layout>
     <Section lightBackground>
@@ -17,7 +21,7 @@ export default ({ data }) => (
     </Section>
   </Layout>  
 
-)
+)}}
 /*
  export const query = graphql`
   query ProductPageQuery($slug: String!) {
