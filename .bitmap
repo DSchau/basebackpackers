@@ -157,5 +157,18 @@
         "origin": "IMPORTED",
         "originallySharedDir": "src/components/common"
     },
+    "shansmith01.common/common/card-link@1.0.0": {
+        "files": [
+            {
+                "name": "CardLink.js",
+                "relativePath": "CardLink.js",
+                "test": false
+            }
+        ],
+        "mainFile": "CardLink.js",
+        "rootDir": "src/components/common/CardLink",
+        "origin": "IMPORTED",
+        "originallySharedDir": "src/components/common"
+    },
     "version": "13.0.4"
 }

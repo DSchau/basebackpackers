@@ -32,7 +32,9 @@
     "@bit/shansmith01.common.common.container": "file:./src/components/common/Container",
     "@bit/shansmith01.common.common.container-responsive": "file:./src/components/common/ContainerResponsive",
     "@bit/shansmith01.common.common.scroll-container": "file:./src/components/common/ScrollContainer",
-    "@bit/shansmith01.common.common.section": "file:./src/components/common/Section"
+    "@bit/shansmith01.common.common.section": "file:./src/components/common/Section",
+    "@bit/shansmith01.common.common.card-image": "file:./src/components/common/CardImage",
+    "@bit/shansmith01.common.common.card-link": "file:./src/components/common/CardLink"
   },
   "keywords": [
     "gatsby"
