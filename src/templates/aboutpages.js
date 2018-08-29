@@ -2,9 +2,6 @@
 import React from 'react'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { graphql } from 'gatsby' 
-
-import {  Article  } from '../components/layout/index.js';
-
 import Layout from '../components/layout'
 import { Section, Container } from '../components/common/index.js';
 
