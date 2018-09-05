@@ -22,7 +22,13 @@
           }
         }
       }
-      
+      allDatoCmsHostel {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
       allDatoCmsGroup {
           edges {
             node {
@@ -57,6 +63,15 @@
         createPage({
           path: `groups/${node.slug}`,
           component: path.resolve(`./src/templates/groupspages.js`),
+          context: {
+            slug: node.slug,
+          },
+        })
+      })
+      result.data.allDatoCmsHostel.edges.map(({ node }) => {
+        createPage({
+          path: `hostels/${node.slug}`,
+          component: path.resolve(`./src/templates/hostelpages.js`),
           context: {
             slug: node.slug,
           },
