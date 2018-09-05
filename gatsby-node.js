@@ -22,6 +22,14 @@
           }
         }
       }
+      
+      allDatoCmsGroup {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
       allDatoCmsBlog {
         edges {
           node {
@@ -40,6 +48,15 @@
         createPage({
           path: `about/${node.slug}`,
           component: path.resolve(`./src/templates/aboutpages.js`),
+          context: {
+            slug: node.slug,
+          },
+        })
+      })
+      result.data.allDatoCmsGroup.edges.map(({ node }) => {
+        createPage({
+          path: `groups/${node.slug}`,
+          component: path.resolve(`./src/templates/groupspages.js`),
           context: {
             slug: node.slug,
           },
