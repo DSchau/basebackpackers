@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 
+import { Navigation } from '../components/layout/index.js'
 import { Section, Container } from '../components/common/index.js';
 
 import Layout from '../components/layout'
 
 const IndexPage = ( {data} ) => (
   <Layout>
+    <Navigation />
     <Section lightBackground>
+
       <Container col="4">
         <div>
           <h2>Blog pages</h2>
