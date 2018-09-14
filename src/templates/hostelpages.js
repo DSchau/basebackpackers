@@ -33,7 +33,7 @@ Mews.D.apply(null,s)};c.async=1;c.src=w;t=m.getElementsByTagName(e)[0];t.parentN
             <button className="distributor">Book now</button>
           </Container>
           <Container maxWidth="900px" col="4" gap="10px">
-              {data.datoCmsHostel.hostelGallery.map(( photo, index) => {
+              {data.datoCmsHostel.activitiesGallery.map(( photo, index) => {
                 return <div key={index}>
                   <Img sizes={photo.fluid} />
                 </div>
@@ -60,7 +60,7 @@ export const query = graphql`
           ...GatsbyDatoCmsFluid 
         }
       }
-      hostelGallery {
+      activitiesGallery {
         id
         fluid (maxWidth: 1000){
           ...GatsbyDatoCmsFluid 

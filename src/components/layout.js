@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import styled, {ThemeProvider} from 'styled-components'
 
 import { Navigation, Footer } from '../components/layout/index.js'
+
+import baseTheme from './theme/base'
 
 import './layout.css'
 
@@ -57,7 +59,7 @@ const Layout = ({ children, data }) => (
         >
           <html lang="en" />
         </Helmet>
-        
+        <ThemeProvider theme={baseTheme}>
         <Container>
           <Navigation siteTitle={data.site.siteMetadata.title} />
             <Body>
@@ -65,7 +67,7 @@ const Layout = ({ children, data }) => (
             </Body>
           <Footer />
         </Container>
-
+        </ThemeProvider>
       </>
     )}
   />
