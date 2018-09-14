@@ -7,6 +7,7 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import { Section, Container } from '../components/common';
+import { Navigation } from '../components/layout/index.js'
 
 
 
@@ -17,7 +18,14 @@ export default class HostelPage extends React.Component {
     return (
     
     <Layout>
-      <Section lightBackground>
+      <Section paddningNone>
+      <div style={{ margin: 0, overflow:"hidden", position:"relative", zIndex:2, minHeight:"25rem" }} >
+        <Img fluid={data.datoCmsHostel.featuredImage.fluid} style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%", overflow: "hidden", zIndex:1,}}/>
+        <Navigation />
+        <h1>{data.datoCmsHostel.title}</h1>
+      </div>      
+      
+
           <HelmetDatoCms seo={data.datoCmsHostel.seoMetaTags} /> 
           <Helmet>
 
@@ -27,8 +35,8 @@ Mews.D.apply(null,s)};c.async=1;c.src=w;t=m.getElementsByTagName(e)[0];t.parentN
 
           </Helmet>
           <Container maxWidth="900px">
-            <Img fluid={data.datoCmsHostel.featuredImage.fluid} />
-            <h1>{data.datoCmsHostel.title}</h1>
+            
+            
             <div dangerouslySetInnerHTML={{ __html: data.datoCmsHostel.intro }} />
             <button className="distributor">Book now</button>
           </Container>

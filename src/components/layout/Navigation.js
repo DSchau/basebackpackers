@@ -7,10 +7,11 @@ import SiteLogo from '../base-logo.png';
 
 const Nav = styled.nav`
   grid-area: nav;
-  background: #fff;
   display:grid;
   grid-template-columns: 200px auto;
   color: #fff;
+  z-index:1;
+  position:relative;
 `;
 
 const Logo = styled.div`
@@ -31,7 +32,7 @@ const Menu = styled.div`
 
 const NavLink = styled(Link)`
   display: inline-block; 
-  color: #333; 
+  color: #fff; 
   text-align: right; 
   padding: 0px 10px; 
   text-decoration: none; 

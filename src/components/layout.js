@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import styled, {ThemeProvider} from 'styled-components'
 
-import { Navigation, Footer } from '../components/layout/index.js'
+import { Footer } from '../components/layout/index.js'
 
 import baseTheme from './theme/base'
 
@@ -15,14 +15,14 @@ const Container = styled.div`
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(10, auto);
   grid-template-areas:
-    "nav nav nav nav "
+    
     "body body body body"
     "foot foot foot foot" ;
 
     @media (max-width: 768px) {
     grid-template-columns: repeat(2, 50%);
     grid-template-areas:
-    "nav nav "
+    
     "body body"
     "foot foot"
     "foot foot" ;
@@ -61,7 +61,6 @@ const Layout = ({ children, data }) => (
         </Helmet>
         <ThemeProvider theme={baseTheme}>
         <Container>
-          <Navigation siteTitle={data.site.siteMetadata.title} />
             <Body>
               {children}
             </Body>
