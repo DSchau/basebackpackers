@@ -1,7 +1,7 @@
 import React from 'react'
 import Link  from 'gatsby-link'
 import styled from 'styled-components';
-import SiteLogo from '../base-logo.png';
+import SiteLogo from '../base-logo-white.png';
 
 
 

@@ -5,7 +5,7 @@ const Container = styled.div.attrs({
   col: props => props.col || '1',
   gap: props => props.gap || '0',
   padding: props => props.padding || '0',
-  maxWidth: props => props.maxWidth || 'none',
+  maxWidth: props => props.maxWidth || '960px',
   
 })`
   display:grid;
