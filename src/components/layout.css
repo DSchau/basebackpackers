@@ -125,16 +125,18 @@ strong {
 dfn {
   font-style: italic;
 }
-h1 {
-  font-size: 2.143em;
-  margin: .67em 0;
+
+.giant {
+  font-size: 2.63;
 }
+
 mark {
   background-color: #ff0;
   color: #000;
 }
 small {
-  font-size: .8rem;
+  font-size: .7857rem;
+  line-height:1.357
 }
 sub,
 sup {
@@ -296,8 +298,8 @@ h1 {
   color: inherit;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 2.143rem;
-  line-height: 1.1;
+  font-size: 2.07rem;
+  line-height: 2.314rem;
 }
 h2 {
   margin-left: 0;
@@ -311,8 +313,8 @@ h2 {
   color: inherit;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1.62671rem;
-  line-height: 1.1;
+  font-size: 1.643rem;
+  line-height: 2.643;
 }
 h3 {
   margin-left: 0;
@@ -326,8 +328,8 @@ h3 {
   color: inherit;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1rem;
-  line-height: 1.1;
+  font-size: 1.286rem;
+  line-height: 2.071;
 }
 h4 {
   margin-left: 0;
@@ -342,7 +344,7 @@ h4 {
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
-  line-height: 1.1;
+  line-height: 1.714;
 }
 h5 {
   margin-left: 0;
@@ -437,6 +439,7 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
+  line-height: 1.714
 }
 figure {
   margin-left: 0;

@@ -10,6 +10,7 @@ const baseTheme = {
     lightBlueText: 'rgba(255,255,255,90)', // used as p styled text color on dark blue background
     lightGreyText: '#4A4A4A', // used as a secondary text color
     charcol:'#333',
+    maxwidth:960px;
     
 }
 
