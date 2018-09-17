@@ -1,6 +1,6 @@
 
 .show {
-  display: block;
+  display: block !important;
 }
 
 .article1 {
