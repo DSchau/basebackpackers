@@ -185,8 +185,18 @@ export default class HostelPage extends React.Component {
 
       {/* FAQ */}
       <Section>
-      <Container>
-        <h2>Yes-A-Q's</h2>
+        <Container>
+          <h2>Yes-A-Q's</h2>
+        </Container>
+        <Container>
+        {
+          data.datoCmsHostel.yes.map((block) => (
+            <div key={block.id} className={block.model.apiKey}>
+              <div dangerouslySetInnerHTML={{ __html: block.question }} />
+              <div dangerouslySetInnerHTML={{ __html: block.answer }} />
+            </div>                
+            ))
+          } 
         </Container>
       </Section>  
     </Layout>  
@@ -238,6 +248,15 @@ export const query = graphql`
           ...GatsbyDatoCmsFluid 
         }
       }
+
+      yes {
+        ... on DatoCmsQA {
+          model { apiKey }
+          id
+          question
+          answer
+        }
+      }  
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
