@@ -11,6 +11,7 @@ const Foot = styled.footer`
   display:grid;
   display: -ms-grid;
   grid-column-gap:1.5rem;
+  background: ${props => props.theme.lightGrey};
 
    @media (max-width: 768px) {
     padding:1rem;

@@ -7,7 +7,7 @@ import Img from 'gatsby-image'
 import styled from 'styled-components';
 
 import Layout from '../components/layout'
-import { Section, Container } from '../components/common';
+import { Section, Container, ScrollContainer, Card, CardHeading, CardText } from '../components/common';
 import { Navigation } from '../components/layout/index.js'
 
 const HeaderContainer = styled(Container)`
@@ -19,7 +19,7 @@ const HeaderContainer = styled(Container)`
 
 const PageTitle = styled.h1`
   width:20rem;
-  font-size:2.63rem
+  font-size:2.63rem;
   
 `;
 
@@ -46,6 +46,20 @@ const NavItem = styled.li`
   
 `;
 
+const RoomTitle = styled.div`
+    margin: 0px; 
+    overflow: hidden; 
+    position: absolute; 
+    z-index: 2;
+    padding:10px;
+    bottom:0;
+    right:0;
+    font-size:.8rem;
+    background:${props => props.theme.secondaryColor};
+    color:${props => props.theme.white};
+    
+`;
+
 export default class HostelPage extends React.Component {
   render () {
     const { data } = this.props;
@@ -55,10 +69,10 @@ export default class HostelPage extends React.Component {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsHostel.seoMetaTags} /> 
       <Helmet>
-        /* <script>{`(function(m,e,w,s){c=m.createElement(e);c.onload=function(){
+        <script>{`(function(m,e,w,s){c=m.createElement(e);c.onload=function(){
         Mews.D.apply(null,s)};c.async=1;c.src=w;t=m.getElementsByTagName(e)[0];t.parentNode.insertBefore(c,t);})
-        (document,'script','https://www.mews.NavItem/distributor/distributor.min.js',[['${data.datoCmsHostel.mewsId}']]);`}
-        </script> */
+        (document,'script','https://www.mews.com/distributor/distributor.min.js',[['${data.datoCmsHostel.mewsId}']]);`}
+        </script>
       </Helmet>
 
       {/* Header section here */}
@@ -96,27 +110,83 @@ export default class HostelPage extends React.Component {
           <h2>Where you're staying</h2>
           <p>Get ready to make new friends in our spacious dorm rooms.</p>
         </Container>
+          {
+          data.datoCmsHostel.accommodationType.map((block) => (
+            <div key={block.id} className={block.model.apiKey}>
+              {
+                block.model.apiKey === 'accom' &&
+                  <>
+                  <ScrollContainer padding="0" maxwidth="960px">
+                  
+                  {/* Hostel image Gallery here */}
+                  {block.roomGallery.map(( photo, index) => {
+                    return <div key={index} style={{ margin: 0, overflow:"hidden", position:"relative", zIndex:2, minHeight:"140px" }}>
+                      <Img fluid={photo.fluid} style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%", overflow: "hidden", zIndex:1,}}/>
+                      <RoomTitle>{photo.title}</RoomTitle>
+                    </div>
+                    }
+                  )}
+                  </ScrollContainer>
+                          <Container col="2">
+                          <h2>Where you're staying</h2>
+                          <p>Get ready to make new friends in our spacious dorm rooms.</p>
+                        </Container>
+                        </>
+              }
+            </div>                
+            ))
+          }
+
       </Section>
 
       {/* Activities section here */}
-      <Section lightgreybackground>
+      <Section lightBackground>
         <Container>
           <h2>Activities</h2>
-        </Container>
+        </Container>  
+        <ScrollContainer padding="0" maxwidth="960px">
+        {
+          data.datoCmsHostel.activities.map((block) => (
+            <div key={block.id} className={block.model.apiKey}>
+                <Card>
+                  <CardHeading title={block.day}/>
+                    <CardText>
+                      <h5>AM</h5>
+                      <div>{block.amActivity}</div>
+                      <h5>PM</h5>
+                      <div>{block.pmActivity}</div>
+                    </CardText>
+                </Card>
+            </div>                
+            ))
+          }                
+        </ScrollContainer>
+
+
+
         <Container col="6" gap="10px">
-        {data.datoCmsHostel.activitiesGallery.map(( photo, index) => {
-          return <div key={index}>
-            <Img sizes={photo.fluid} />
-          </div>
-          }
-        )}
+
       </Container>
       </Section>
       
-      {/* Location section here */}
+      {/* Faciliteis section here */}
       <Section>
-          <Container>
-        <h2>Location</h2>
+        <Container>
+          <h2>Facilities</h2>
+        </Container>
+      </Section>  
+
+      {/* Location section here */}
+      <Section lightBlueBackground>
+        <Container>
+          <h2>Location</h2>
+        </Container>
+      </Section>  
+
+      {/* FAQ */}
+      <Section>
+      <Container>
+        <h2>Yes-A-Q's</h2>
         </Container>
       </Section>  
     </Layout>  
@@ -138,9 +208,33 @@ export const query = graphql`
           ...GatsbyDatoCmsFluid 
         }
       }
+      accommodationType {
+        ... on DatoCmsAccom {
+          model { apiKey }
+          name
+          id
+          roomGallery {
+            title
+            fluid (maxWidth: 500){
+              ...GatsbyDatoCmsFluid 
+            }
+          }
+        }
+      }
+      
+      activities {
+        ... on DatoCmsActivitiesByDay {
+          model { apiKey }
+          id
+          day
+          amActivity
+          pmActivity
+        }
+      }  
+      
       activitiesGallery {
         id
-        fluid (maxWidth: 1000){
+        fluid (maxWidth: 500){
           ...GatsbyDatoCmsFluid 
         }
       }

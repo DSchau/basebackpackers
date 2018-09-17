@@ -2,7 +2,8 @@
 import styled from 'styled-components';
 
 const ScrollContainer = styled.div.attrs({
-  maxWidth: props => props.maxWidth || 'none',
+  maxwidth: props => props.maxwidth || 'none',
+  padding: props => props.padding|| '0 1.5rem 2.5rem 1.5rem',
   
 })`
   display:grid;
@@ -14,8 +15,8 @@ const ScrollContainer = styled.div.attrs({
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   will-change: transform;
-  padding:0 1.5rem 2.5rem 1.5rem;
-  max-width:${props => props.maxWidth };
+  padding:${props => props.padding };
+  max-width:${props => props.maxwidth };
   margin:0 auto;
 
 `;
