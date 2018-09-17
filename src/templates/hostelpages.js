@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout'
 import { Section, Container, ScrollContainer, Card, CardHeading, CardText } from '../components/common';
-import { Navigation } from '../components/layout/index.js'
+import { Navigation, Faq, TestComponent } from '../components/layout/index.js'
 
 const HeaderContainer = styled(Container)`
   z-index:1;
@@ -63,7 +63,6 @@ const RoomTitle = styled.div`
 export default class HostelPage extends React.Component {
   render () {
     const { data } = this.props;
-    
     return (
     
     <Layout>
@@ -150,12 +149,12 @@ export default class HostelPage extends React.Component {
             <div key={block.id} className={block.model.apiKey}>
                 <Card>
                   <CardHeading title={block.day}/>
-                    <CardText>
+                    <div>
                       <h5>AM</h5>
                       <div>{block.amActivity}</div>
                       <h5>PM</h5>
                       <div>{block.pmActivity}</div>
-                    </CardText>
+                    </div>
                 </Card>
             </div>                
             ))
@@ -187,13 +186,13 @@ export default class HostelPage extends React.Component {
       <Section>
         <Container>
           <h2>Yes-A-Q's</h2>
+          
         </Container>
         <Container>
         {
           data.datoCmsHostel.yes.map((block) => (
             <div key={block.id} className={block.model.apiKey}>
-              <div dangerouslySetInnerHTML={{ __html: block.question }} />
-              <div dangerouslySetInnerHTML={{ __html: block.answer }} />
+              <Faq question={block.question} answer={block.answer}/>
             </div>                
             ))
           } 

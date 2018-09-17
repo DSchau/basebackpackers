@@ -1,3 +1,8 @@
+
+.show {
+  display: block;
+}
+
 .article1 {
   display: grid;
   max-width: 1000px;
