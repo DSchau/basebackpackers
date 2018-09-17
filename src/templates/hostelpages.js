@@ -19,6 +19,7 @@ const HeaderContainer = styled(Container)`
 
 const PageTitle = styled.h1`
   width:20rem;
+  font-size:2.63rem
   
 `;
 
@@ -34,7 +35,7 @@ const Intro = styled.div`
 
 const StickyNav = styled.ul`
     margin:0;
-    
+
   
 `;
 
@@ -54,9 +55,10 @@ export default class HostelPage extends React.Component {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsHostel.seoMetaTags} /> 
       <Helmet>
-        <script>{`(function(m,e,w,s){c=m.createElement(e);c.onload=function(){
+        /* <script>{`(function(m,e,w,s){c=m.createElement(e);c.onload=function(){
         Mews.D.apply(null,s)};c.async=1;c.src=w;t=m.getElementsByTagName(e)[0];t.parentNode.insertBefore(c,t);})
-        (document,'script','https://www.mews.NavItem/distributor/distributor.min.js',[['${data.datoCmsHostel.mewsId}']]);`}</script>
+        (document,'script','https://www.mews.NavItem/distributor/distributor.min.js',[['${data.datoCmsHostel.mewsId}']]);`}
+        </script> */
       </Helmet>
 
       {/* Header section here */}
@@ -77,7 +79,7 @@ export default class HostelPage extends React.Component {
       </Section>
 
       {/* Navigation in page here */}
-      <Section>
+      <Section padding="2rem 0 1rem">
         <Container>
           <StickyNav>
             <NavItem>Rooms</NavItem>
@@ -89,7 +91,7 @@ export default class HostelPage extends React.Component {
       </Section>
 
       {/* Accommodation section here */}
-      <Section>
+      <Section padding="0">
         <Container>
           <h2>Where you're staying</h2>
           <p>Get ready to make new friends in our spacious dorm rooms.</p>
@@ -98,26 +100,25 @@ export default class HostelPage extends React.Component {
 
       {/* Activities section here */}
       <Section lightgreybackground>
-        <h2>Activities</h2>
+        <Container>
+          <h2>Activities</h2>
+        </Container>
+        <Container col="6" gap="10px">
+        {data.datoCmsHostel.activitiesGallery.map(( photo, index) => {
+          return <div key={index}>
+            <Img sizes={photo.fluid} />
+          </div>
+          }
+        )}
+      </Container>
       </Section>
       
       {/* Location section here */}
       <Section>
-        <div>Location</div>
-      </Section>
-      
-
-
-
-          <Container maxWidth="900px" col="4" gap="10px">
-              {data.datoCmsHostel.activitiesGallery.map(( photo, index) => {
-                return <div key={index}>
-                  <Img sizes={photo.fluid} />
-                </div>
-                }
-              )}
-          </Container>
-      
+          <Container>
+        <h2>Location</h2>
+        </Container>
+      </Section>  
     </Layout>  
     )
   }

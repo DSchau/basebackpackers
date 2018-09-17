@@ -1,8 +1,13 @@
 
 import styled from 'styled-components';
 
-const Section = styled.section`
-  padding:${props => props.paddningNone ? '0' : '3rem'};
+const Section = styled.section.attrs({
+  padding: props => props.padding || '3rem',
+  margin: props => props.margin || '0',
+  
+})`
+  padding:${props => props.padding};
+  margin:${props => props.margin};
   background:${props => props.lightBlueBackground ? props => props.theme.lightBlue : props.lightBackground ? props => props.theme.lightGrey : 'white'};
   
   
