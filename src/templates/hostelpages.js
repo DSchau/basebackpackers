@@ -186,7 +186,6 @@ export default class HostelPage extends React.Component {
       <Section>
         <Container>
           <h2>Yes-A-Q's</h2>
-          
         </Container>
         <Container>
         {

@@ -20,11 +20,16 @@ const Close = styled.div`
 `;
 
 class Faq extends React.Component {
-    
-    state = { showDetails: false }
 
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            showDetails: false,
+        };
+      }
+    
     toggleDetails = () => {
-    console.log("State set.");
       this.setState({
         showDetails: !this.state.showDetails
       })
