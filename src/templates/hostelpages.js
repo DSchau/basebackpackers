@@ -101,6 +101,13 @@ const Crossimage = styled.img`
     margin-bottom: 0;
 `;
 
+const FacilityTitle = styled.p` 
+  color: ${props => props.theme.secondaryColor};
+  margin-top:.5rem;
+  margin-bottom:0rem;
+  
+`;
+
 export default class HostelPage extends React.Component {
   render () {
     const { data } = this.props;
@@ -205,13 +212,22 @@ export default class HostelPage extends React.Component {
 
         <Container col="6" gap="10px">
 
-      </Container>
+        </Container>
       </Section>
       
       {/* Faciliteis section here */}
       <Section>
         <Container>
           <h2>Facilities</h2>
+        </Container>
+        <Container col="4" gap="1rem" mobcol="1fr 1fr">
+        {data.datoCmsHostel.featureGallery.map(( photo, index ) => {
+                    return <div key={index}>
+                      <Img fluid={photo.fluid} />
+                      <FacilityTitle>{photo.title}</FacilityTitle>
+                    </div>
+                    }
+                  )}
         </Container>
       </Section>  
 
@@ -270,6 +286,14 @@ export const query = graphql`
         }
       }
       
+      featureGallery {
+        id
+        title
+        fluid (maxWidth: 500, maxHeight: 300, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces"  }){
+          ...GatsbyDatoCmsFluid 
+        }
+      }
+
       activities {
         ... on DatoCmsActivitiesByDay {
           model { apiKey }
@@ -282,6 +306,7 @@ export const query = graphql`
       
       activitiesGallery {
         id
+        
         fluid (maxWidth: 500){
           ...GatsbyDatoCmsFluid 
         }
