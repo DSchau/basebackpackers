@@ -7,8 +7,9 @@ import Img from 'gatsby-image'
 import styled from 'styled-components';
 
 import Layout from '../components/layout'
-import { Section, Container, ScrollContainer, Card, CardHeading, CardText } from '../components/common';
-import { Navigation, Faq, TestComponent } from '../components/layout/index.js'
+import { Section, Container, ScrollContainer } from '../components/common';
+import { Navigation, Faq } from '../components/layout/index.js'
+import Cross from './cross.png';
 
 const HeaderContainer = styled(Container)`
   z-index:1;
@@ -60,6 +61,46 @@ const RoomTitle = styled.div`
     
 `;
 
+const ActivityCard =styled.div`
+  background:${props => props.theme.white};
+  padding: 1.5rem;
+`;
+
+const ActivityText = styled.p`
+  color:${props => props.theme.lightGreyText};
+  font-size:.8rem;
+  border-bottom:1px solid ${props => props.theme.lightBlueLine}; 
+  padding-bottom:1rem;
+`;
+
+const ActivityHeading = styled.h3`
+  color:${props => props.theme.secondaryColor};
+  margin-bottom:0;
+`;
+
+const Time = styled.span`
+  font-weight: normal;
+`;
+
+const ActivityLeadCard = styled(ActivityCard)`
+  background:  ${props => props.theme.secondaryColor};
+  color:#fff;
+  position:relative;
+`;
+
+const ActivityLeadText = styled.p`
+  color:${props => props.theme.lightBlueText};
+  font-size:1.286rem;
+  line-height:2rem;
+`;
+
+const Crossimage = styled.img`
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 0;
+`;
+
 export default class HostelPage extends React.Component {
   render () {
     const { data } = this.props;
@@ -106,7 +147,7 @@ export default class HostelPage extends React.Component {
       {/* Accommodation section here */}
       <Section padding="0">
         <Container>
-          <h2>Where you're staying</h2>
+          <h2>Where you‘re staying</h2>
           <p>Get ready to make new friends in our spacious dorm rooms.</p>
         </Container>
           {
@@ -127,7 +168,7 @@ export default class HostelPage extends React.Component {
                   )}
                   </ScrollContainer>
                           <Container col="2">
-                          <h2>Where you're staying</h2>
+                          <h2>Where you‘re staying</h2>
                           <p>Get ready to make new friends in our spacious dorm rooms.</p>
                         </Container>
                         </>
@@ -143,25 +184,24 @@ export default class HostelPage extends React.Component {
         <Container>
           <h2>Activities</h2>
         </Container>  
-        <ScrollContainer padding="0" maxwidth="960px">
+        <ScrollContainer padding="0" maxwidth="960px" colwidth="16rem">
+            <ActivityLeadCard>
+              <h3>The Spot to be social</h3>
+              <ActivityLeadText>Loads of daytime activities and a pumping bar to help you make new mates.</ActivityLeadText>
+              <Crossimage src={Cross} />
+            </ActivityLeadCard>
+
         {
           data.datoCmsHostel.activities.map((block) => (
-            <div key={block.id} className={block.model.apiKey}>
-                <Card>
-                  <CardHeading title={block.day}/>
-                    <div>
-                      <h5>AM</h5>
-                      <div>{block.amActivity}</div>
-                      <h5>PM</h5>
-                      <div>{block.pmActivity}</div>
-                    </div>
-                </Card>
-            </div>                
+            <ActivityCard key={block.id}>  
+              <ActivityHeading>{block.day} <Time>Morning</Time></ActivityHeading>
+              <ActivityText>{block.amActivity}</ActivityText>
+              <ActivityHeading>{block.day} <Time>Evening</Time></ActivityHeading>
+              <ActivityText>{block.pmActivity}</ActivityText>
+            </ActivityCard>              
             ))
           }                
         </ScrollContainer>
-
-
 
         <Container col="6" gap="10px">
 
@@ -185,7 +225,7 @@ export default class HostelPage extends React.Component {
       {/* FAQ */}
       <Section>
         <Container>
-          <h2>Yes-A-Q's</h2>
+          <h2>Yes-A-Q‘s</h2>
         </Container>
         <Container>
         {

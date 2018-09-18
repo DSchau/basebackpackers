@@ -7,10 +7,11 @@ const baseTheme = {
     black: '#0E0E0E',
     lightGrey: '#FAFAFA', // Used for backgrounds
     lightBlue: '#E2F2F5', // Used for backgrounds
-    lightBlueText: 'rgba(255,255,255,90)', // used as p styled text color on dark blue background
+    lightBlueText: 'rgba(255, 255, 255, 0.87)', // used as p styled text color on dark blue background
     lightGreyText: '#4A4A4A', // used as a secondary text color
     charcol:'#333',
-    maxwidth:'960px'
+    maxwidth:'960px',
+    lightBlueLine: '#CBEBF0'
     
 }
 
