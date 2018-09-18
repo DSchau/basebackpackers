@@ -6,4 +6,4 @@ export * from './Footer';
 export * from './Faq';
 export * from './Navigation';
 export * from './Article';
-export * from './test';
+export * from './GoogleMapsContainer';

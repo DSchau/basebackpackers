@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Layout from '../components/layout'
 import { Section, Container, ScrollContainer } from '../components/common';
 import { Navigation, Faq } from '../components/layout/index.js'
+import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js'
 import Cross from './cross.png';
 
 const HeaderContainer = styled(Container)`
@@ -106,6 +107,11 @@ const FacilityTitle = styled.p`
   margin-top:.5rem;
   margin-bottom:0rem;
   
+`;
+
+const Mapbox = styled.div`
+  position:relative;
+  height:16rem;
 `;
 
 export default class HostelPage extends React.Component {
@@ -236,6 +242,40 @@ export default class HostelPage extends React.Component {
         <Container>
           <h2>Location</h2>
         </Container>
+        <Container col="2" mobcol="1fr 1fr" gap="2rem">
+        <div>
+          <Mapbox>
+            <GoogleApiWrapper 
+              title={data.datoCmsHostel.title}
+              street={data.datoCmsHostel.streetAddress}
+              city={data.datoCmsHostel.city}
+              lat={data.datoCmsHostel.location.latitude}  
+              long={data.datoCmsHostel.location.longitude}  
+              />
+          </Mapbox> 
+          <div>
+            <div>Get directions</div>
+            <div>Phone: {data.datoCmsHostel.phone}</div>
+            <div>Email: {data.datoCmsHostel.emailAddress}</div>
+          </div>  
+          </div>
+
+        
+        <div>
+          <h3>Things near by</h3>
+          {
+          data.datoCmsHostel.thingsNearBy.map((near) => (
+            <div key={near.id}>
+              <h4>{near.time} {near.tripType}</h4>
+              <p>{near.name}</p>
+            </div>   
+           
+            ))
+          } 
+
+        </div>
+
+        </Container>
       </Section>  
 
       {/* FAQ */}
@@ -252,7 +292,8 @@ export default class HostelPage extends React.Component {
             ))
           } 
         </Container>
-      </Section>  
+      </Section>
+  
     </Layout>  
     )
   }
@@ -310,6 +351,21 @@ export const query = graphql`
         fluid (maxWidth: 500){
           ...GatsbyDatoCmsFluid 
         }
+      }
+      location {
+        latitude
+        longitude
+      }
+      streetAddress
+      suburb
+      city
+      phone
+      emailAddress
+      thingsNearBy {
+        id
+        name
+        time
+        tripType
       }
 
       yes {
