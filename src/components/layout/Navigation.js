@@ -12,6 +12,10 @@ const Nav = styled.nav`
   color: #fff;
   z-index:1;
   position:relative;
+  padding:1.5rem;
+  @media (max-width: 500px) {
+    padding:0;
+  }
 `;
 
 const Logo = styled.div`

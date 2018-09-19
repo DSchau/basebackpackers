@@ -5,13 +5,16 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { graphql } from 'gatsby' 
 import Img from 'gatsby-image'
 import styled from 'styled-components';
-import Scrollspy from 'react-scrollspy'
+import Scrollspy from 'react-scrollspy';
+import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
 
 import Layout from '../components/layout'
 import { Section, Container, ScrollContainer } from '../components/common';
 import { Navigation, Faq, Accom } from '../components/layout/index.js'
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js'
 import Cross from './cross.png';
+import Xo from './xo.png';
 
 const HeaderContainer = styled(Container)`
   z-index:1;
@@ -21,19 +24,57 @@ const HeaderContainer = styled(Container)`
 `;
 
 const PageTitle = styled.h1`
-  width:20rem;
-  font-size:2.63rem;
-  
+  width:50%;
+  font-size:3.63rem;
+  line-height:4rem;
+
+  @media (max-width: 500px) {
+    width:20rem;
+    font-size:2.63rem;
+  }
+
 `;
 
 const TagNavItemne = styled.p`
   font-size:1.286rem;
   font-weight:bold;
+  letter-spacing:.05rem;
+`;
+
+const HeaderImageName = styled.div`
+  z-index:1;
+  position:relative;
+  color:${props => props.theme.white};
+  text-align:right;
+  padding-right:3rem;
+  padding-bottom:2rem;
+  font-size:.75rem;
+  @media (max-width: 500px) {
+   display:none;
+  }
 `;
 
 const Intro = styled.div`
-  font-size:1.143rem;
-  
+  font-size:1.343rem;
+  line-height:2rem;
+`;
+
+const Heart = styled.img`
+    position: absolute;
+    bottom: -20px;
+    right: 35px;
+    float: right;
+    text-align: right;
+`;
+
+const HeadingSpan = styled.span`
+  color:#a2a2a2;
+  font-size:1.4rem;
+  margin-left:.3rem;
+  font-weight:400;
+
+
+
 `;
 
 const NavItem = styled.li`
@@ -128,21 +169,28 @@ export default class HostelPage extends React.Component {
       <Section id="header" padding="0rem" style={{ margin: 0, overflow:"hidden", position:"relative", zIndex:2, minHeight:"25rem" }}>
         <Img fluid={data.datoCmsHostel.featuredImage.fluid} style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%", overflow: "hidden", zIndex:1,}}/>
         <Navigation />
-        <HeaderContainer padding="1.5rem">
+        
+        <HeaderContainer padding="0rem">
           <PageTitle>{data.datoCmsHostel.title}</PageTitle>
           <TagNavItemne>Find the rest of the world here</TagNavItemne>
         </HeaderContainer>
+
+        <HeaderImageName><div>Crazy Party Tuesdays - Scary Canary Bar </div><div>@ Base Backpackers Sydeny</div></HeaderImageName>
+    
       </Section> 
       
       {/* Intro text here */}
       <Section lightBlueBackground>
-        <Container>
-          <Intro dangerouslySetInnerHTML={{ __html: data.datoCmsHostel.intro }} />
+        <Fade bottom>
+        <Container style={{position: "relative"}}>
+          <Intro>You’re going to love starting your Australian journey with backpackers from all over the world, just like you, in our iconic Sydney Hostel. Stay, play, work, study, party or just hang out and soak up the local vibe. It's completley up to you.</Intro>
+          <Heart src={Xo}/>
         </Container>
+        </Fade>
       </Section>
 
       {/* Navigation in page here */}
-      <Section padding="2rem 0 1rem" style={{position:"sticky", top:0, zIndex:3,}}>
+      <Section padding="2rem 0 0rem" style={{position:"sticky", top:0, zIndex:3,}}>
         <Container>
           
           <Scrollspy style={{ marginLeft: 0, marginBottom:0 }} items={ ['rooms','activities', 'facilities', 'location', 'faq' ] } currentClassName="is-current">
@@ -163,8 +211,9 @@ export default class HostelPage extends React.Component {
 
       {/* Activities section here */}
       <Section id="activities" lightBackground>
+      <Fade>
         <Container>
-          <h2>Activities</h2>
+          <h2>Activities <HeadingSpan>Never be lonely</HeadingSpan> </h2>
         </Container>  
         <ScrollContainer padding="0 0 1rem" maxwidth="960px" colwidth="16rem">
             <ActivityLeadCard>
@@ -193,13 +242,14 @@ export default class HostelPage extends React.Component {
                     }
                   )}
         </Container>
-        
+        </Fade>
       </Section>
       
       {/* Faciliteis section here */}
       <Section id="facilities">
+      <Fade>
         <Container>
-          <h2>Facilities</h2>
+          <h2>Facilities <HeadingSpan>Everything you need</HeadingSpan></h2>
         </Container>
         <Container col="4" gap="1rem" mobcol="1fr 1fr">
         {data.datoCmsHostel.featureGallery.map(( photo, index ) => {
@@ -210,12 +260,14 @@ export default class HostelPage extends React.Component {
                     }
                   )}
         </Container>
+        </Fade>
       </Section>  
 
       {/* Location section here */}
       <Section id="location" lightBlueBackground>
+      <Fade>
         <Container>
-          <h2>Location</h2>
+          <h2>Location <HeadingSpan>The perfect spot in town</HeadingSpan></h2>
         </Container>
         <Container col="2" mobcol="1fr 1fr" gap="2rem">
         <div>
@@ -251,12 +303,14 @@ export default class HostelPage extends React.Component {
         </div>
 
         </Container>
+        </Fade>
       </Section>  
 
       {/* FAQ */}
       <Section id="faq">
+      <Fade>
         <Container>
-          <h2>Yes-A-Q‘s</h2>
+          <h2>Yes-A-Q‘s <HeadingSpan>Everything else you should know</HeadingSpan></h2>
         </Container>
         <Container>
         {
@@ -267,6 +321,7 @@ export default class HostelPage extends React.Component {
             ))
           } 
         </Container>
+        </Fade>
       </Section>
   
     </Layout>  
@@ -292,6 +347,7 @@ export const query = graphql`
         ... on DatoCmsAccom {
           model { apiKey }
           name
+          intro
           id
           priceFrom
           features

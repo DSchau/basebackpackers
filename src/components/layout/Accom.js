@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image'
 import { Container, ScrollContainer, Button } from '../common';
+import Fade from 'react-reveal/Fade';
 
 const RoomTitle = styled.div`
     margin: 0px; 
@@ -50,7 +51,8 @@ const Price = styled.div`
   
 `;
 const AltRoom = styled.span`
-  
+  color:${props => props.theme.secondaryColor};
+  text-decoration:underline;
 `;
 
 class Accom extends React.Component {
@@ -70,7 +72,7 @@ class Accom extends React.Component {
 
     render() {
       const nextActive = this.state.showNext ? 'show' : '';
-      const people = Math.floor(Math.random() * 25) + 5;
+      const people = Math.floor(Math.random() * 25) + 20;
       
 
     return (
@@ -87,8 +89,16 @@ class Accom extends React.Component {
               {
                 block.model.apiKey === 'accom' &&
                   <>
+                  <Fade>
                   <Container>
-                  <p>Get ready to make new friends in our spacious dorm rooms.<AltRoom onClick={this.toggleNext} > Wait! I want to say in a Privateroom</AltRoom > </p>
+                  <p>{block.intro}. <AltRoom onClick={this.toggleNext} >Wait! I want to say in 
+                  {
+          this.props.source.map((block, index) => (
+            <span key={index} className={`room room-${index} ${nextActive} `}> {block.name} </span>
+          ))
+ }
+                  
+                  </AltRoom > </p>
                   </Container>
                   <ScrollContainer padding="0" maxwidth="960px">
                   
@@ -117,6 +127,7 @@ class Accom extends React.Component {
                               </div>
                             </Container>
                         </Container>
+                      </Fade>
                   </>
               }
             </AccomBlock>                

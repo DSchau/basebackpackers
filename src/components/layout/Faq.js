@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 const Question = styled.h4`
   color: ${props => props.theme.secondaryColor};
+  margin-bottom: .5rem;
+  font-size: 1.1rem;
   font-weight:bold;
   &:hover {
       color: #000;
