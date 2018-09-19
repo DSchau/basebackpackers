@@ -185,9 +185,15 @@ export default class HostelPage extends React.Component {
           }                
         </ScrollContainer>
 
-        <Container col="6" gap="10px">
-
+        <Container col="4" gap="1rem" mobcol="1fr 1fr 1fr 1fr">
+        {data.datoCmsHostel.activitiesGallery.map(( photo, index ) => {
+                    return <div key={index}>
+                      <Img fluid={photo.fluid} />
+                    </div>
+                    }
+                  )}
         </Container>
+        
       </Section>
       
       {/* Faciliteis section here */}
@@ -316,8 +322,7 @@ export const query = graphql`
       
       activitiesGallery {
         id
-        
-        fluid (maxWidth: 500){
+        fluid(maxWidth: 300, maxHeight: 200, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces"  }){
           ...GatsbyDatoCmsFluid 
         }
       }
