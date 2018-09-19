@@ -25,7 +25,7 @@ span.room-0.show {
   display: none !important;
 }
 .accom-0 {
-  display: block;
+  display: block !important;
 }
 
 .show {
