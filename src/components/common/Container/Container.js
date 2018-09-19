@@ -7,6 +7,7 @@ const Container = styled.div.attrs({
   gap: props => props.gap || '0',
   padding: props => props.padding || '0',
   maxwidth: props => props.maxwidth || props.theme.maxwidth,
+  margin: props => props.margin || '0 auto',
 })`
   display:grid;
   grid-template-columns: repeat(${props => props.col}, 1fr);
@@ -14,7 +15,7 @@ const Container = styled.div.attrs({
   padding:${props => props.padding};
   text-align:${props => props.center ? 'center' : 'left'};
   max-width:${props => props.maxwidth };
-  margin:0 auto;
+  margin:${props => props.margin };
   
   @media only screen and (max-width: 768px) {
     grid-template-columns: ${props => props.mobcol };

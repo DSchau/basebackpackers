@@ -10,11 +10,16 @@ const Button = styled.button`
 
     ${props => props.primary && css`
         background: ${props => props.theme.primaryColor};
-        color: ${props => props.theme.white}
+        color: ${props => props.theme.white};
     `}
 
     ${props => props.secondary && css`
         background: ${props => props.theme.secondaryColor};
+        
+    `}
+    ${props => props.large && css`
+        padding: 15px 25px;
+        font-size:1rem;
         
     `}
 

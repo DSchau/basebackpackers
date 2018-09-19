@@ -158,7 +158,7 @@ export default class HostelPage extends React.Component {
 
       {/* Accommodation section here */}
       <Section id="rooms" padding="1rem 3rem 3rem">
-       <Accom source={data.datoCmsHostel.accommodationType}/>
+       <Accom source={data.datoCmsHostel.accommodationType} hostelName={data.datoCmsHostel.title}/>
       </Section>
 
       {/* Activities section here */}
@@ -293,6 +293,8 @@ export const query = graphql`
           model { apiKey }
           name
           id
+          priceFrom
+          features
           roomGallery {
             title
             fluid (maxWidth: 500){
