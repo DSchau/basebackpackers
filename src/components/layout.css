@@ -1,3 +1,6 @@
+.is-current {
+  border-bottom:2px solid #13A7C1;
+}
 
 .show {
   display: block !important;
