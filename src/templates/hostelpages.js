@@ -43,11 +43,23 @@ const NavItem = styled.li`
     margin-bottom:0rem;
     padding-bottom:.7rem;
     font-size:.9rem;
+    &:hover {
+    border-bottom:2px solid ${props => props.theme.secondaryColor};
+  }
+`;
+
+const NavItemLink = styled.a`
+  color: inherit;
+  text-decoration:none;
+  &:hover {
+    color:${props => props.theme.secondaryColor};
+  }
 `;
 
 const ActivityCard =styled.div`
   background:${props => props.theme.white};
   padding: 1.5rem;
+  box-shadow: ${props => props.theme.shadow};
 `;
 
 const ActivityText = styled.p`
@@ -70,6 +82,7 @@ const ActivityLeadCard = styled(ActivityCard)`
   background:  ${props => props.theme.secondaryColor};
   color:#fff;
   position:relative;
+  box-shadow: ${props => props.theme.shadow};
 `;
 
 const ActivityLeadText = styled.p`
@@ -133,11 +146,11 @@ export default class HostelPage extends React.Component {
         <Container>
           
           <Scrollspy style={{ marginLeft: 0, marginBottom:0 }} items={ ['rooms','activities', 'facilities', 'location', 'faq' ] } currentClassName="is-current">
-            <NavItem>Rooms</NavItem>
-            <NavItem>Activities</NavItem>
-            <NavItem>Facilities</NavItem>
-            <NavItem>Location</NavItem>
-            <NavItem>FAQ</NavItem>
+            <NavItem><NavItemLink href="#rooms">Rooms</NavItemLink></NavItem>
+            <NavItem><NavItemLink href="#activities">Activities</NavItemLink></NavItem>
+            <NavItem><NavItemLink href="#facilities">Facilities</NavItemLink></NavItem>
+            <NavItem><NavItemLink href="#location">Location</NavItemLink></NavItem>
+            <NavItem><NavItemLink href="#faq">FAQ</NavItemLink></NavItem>
             </Scrollspy>
           
         </Container>
@@ -153,7 +166,7 @@ export default class HostelPage extends React.Component {
         <Container>
           <h2>Activities</h2>
         </Container>  
-        <ScrollContainer padding="0" maxwidth="960px" colwidth="16rem">
+        <ScrollContainer padding="0 0 1rem" maxwidth="960px" colwidth="16rem">
             <ActivityLeadCard>
               <h3>The Spot to be social</h3>
               <ActivityLeadText>Loads of daytime activities and a pumping bar to help you make new mates.</ActivityLeadText>

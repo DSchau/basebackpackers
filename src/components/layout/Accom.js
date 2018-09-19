@@ -17,6 +17,15 @@ const RoomTitle = styled.div`
     
 `;
 
+const GalleryItem = styled.div`
+  box-shadow: ${props => props.theme.shadow};
+  margin: 0; 
+  overflow: hidden; 
+  position: relative; 
+  z-index:2;
+  min-height: 140px;
+  padding:0 0 1rem;
+`;
 
 
 class Accom extends React.Component {
@@ -43,10 +52,10 @@ class Accom extends React.Component {
                   
                   {/* Hostel image Gallery here */}
                   {block.roomGallery.map(( photo, index) => {
-                    return <div key={index} style={{ margin: 0, overflow:"hidden", position:"relative", zIndex:2, minHeight:"140px" }}>
+                    return <GalleryItem key={index} >
                       <Img fluid={photo.fluid} style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%", overflow: "hidden", zIndex:1,}}/>
                       <RoomTitle>{photo.title}</RoomTitle>
-                    </div>
+                    </GalleryItem>
                     }
                   )}
                   </ScrollContainer>
