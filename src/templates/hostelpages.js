@@ -15,7 +15,7 @@ import { Navigation, Faq, Accom } from '../components/layout/index.js'
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js'
 import Cross from './cross.png';
 import Xo from './xo.png';
-import Giffy from './giffy.gif';
+import Giffy from './giphy.gif';
 
 const HeaderContainer = styled(Container)`
   z-index:1;
