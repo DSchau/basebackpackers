@@ -15,6 +15,7 @@ import { Navigation, Faq, Accom } from '../components/layout/index.js'
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js'
 import Cross from './cross.png';
 import Xo from './xo.png';
+import Giffy from './giffy.gif';
 
 const HeaderContainer = styled(Container)`
   z-index:1;
@@ -312,7 +313,8 @@ export default class HostelPage extends React.Component {
         <Container>
           <h2>Yes-A-Q‘s <HeadingSpan>Everything else you should know</HeadingSpan></h2>
         </Container>
-        <Container>
+        <Container col="2">
+        <div>
         {
           data.datoCmsHostel.yes.map((block) => (
             <div key={block.id} className={block.model.apiKey}>
@@ -320,6 +322,10 @@ export default class HostelPage extends React.Component {
             </div>                
             ))
           } 
+          </div>
+          <div>
+            <img src={Giffy}/>
+          </div>
         </Container>
         </Fade>
       </Section>
