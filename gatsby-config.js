@@ -25,8 +25,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'base-backpackers-australia-new-zealand',
+        short_name: 'Base Backpackers',
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',
