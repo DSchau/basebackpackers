@@ -7,7 +7,9 @@ import Img from 'gatsby-image'
 import styled from 'styled-components';
 import Scrollspy from 'react-scrollspy';
 import Fade from 'react-reveal/Fade';
-import Bounce from 'react-reveal/Bounce';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
+
 
 import Layout from '../components/layout'
 import { Section, Container, ScrollContainer } from '../components/common';
@@ -153,8 +155,20 @@ const Mapbox = styled.div`
 `;
 
 export default class HostelPage extends React.Component {
+  state = {
+    currentImage: 0,
+    lightboxIsOpen: false
+  }
   render () {
+    
+
+
     const { data } = this.props;
+    const {currentImage, lightboxIsOpen} = this.state;
+    const images = data.datoCmsHostel.featureGallery.map (block => block.fluid.src);
+    const imagesCaption = data.datoCmsHostel.featureGallery.map (block => block.title);
+    console.log ( imagesCaption );
+
     return (
     
     <Layout>
@@ -188,6 +202,7 @@ export default class HostelPage extends React.Component {
           <Heart src={Xo}/>
         </Container>
         </Fade>
+
       </Section>
 
       {/* Navigation in page here */}
@@ -254,12 +269,37 @@ export default class HostelPage extends React.Component {
         </Container>
         <Container col="4" gap="1rem" mobcol="1fr 1fr">
         {data.datoCmsHostel.featureGallery.map(( photo, index ) => {
-                    return <div key={index}>
+                    return <div key={index} style={{cursor: "pointer"}} onClick={() => {
+                      this.setState({
+                        lightboxIsOpen: true,
+                        currentImage: index
+                      });
+                    }}>
                       <Img fluid={photo.fluid} />
                       <FacilityTitle>{photo.title}</FacilityTitle>
                     </div>
                     }
                   )}
+
+                          {lightboxIsOpen && (
+          <Lightbox
+            imageCaption = {imagesCaption[currentImage]}
+            mainSrc={images[currentImage]}
+            nextSrc={images[(currentImage + 1) % images.length]}
+            prevSrc={images[(currentImage + images.length - 1) % images.length]}
+            onCloseRequest={() => this.setState({ lightboxIsOpen: false })}
+            onMovePrevRequest={() =>
+              this.setState({
+                currentImage: (currentImage + images.length - 1) % images.length,
+              })
+            }
+            onMoveNextRequest={() =>
+              this.setState({
+                currentImage: (currentImage + 1) % images.length,
+              })
+            }
+          />
+        )}
         </Container>
         </Fade>
       </Section>  
@@ -359,6 +399,7 @@ export const query = graphql`
           features
           roomGallery {
             title
+            url
             fluid (maxWidth: 500){
               ...GatsbyDatoCmsFluid 
             }
@@ -369,7 +410,7 @@ export const query = graphql`
       featureGallery {
         id
         title
-        fluid (maxWidth: 500, maxHeight: 300, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces"  }){
+        fluid (maxWidth: 1000, maxHeight: 600, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces"  }){
           ...GatsbyDatoCmsFluid 
         }
       }
