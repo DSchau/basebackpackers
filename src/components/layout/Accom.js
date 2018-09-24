@@ -53,6 +53,9 @@ const Price = styled.div`
 const AltRoom = styled.span`
   color:${props => props.theme.secondaryColor};
   text-decoration:underline;
+  & :hover {
+    cursor:pointer;
+  }
 `;
 
 class Accom extends React.Component {
@@ -100,7 +103,7 @@ class Accom extends React.Component {
                   
                   </AltRoom > </p>
                   </Container>
-                  <ScrollContainer padding="0" maxwidth="960px">
+                  <ScrollContainer padding="0 0 15px 0" maxwidth="960px" className="scroll">
                   
                   {/* Hostel image Gallery here */}
                   {block.roomGallery.map(( photo, index) => {

@@ -9,6 +9,7 @@ const Question = styled.h4`
   font-weight:bold;
   &:hover {
       color: #000;
+      cursor:pointer;
   }
 `;
 

@@ -184,7 +184,7 @@ export default class HostelPage extends React.Component {
       <Section lightBlueBackground>
         <Fade bottom>
         <Container style={{position: "relative"}}>
-          <Intro>You’re going to love starting your Australian journey with backpackers from all over the world, just like you, in our iconic Sydney Hostel. Stay, play, work, study, party or just hang out and soak up the local vibe. It's completley up to you.</Intro>
+          <Intro>You’re going to love starting your Australian journey with backpackers from all over the world, just like you, in our iconic Sydney Hostel. Stay, play, work, study, party or just hang out and soak up the local vibe. It's completely up to you.</Intro>
           <Heart src={Xo}/>
         </Container>
         </Fade>
@@ -313,7 +313,7 @@ export default class HostelPage extends React.Component {
         <Container>
           <h2>Yes-A-Q‘s <HeadingSpan>Everything else you should know</HeadingSpan></h2>
         </Container>
-        <Container col="2">
+        <Container col="2" mobcol="1fr">
         <div>
         {
           data.datoCmsHostel.yes.map((block) => (
