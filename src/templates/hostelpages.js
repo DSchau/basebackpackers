@@ -7,13 +7,12 @@ import Img from 'gatsby-image'
 import styled from 'styled-components';
 import Scrollspy from 'react-scrollspy';
 import Fade from 'react-reveal/Fade';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
 
 
 import Layout from '../components/layout'
 import { Section, Container, ScrollContainer } from '../components/common';
 import { Navigation, Faq, Accom } from '../components/layout/index.js'
+import ImageModal from '../components/layout/ImageModal'
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js'
 import Cross from './cross.png';
 import Xo from './xo.png';
@@ -142,12 +141,7 @@ const Crossimage = styled.img`
     margin-bottom: 0;
 `;
 
-const FacilityTitle = styled.p` 
-  color: ${props => props.theme.secondaryColor};
-  margin-top:.5rem;
-  margin-bottom:0rem;
-  
-`;
+
 
 const Mapbox = styled.div`
   position:relative;
@@ -155,23 +149,22 @@ const Mapbox = styled.div`
 `;
 
 export default class HostelPage extends React.Component {
-  state = {
-    currentImage: 0,
-    lightboxIsOpen: false
-  }
+
+
+
   render () {
+  
+    const { data } = this.props;  
+    const images = data.datoCmsHostel.featureGallery.map
+    (({ src, fluid, caption }) => ({src, fluid, caption }));
+    console.log(images)
+     
     
-
-
-    const { data } = this.props;
-    const {currentImage, lightboxIsOpen} = this.state;
-    const images = data.datoCmsHostel.featureGallery.map (block => block.fluid.src);
-    const imagesCaption = data.datoCmsHostel.featureGallery.map (block => block.title);
-    console.log ( imagesCaption );
 
     return (
     
     <Layout>
+
       <HelmetDatoCms seo={data.datoCmsHostel.seoMetaTags} /> 
       <Helmet>
         <script>{`(function(m,e,w,s){c=m.createElement(e);c.onload=function(){
@@ -266,40 +259,10 @@ export default class HostelPage extends React.Component {
       <Fade>
         <Container>
           <h2>Facilities <HeadingSpan>Everything you need</HeadingSpan></h2>
+
         </Container>
         <Container col="4" gap="1rem" mobcol="1fr 1fr">
-        {data.datoCmsHostel.featureGallery.map(( photo, index ) => {
-                    return <div key={index} style={{cursor: "pointer"}} onClick={() => {
-                      this.setState({
-                        lightboxIsOpen: true,
-                        currentImage: index
-                      });
-                    }}>
-                      <Img fluid={photo.fluid} />
-                      <FacilityTitle>{photo.title}</FacilityTitle>
-                    </div>
-                    }
-                  )}
-
-                          {lightboxIsOpen && (
-          <Lightbox
-            imageCaption = {imagesCaption[currentImage]}
-            mainSrc={images[currentImage]}
-            nextSrc={images[(currentImage + 1) % images.length]}
-            prevSrc={images[(currentImage + images.length - 1) % images.length]}
-            onCloseRequest={() => this.setState({ lightboxIsOpen: false })}
-            onMovePrevRequest={() =>
-              this.setState({
-                currentImage: (currentImage + images.length - 1) % images.length,
-              })
-            }
-            onMoveNextRequest={() =>
-              this.setState({
-                currentImage: (currentImage + 1) % images.length,
-              })
-            }
-          />
-        )}
+            <ImageModal images={images} />
         </Container>
         </Fade>
       </Section>  
@@ -409,7 +372,8 @@ export const query = graphql`
       
       featureGallery {
         id
-        title
+        src: url
+        caption: title
         fluid (maxWidth: 1000, maxHeight: 600, imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces"  }){
           ...GatsbyDatoCmsFluid 
         }
