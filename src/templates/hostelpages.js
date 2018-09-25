@@ -5,7 +5,6 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Scrollspy from 'react-scrollspy';
-import Fade from 'react-reveal/Fade';
 
 import Layout from '../components/layout';
 import { Section, Container, ScrollContainer } from '../components/common';
@@ -14,7 +13,7 @@ import Gallery from '../components/layout/Gallery';
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
 import Cross from './cross.png';
 import Xo from './xo.png';
-import Giffy from './giphy.gif';
+// import Giffy from './giphy.gif';
 
 const HeaderContainer = styled(Container)`
   z-index: 1;
@@ -161,7 +160,7 @@ export default class HostelPage extends React.Component {
         fluid: photo.fluid
       })
     );
-    // console.log(activitiesImages);
+
     return (
       <Layout>
         <HelmetDatoCms seo={data.datoCmsHostel.seoMetaTags} />
@@ -169,7 +168,7 @@ export default class HostelPage extends React.Component {
           <script>
             {`(function(m,e,w,s){c=m.createElement(e);c.onload=function(){
         Mews.D.apply(null,s)};c.async=1;c.src=w;t=m.getElementsByTagName(e)[0];t.parentNode.insertBefore(c,t);})
-        (document,'script','https://www.mews.com/distributor/distributor.min.js',[['${
+        (document,'script','https://www.mews.li/distributor/distributor.min.js',[['${
           data.datoCmsHostel.mewsId
         }']]);`}
           </script>
@@ -214,17 +213,15 @@ export default class HostelPage extends React.Component {
 
         {/* Intro text here */}
         <Section lightBlueBackground>
-          <Fade bottom>
-            <Container style={{ position: 'relative' }}>
-              <Intro>
-                You’re going to love starting your Australian journey with
-                backpackers from all over the world, just like you, in our
-                iconic Sydney Hostel. Stay, play, work, study, party or just
-                hang out and soak up the local vibe. It's completely up to you.
-              </Intro>
-              <Heart src={Xo} />
-            </Container>
-          </Fade>
+          <Container style={{ position: 'relative' }}>
+            <Intro>
+              You’re going to love starting your Australian journey with
+              backpackers from all over the world, just like you, in our iconic
+              Sydney Hostel. Stay, play, work, study, party or just hang out and
+              soak up the local vibe. It's completely up to you.
+            </Intro>
+            <Heart src={Xo} />
+          </Container>
         </Section>
 
         {/* Navigation in page here */}
@@ -267,123 +264,109 @@ export default class HostelPage extends React.Component {
 
         {/* Activities section here */}
         <Section id="activities" lightBackground>
-          <Fade>
-            <Container>
-              <h2>
-                Activities <HeadingSpan>Never be lonely</HeadingSpan>{' '}
-              </h2>
-            </Container>
-            <ScrollContainer
-              padding="0 0 1rem"
-              maxwidth="960px"
-              colwidth="16rem"
-            >
-              <ActivityLeadCard>
-                <h3>The Spot to be social</h3>
-                <ActivityLeadText>
-                  Loads of daytime activities and a pumping bar to help you make
-                  new mates.
-                </ActivityLeadText>
-                <Crossimage src={Cross} />
-              </ActivityLeadCard>
+          <Container>
+            <h2>
+              Activities <HeadingSpan>Never be lonely</HeadingSpan>{' '}
+            </h2>
+          </Container>
+          <ScrollContainer padding="0 0 1rem" maxwidth="960px" colwidth="16rem">
+            <ActivityLeadCard>
+              <h3>The Spot to be social</h3>
+              <ActivityLeadText>
+                Loads of daytime activities and a pumping bar to help you make
+                new mates.
+              </ActivityLeadText>
+              <Crossimage src={Cross} />
+            </ActivityLeadCard>
 
-              {data.datoCmsHostel.activities.map(block => (
-                <ActivityCard key={block.id}>
-                  <ActivityHeading>
-                    {block.day} <Time>Morning</Time>
-                  </ActivityHeading>
-                  <ActivityText>{block.amActivity}</ActivityText>
-                  <ActivityHeading>
-                    {block.day} <Time>Evening</Time>
-                  </ActivityHeading>
-                  <ActivityText>{block.pmActivity}</ActivityText>
-                </ActivityCard>
-              ))}
-            </ScrollContainer>
+            {data.datoCmsHostel.activities.map(block => (
+              <ActivityCard key={block.id}>
+                <ActivityHeading>
+                  {block.day} <Time>Morning</Time>
+                </ActivityHeading>
+                <ActivityText>{block.amActivity}</ActivityText>
+                <ActivityHeading>
+                  {block.day} <Time>Evening</Time>
+                </ActivityHeading>
+                <ActivityText>{block.pmActivity}</ActivityText>
+              </ActivityCard>
+            ))}
+          </ScrollContainer>
 
-            <Container col="4" gap="1rem" mobcol="1fr 1fr 1fr 1fr">
-              <Gallery images={activitiesImages} />
-            </Container>
-          </Fade>
+          <Container col="4" gap="1rem" mobcol="1fr 1fr 1fr 1fr">
+            <Gallery images={activitiesImages} />
+          </Container>
         </Section>
 
         {/* Faciliteis section here */}
         <Section id="facilities">
-          <Fade>
-            <Container>
-              <h2>
-                Facilities <HeadingSpan>Everything you need</HeadingSpan>
-              </h2>
-            </Container>
-            <Container col="4" gap="1rem" mobcol="1fr 1fr">
-              <Gallery images={featureImages} />
-            </Container>
-          </Fade>
+          <Container>
+            <h2>
+              Facilities <HeadingSpan>Everything you need</HeadingSpan>
+            </h2>
+          </Container>
+          <Container col="4" gap="1rem" mobcol="1fr 1fr">
+            <Gallery images={featureImages} />
+          </Container>
         </Section>
 
         {/* Location section here */}
         <Section id="location" lightBlueBackground>
-          <Fade>
-            <Container>
-              <h2>
-                Location <HeadingSpan>The perfect spot in town</HeadingSpan>
-              </h2>
-            </Container>
-            <Container col="2" mobcol="1fr 1fr" gap="2rem">
+          <Container>
+            <h2>
+              Location <HeadingSpan>The perfect spot in town</HeadingSpan>
+            </h2>
+          </Container>
+          <Container col="2" mobcol="1fr 1fr" gap="2rem">
+            <div>
+              <Mapbox>
+                <GoogleApiWrapper
+                  title={data.datoCmsHostel.title}
+                  street={data.datoCmsHostel.streetAddress}
+                  city={data.datoCmsHostel.city}
+                  lat={data.datoCmsHostel.location.latitude}
+                  long={data.datoCmsHostel.location.longitude}
+                />
+              </Mapbox>
               <div>
-                <Mapbox>
-                  <GoogleApiWrapper
-                    title={data.datoCmsHostel.title}
-                    street={data.datoCmsHostel.streetAddress}
-                    city={data.datoCmsHostel.city}
-                    lat={data.datoCmsHostel.location.latitude}
-                    long={data.datoCmsHostel.location.longitude}
-                  />
-                </Mapbox>
-                <div>
-                  <div>Get directions</div>
-                  <div>Phone: {data.datoCmsHostel.phone}</div>
-                  <div>Email: {data.datoCmsHostel.emailAddress}</div>
-                </div>
+                <div>Get directions</div>
+                <div>Phone: {data.datoCmsHostel.phone}</div>
+                <div>Email: {data.datoCmsHostel.emailAddress}</div>
               </div>
+            </div>
 
-              <div>
-                <h3>Things near by</h3>
-                {data.datoCmsHostel.thingsNearBy.map(near => (
-                  <div key={near.id}>
-                    <h4>
-                      {near.time} {near.tripType}
-                    </h4>
-                    <p>{near.name}</p>
-                  </div>
-                ))}
-              </div>
-            </Container>
-          </Fade>
+            <div>
+              <h3>Things near by</h3>
+              {data.datoCmsHostel.thingsNearBy.map(near => (
+                <div key={near.id}>
+                  <h4>
+                    {near.time} {near.tripType}
+                  </h4>
+                  <p>{near.name}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
         </Section>
 
         {/* FAQ */}
         <Section id="faq">
-          <Fade>
-            <Container>
-              <h2>
-                Yes-A-Q‘s{' '}
-                <HeadingSpan>Everything else you should know</HeadingSpan>
-              </h2>
-            </Container>
-            <Container col="2" mobcol="1fr">
-              <div>
-                {data.datoCmsHostel.yes.map(block => (
-                  <div key={block.id} className={block.model.apiKey}>
-                    <Faq question={block.question} answer={block.answer} />
-                  </div>
-                ))}
-              </div>
-              <div>
-                <img src={Giffy} />
-              </div>
-            </Container>
-          </Fade>
+          <Container>
+            <h2>
+              Yes-A-Q‘s{' '}
+              <HeadingSpan>Everything else you should know</HeadingSpan>
+            </h2>
+          </Container>
+          <Container col="2" mobcol="1fr">
+            <div>
+              {data.datoCmsHostel.yes.map(block => (
+                <div key={block.id} className={block.model.apiKey}>
+                  <Faq question={block.question} answer={block.answer} />
+                </div>
+              ))}
+            </div>
+            <div>{/* <Img src={Giffy} /> */}</div>
+          </Container>
         </Section>
       </Layout>
     );
