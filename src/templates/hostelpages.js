@@ -10,7 +10,7 @@ import Layout from '../components/layout';
 import { Section, Container, ScrollContainer } from '../components/common';
 import { Navigation, Faq, Accom } from '../components/layout/index.js';
 import Gallery from '../components/layout/Gallery';
-import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
+// import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
 import Cross from './cross.png';
 import Xo from './xo.png';
 // import Giffy from './giphy.gif';
@@ -220,7 +220,7 @@ export default class HostelPage extends React.Component {
               Sydney Hostel. Stay, play, work, study, party or just hang out and
               soak up the local vibe. It's completely up to you.
             </Intro>
-            <Heart src={Xo} />
+            <Heart src={Xo} alt="base hearts and cross" />
           </Container>
         </Section>
 
@@ -276,7 +276,7 @@ export default class HostelPage extends React.Component {
                 Loads of daytime activities and a pumping bar to help you make
                 new mates.
               </ActivityLeadText>
-              <Crossimage src={Cross} />
+              <Crossimage src={Cross} alt="base cross" />
             </ActivityLeadCard>
 
             {data.datoCmsHostel.activities.map(block => (
@@ -319,7 +319,7 @@ export default class HostelPage extends React.Component {
           </Container>
           <Container col="2" mobcol="1fr 1fr" gap="2rem">
             <div>
-              <Mapbox>
+              {/* <Mapbox>
                 <GoogleApiWrapper
                   title={data.datoCmsHostel.title}
                   street={data.datoCmsHostel.streetAddress}
@@ -327,7 +327,7 @@ export default class HostelPage extends React.Component {
                   lat={data.datoCmsHostel.location.latitude}
                   long={data.datoCmsHostel.location.longitude}
                 />
-              </Mapbox>
+              </Mapbox> */}
               <div>
                 <div>Get directions</div>
                 <div>Phone: {data.datoCmsHostel.phone}</div>
