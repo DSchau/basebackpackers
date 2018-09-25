@@ -398,7 +398,16 @@ export const query = graphql`
           roomGallery {
             caption: title
             src: url
-            fluid(maxWidth: 500) {
+            fluid(
+              maxWidth: 500
+              imgixParams: {
+                fm: "jpg"
+                auto: "compress"
+                fit: "crop"
+                crop: "faces"
+                auto: "format"
+              }
+            ) {
               srcSet
               ...GatsbyDatoCmsFluid
             }
@@ -417,6 +426,7 @@ export const query = graphql`
             auto: "compress"
             fit: "crop"
             crop: "faces"
+            auto: "format"
           }
         ) {
           srcSet
@@ -447,6 +457,7 @@ export const query = graphql`
             auto: "compress"
             fit: "crop"
             crop: "faces"
+            auto: "format"
           }
         ) {
           ...GatsbyDatoCmsFluid
