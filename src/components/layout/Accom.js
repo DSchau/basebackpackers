@@ -102,7 +102,7 @@ class Accom extends React.Component {
                         There are {people} other people looking at staying at{' '}
                         {this.props.hostelName} right now
                       </BookSectionText>
-                      <Button primary large>
+                      <Button primary large className="distributor">
                         Check availability and book
                       </Button>
                     </div>
