@@ -381,7 +381,17 @@ export const query = graphql`
       mewsId
       featuredImage {
         url
-        fluid(maxWidth: 1000) {
+        fluid(
+          maxWidth: 1000
+          imgixParams: {
+            fm: "jpg"
+            auto: "compress"
+            fit: "crop"
+            crop: "faces"
+            auto: "format"
+            q: 40
+          }
+        ) {
           ...GatsbyDatoCmsFluid
         }
       }
@@ -406,6 +416,7 @@ export const query = graphql`
                 fit: "crop"
                 crop: "faces"
                 auto: "format"
+                q: 50
               }
             ) {
               srcSet
@@ -427,6 +438,7 @@ export const query = graphql`
             fit: "crop"
             crop: "faces"
             auto: "format"
+            q: 50
           }
         ) {
           srcSet
