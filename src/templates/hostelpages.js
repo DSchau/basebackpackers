@@ -7,13 +7,18 @@ import styled from 'styled-components';
 import Scrollspy from 'react-scrollspy';
 
 import Layout from '../components/layout';
-import { Section, Container, ScrollContainer } from '../components/common';
+import {
+  Section,
+  Container,
+  ScrollContainer,
+  Button
+} from '../components/common';
 import { Navigation, Faq, Accom } from '../components/layout/index.js';
 import Gallery from '../components/layout/Gallery';
-// import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
+import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
 import Cross from './cross.png';
 import Xo from './xo.png';
-// import Giffy from './giphy.gif';
+import Giffy from './giphy.gif';
 
 const HeaderContainer = styled(Container)`
   z-index: 1;
@@ -31,6 +36,13 @@ const PageTitle = styled.h1`
     width: 20rem;
     font-size: 2.63rem;
     line-height: 3rem;
+  }
+`;
+
+const HeaderButton = styled(Button)`
+  display: none;
+  @media (max-width: 500px) {
+    display: block;
   }
 `;
 
@@ -204,6 +216,9 @@ export default class HostelPage extends React.Component {
           <HeaderContainer padding="0rem">
             <PageTitle>{data.datoCmsHostel.title}</PageTitle>
             <TagNavItemne>Find the rest of the world here</TagNavItemne>
+            <HeaderButton primary large className="distributor">
+              Check availability and book
+            </HeaderButton>
           </HeaderContainer>
 
           <HeaderImageName>
@@ -308,6 +323,9 @@ export default class HostelPage extends React.Component {
           </Container>
           <Container col="4" gap="1rem" mobcol="1fr 1fr">
             <Gallery images={featureImages} />
+            <Button primary large className="distributor">
+              Check availability and book
+            </Button>
           </Container>
         </Section>
 
@@ -320,7 +338,7 @@ export default class HostelPage extends React.Component {
           </Container>
           <Container col="2" mobcol="1fr 1fr" gap="2rem">
             <div>
-              {/* <Mapbox>
+              <Mapbox>
                 <GoogleApiWrapper
                   title={data.datoCmsHostel.title}
                   street={data.datoCmsHostel.streetAddress}
@@ -328,9 +346,16 @@ export default class HostelPage extends React.Component {
                   lat={data.datoCmsHostel.location.latitude}
                   long={data.datoCmsHostel.location.longitude}
                 />
-              </Mapbox> */}
+              </Mapbox>
               <div>
-                <div>Get directions</div>
+                <div>
+                  <a
+                    target="_blank"
+                    href="https://www.google.com/maps/dir/?api=1&destination=base+backpackers+sydney"
+                  >
+                    Get directions
+                  </a>
+                </div>
                 <div>Phone: {data.datoCmsHostel.phone}</div>
                 <div>Email: {data.datoCmsHostel.emailAddress}</div>
               </div>
@@ -364,8 +389,14 @@ export default class HostelPage extends React.Component {
                   <Faq question={block.question} answer={block.answer} />
                 </div>
               ))}
+              <Button primary large className="distributor">
+                Check availability and book
+              </Button>
             </div>
-            <div>{/* <Img src={Giffy} /> */}</div>
+            <div>
+              {' '}
+              <img src={Giffy} />
+            </div>
           </Container>
         </Section>
       </Layout>

@@ -48,7 +48,7 @@ class Accom extends React.Component {
 
   render() {
     const nextActive = this.state.showNext ? 'show' : '';
-    const people = Math.floor(Math.random() * 9) + 20;
+    const people = Math.floor(Math.random() * 9) + 13;
 
     return (
       <>

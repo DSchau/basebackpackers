@@ -93,7 +93,7 @@ span.room-0.show {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav a, .dropdown .dropbtn {
+  .topnav a, .dropdown .dropbtn, .menucta {
     display: none;
   }
   .topnav a.icon {
