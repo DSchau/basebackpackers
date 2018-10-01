@@ -9,7 +9,7 @@ const AccomBlock = styled.div`
 `;
 
 const BookSectionText = styled.div`
-  margin: 3rem 0 0.7rem;
+  margin: 2.3rem 0 0.7rem;
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.4;

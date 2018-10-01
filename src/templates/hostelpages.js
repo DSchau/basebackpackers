@@ -30,6 +30,7 @@ const PageTitle = styled.h1`
   @media (max-width: 500px) {
     width: 20rem;
     font-size: 2.63rem;
+    line-height: 3rem;
   }
 `;
 
@@ -293,7 +294,7 @@ export default class HostelPage extends React.Component {
             ))}
           </ScrollContainer>
 
-          <Container col="4" gap="1rem" mobcol="1fr 1fr 1fr 1fr">
+          <Container col="4" gap="1rem" mobcol="1fr 1fr">
             <Gallery images={activitiesImages} />
           </Container>
         </Section>
@@ -353,8 +354,7 @@ export default class HostelPage extends React.Component {
         <Section id="faq">
           <Container>
             <h2>
-              Yes-A-Q‘s{' '}
-              <HeadingSpan>Everything else you should know</HeadingSpan>
+              Yes-A-Q‘s <HeadingSpan>Everything else..</HeadingSpan>
             </h2>
           </Container>
           <Container col="2" mobcol="1fr">

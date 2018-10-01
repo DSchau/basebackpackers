@@ -27,6 +27,9 @@ const LogoWrapper = styled.div`
  top:10px;
  left:20px;
  width:110px;
+ @media (max-width: 500px) {
+    left:0;
+  }
 `;
 
 const Menu = styled.div`

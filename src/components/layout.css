@@ -99,11 +99,12 @@ span.room-0.show {
   .topnav a.icon {
     float: right;
     display: block;
+    font-size:1.5rem;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative; padding:2rem;}
+  .topnav.responsive {position: relative; padding:2rem; background:#000000ab;}
   .topnav.responsive a.icon {
     position: absolute;
     right: 0;
@@ -113,6 +114,8 @@ span.room-0.show {
     float: none;
     display: block;
     text-align: right;
+    font: size 1.4rem;
+    line-height: 3rem;
 
   }
   .topnav.responsive .dropdown {float: none;}
