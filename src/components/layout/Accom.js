@@ -115,7 +115,9 @@ class Accom extends React.Component {
                       <BookPriceInc>
                         Stay from just
                         <Price>${block.priceFrom}</Price>
-                        Per person/per night
+                        {block.name === 'Private Rooms'
+                          ? 'Per room/per night'
+                          : 'Per person/per night'}
                       </BookPriceInc>
                       <div className="includes">
                         <h5>Includes:</h5>
