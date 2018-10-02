@@ -53,7 +53,7 @@ const Footer = () => (
       <Foot>
         <FooterColumn className="footcol1">
           <h4>Quick Links</h4>
-          <FooterLinka herf="http://www.basbackpackers.com">Home</FooterLinka>
+          <FooterLinka href="http://www.stayatbase.com">Home</FooterLinka>
 
           <FooterLinka href="http://www.stayatbase.com/packages">
             Deals

@@ -105,6 +105,11 @@ class Accom extends React.Component {
                       <Button primary large className="distributor">
                         Check availability and book
                       </Button>
+                      <p>
+                        <small>
+                          Best price & service when you book direct!
+                        </small>
+                      </p>
                     </div>
                     <Container
                       col="2"

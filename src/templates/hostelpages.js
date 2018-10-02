@@ -230,7 +230,7 @@ export default class HostelPage extends React.Component {
 
           <HeaderImageName>
             <div>Crazy Party Tuesdays - Scary Canary Bar </div>
-            <div>@ Base Backpackers Sydeny</div>
+            <div>@ Base Backpackers Sydney</div>
           </HeaderImageName>
         </Section>
 
