@@ -152,6 +152,13 @@ const Mapbox = styled.div`
   height: 16rem;
 `;
 
+const Contact = styled.div`
+  margin-top: 1rem;
+`;
+const ContactDetails = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
 export default class HostelPage extends React.Component {
   render() {
     const { data } = this.props;
@@ -215,7 +222,7 @@ export default class HostelPage extends React.Component {
 
           <HeaderContainer padding="0rem">
             <PageTitle>{data.datoCmsHostel.title}</PageTitle>
-            <TagNavItemne>Find the rest of the world here</TagNavItemne>
+            <TagNavItemne>Find the rest of the world with us</TagNavItemne>
             <HeaderButton primary large className="distributor">
               Check availability and book
             </HeaderButton>
@@ -347,18 +354,26 @@ export default class HostelPage extends React.Component {
                   long={data.datoCmsHostel.location.longitude}
                 />
               </Mapbox>
-              <div>
-                <div>
+              <Contact>
+                <ContactDetails>
                   <a
                     target="_blank"
                     href="https://www.google.com/maps/dir/?api=1&destination=base+backpackers+sydney"
                   >
                     Get directions
                   </a>
-                </div>
-                <div>Phone: {data.datoCmsHostel.phone}</div>
-                <div>Email: {data.datoCmsHostel.emailAddress}</div>
-              </div>
+                </ContactDetails>
+                <ContactDetails>
+                  Address: {data.datoCmsHostel.streetAddress},{' '}
+                  {data.datoCmsHostel.city}
+                </ContactDetails>
+                <ContactDetails>
+                  Phone: {data.datoCmsHostel.phone}
+                </ContactDetails>
+                <ContactDetails>
+                  Email: {data.datoCmsHostel.emailAddress}
+                </ContactDetails>
+              </Contact>
             </div>
 
             <div>

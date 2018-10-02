@@ -76,7 +76,7 @@ class Accom extends React.Component {
                     <p>
                       {block.intro}.{' '}
                       <AltRoom onClick={this.toggleNext}>
-                        Wait! I want to say in
+                        Wait! I want to stay in
                         {this.props.source.map((block, index) => (
                           <span
                             key={index}
