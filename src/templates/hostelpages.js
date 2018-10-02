@@ -95,6 +95,9 @@ const NavItem = styled.li`
   &:hover {
     border-bottom: 2px solid ${props => props.theme.secondaryColor};
   }
+  @media (max-width: 500px) {
+    margin-right: 1rem;
+  }
 `;
 
 const NavItemLink = styled.a`
@@ -292,7 +295,12 @@ export default class HostelPage extends React.Component {
               Activities <HeadingSpan>Never be lonely</HeadingSpan>{' '}
             </h2>
           </Container>
-          <ScrollContainer padding="0 0 1rem" maxwidth="960px" colwidth="16rem">
+          <ScrollContainer
+            padding="0 0 1rem"
+            maxwidth="960px"
+            colwidth="16rem"
+            className="scroll"
+          >
             <ActivityLeadCard>
               <h3>The Spot to be social</h3>
               <ActivityLeadText>
