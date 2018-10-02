@@ -44,6 +44,14 @@ const NavLink = styled(Link)`
   text-decoration: none;
   font-size: 1rem;
 `;
+const NavLinka = styled.a`
+  display: inline-block;
+  color: #fff;
+  text-align: right;
+  padding: 0px 10px;
+  text-decoration: none;
+  font-size: 1rem;
+`;
 
 const NavCta = styled(Button)`
   display: inline-block;
@@ -74,20 +82,22 @@ class Navigation extends React.Component {
       <Nav>
         <Logo>
           <LogoWrapper>
-            <Link to="/">
+            <a href="http://www.stayatbase.com">
               <img
                 src={SiteLogo}
                 style={{ width: 110 }}
                 alt="Mad Backpacker Travel Agency Australia"
               />
-            </Link>
+            </a>
           </LogoWrapper>
         </Logo>
         <Menu id="Topnav" className={`topnav ${burgerActive}`}>
-          <NavLink to="/destinations/">Destinations</NavLink>
-          <NavLink to="#">Deals</NavLink>
-          <NavLink to="/about/about-us">About us</NavLink>
-          <Button primary className="menucta">
+          {/* <NavLink to="/destinations/">Destinations</NavLink> */}
+          <NavLinka href="http://www.stayatbase.com/packages">Deals</NavLinka>
+          <NavLinka href="http://www.stayatbase.com/base/about-base">
+            About us
+          </NavLinka>
+          <Button primary className="menucta distributor">
             Book Now
           </Button>
           <NavButton className="icon" href="#" onClick={this.toggleMenu}>
