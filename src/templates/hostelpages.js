@@ -18,7 +18,7 @@ import {
   IntroText,
   StickyNav,
   Gallery
-} from '../components/layout/';
+} from '../components/layout/index.js';
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
 import Cross from './cross.png';
 import Giffy from './giphy.gif';
@@ -298,7 +298,6 @@ export const query = graphql`
           maxWidth: 1000
           imgixParams: {
             fm: "jpg"
-            auto: "compress"
             fit: "crop"
             crop: "faces"
             auto: "format"
@@ -325,7 +324,6 @@ export const query = graphql`
               maxWidth: 500
               imgixParams: {
                 fm: "jpg"
-                auto: "compress"
                 fit: "crop"
                 crop: "faces"
                 auto: "format"
@@ -347,7 +345,6 @@ export const query = graphql`
           maxHeight: 600
           imgixParams: {
             fm: "jpg"
-            auto: "compress"
             fit: "crop"
             crop: "faces"
             auto: "format"
@@ -375,14 +372,15 @@ export const query = graphql`
         id
         title
         fluid(
-          maxWidth: 300
-          maxHeight: 200
+          maxWidth: 600
+          maxHeight: 400
           imgixParams: {
             fm: "jpg"
-            auto: "compress"
+            auto: "format"
             fit: "crop"
             crop: "faces"
             auto: "format"
+            q: 40
           }
         ) {
           ...GatsbyDatoCmsFluid

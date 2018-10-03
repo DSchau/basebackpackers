@@ -36,7 +36,7 @@ class Accom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showNext: false
+      showNext: {}
     };
   }
 
@@ -45,6 +45,21 @@ class Accom extends React.Component {
       showNext: !this.state.showNext
     });
   };
+
+  componentDidMount() {
+    const localStorageRef = localStorage.getItem('interest in private');
+
+    if (localStorageRef) {
+      this.setState({ showNext: JSON.parse(localStorageRef) });
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(
+      'interest in private',
+      JSON.stringify(this.state.showNext)
+    );
+  }
 
   render() {
     const nextActive = this.state.showNext ? 'show' : '';
@@ -143,6 +158,7 @@ class Accom extends React.Component {
 }
 
 Accom.propTypes = {
-  hostelName: PropTypes.string
+  hostelName: PropTypes.string,
+  source: PropTypes.object
 };
 export { Accom };
