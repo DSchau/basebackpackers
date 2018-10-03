@@ -96,7 +96,7 @@ const Header = props => {
 };
 
 Header.propTypes = {
-  backgroundImage: PropTypes.node.isRequired,
+  backgroundImage: PropTypes.object.isRequired,
   pageTitle: PropTypes.string,
   tagline: PropTypes.string,
   propertyName: PropTypes.string,

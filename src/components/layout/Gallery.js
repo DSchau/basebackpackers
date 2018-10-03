@@ -28,7 +28,7 @@ const GalleryItem = styled.div`
   padding: 0 0 1rem;
 `;
 
-class Gallery extends Component {
+export default class Gallery extends Component {
   constructor() {
     super();
 
@@ -134,4 +134,4 @@ Gallery.propTypes = {
   images: PropTypes.array
 };
 
-export default Gallery;
+export { Gallery };

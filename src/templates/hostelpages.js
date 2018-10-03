@@ -2,9 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
-import Scrollspy from 'react-scrollspy';
 
 import Layout from '../components/layout';
 import {
@@ -13,54 +11,23 @@ import {
   ScrollContainer,
   Button
 } from '../components/common';
-import { Header, Faq, Accom } from '../components/layout/index.js';
-import Gallery from '../components/layout/Gallery';
+import {
+  Header,
+  Faq,
+  Accom,
+  IntroText,
+  StickyNav,
+  Gallery
+} from '../components/layout/';
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
 import Cross from './cross.png';
-import Xo from './xo.png';
 import Giffy from './giphy.gif';
-
-const Intro = styled.div`
-  font-size: 1.343rem;
-  line-height: 2rem;
-`;
-
-const Heart = styled.img`
-  position: absolute;
-  bottom: -20px;
-  right: 35px;
-  float: right;
-  text-align: right;
-`;
 
 const HeadingSpan = styled.span`
   color: #a2a2a2;
   font-size: 1.4rem;
   margin-left: 0.3rem;
   font-weight: 400;
-`;
-
-const NavItem = styled.li`
-  padding-left: 0;
-  display: inline-block;
-  margin-right: 1.3rem;
-  margin-bottom: 0rem;
-  padding-bottom: 0.7rem;
-  font-size: 0.9rem;
-  &:hover {
-    border-bottom: 2px solid ${props => props.theme.secondaryColor};
-  }
-  @media (max-width: 500px) {
-    margin-right: 1rem;
-  }
-`;
-
-const NavItemLink = styled.a`
-  color: inherit;
-  text-decoration: none;
-  &:hover {
-    color: ${props => props.theme.secondaryColor};
-  }
 `;
 
 const ActivityCard = styled.div`
@@ -161,47 +128,16 @@ export default class HostelPage extends React.Component {
           caption="Crazy Party Tuesdays - Scary Canary Bar "
         />
         {/* Intro text here */}
-        <Section lightBlueBackground>
-          <Container style={{ position: 'relative' }}>
-            <Intro>
-              You’re going to love starting your Australian journey with
+
+        <IntroText
+          text="              You’re going to love starting your Australian journey with
               backpackers from all over the world, just like you, in our iconic
               Sydney Hostel. Stay, play, work, study, party or just hang out and
-              soak up the local vibe. It's completely up to you.
-            </Intro>
-            <Heart src={Xo} alt="base hearts and cross" />
-          </Container>
-        </Section>
-
+              soak up the local vibe. It's completely up to you."
+        />
         {/* Navigation in page here */}
-        <Section
-          padding="2rem 0 0rem"
-          style={{ position: 'sticky', top: 0, zIndex: 3 }}
-        >
-          <Container>
-            <Scrollspy
-              style={{ marginLeft: 0, marginBottom: 0 }}
-              items={['rooms', 'activities', 'facilities', 'location', 'faq']}
-              currentClassName="is-current"
-            >
-              <NavItem>
-                <NavItemLink href="#rooms">Rooms</NavItemLink>
-              </NavItem>
-              <NavItem>
-                <NavItemLink href="#activities">Activities</NavItemLink>
-              </NavItem>
-              <NavItem>
-                <NavItemLink href="#facilities">Facilities</NavItemLink>
-              </NavItem>
-              <NavItem>
-                <NavItemLink href="#location">Location</NavItemLink>
-              </NavItem>
-              <NavItem>
-                <NavItemLink href="#faq">FAQ</NavItemLink>
-              </NavItem>
-            </Scrollspy>
-          </Container>
-        </Section>
+
+        <StickyNav />
 
         {/* Accommodation section here */}
         <Section id="rooms" padding="1rem 3rem 3rem">
@@ -341,7 +277,6 @@ export default class HostelPage extends React.Component {
               </Button>
             </div>
             <div>
-              {' '}
               <img src={Giffy} />
             </div>
           </Container>

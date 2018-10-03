@@ -5,3 +5,6 @@ export * from './Article';
 export * from './GoogleMapsContainer';
 export * from './Accom';
 export * from './Header';
+export * from './IntroText';
+export * from './StickyNav';
+export * from './Gallery';
