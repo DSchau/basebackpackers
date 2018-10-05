@@ -4,6 +4,9 @@ import Lightbox from 'react-images';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 
+const GalleryLink = styled.a`
+  transition: transform 1s;
+`;
 const Caption = styled.p`
   margin: 0px;
   overflow: hidden;
@@ -26,6 +29,9 @@ const GalleryItem = styled.div`
   z-index: 2;
   min-height: 140px;
   padding: 0 0 1rem;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export default class Gallery extends Component {
@@ -85,7 +91,11 @@ export default class Gallery extends Component {
 
     const gallery = images.map((obj, i) => {
       return (
-        <a href={obj.src} key={i} onClick={e => this.openLightbox(i, e)}>
+        <GalleryLink
+          href={obj.src}
+          key={i}
+          onClick={e => this.openLightbox(i, e)}
+        >
           <GalleryItem>
             <Img
               fluid={obj.fluid}
@@ -101,7 +111,7 @@ export default class Gallery extends Component {
             />
             <Caption>{obj.caption}</Caption>
           </GalleryItem>
-        </a>
+        </GalleryLink>
       );
     });
 

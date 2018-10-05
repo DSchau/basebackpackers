@@ -183,7 +183,7 @@ export default class HostelPage extends React.Component {
             ))}
           </ScrollContainer>
 
-          <Container col="4" gap="1rem" mobcol="1fr 1fr">
+          <Container col="4" gap="1rem" mobcol="1fr 1fr" margin="1rem auto">
             <Gallery images={activitiesImages} />
           </Container>
         </Section>
@@ -210,7 +210,7 @@ export default class HostelPage extends React.Component {
               Location <HeadingSpan>The perfect spot in town</HeadingSpan>
             </h2>
           </Container>
-          <Container col="2" mobcol="1fr 1fr" gap="2rem">
+          <Container col="2" mobcol="1fr" gap="2rem">
             <div>
               <Mapbox>
                 <GoogleApiWrapper
@@ -272,9 +272,11 @@ export default class HostelPage extends React.Component {
                   <Faq question={block.question} answer={block.answer} />
                 </div>
               ))}
-              <Button primary large className="distributor">
-                Check availability and book
-              </Button>
+              <p>
+                <Button primary large className="distributor">
+                  Check availability and book
+                </Button>
+              </p>
             </div>
             <div>
               <img src={Giffy} />
