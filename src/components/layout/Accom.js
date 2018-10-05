@@ -76,7 +76,8 @@ class Accom extends React.Component {
               srcSet: photo.fluid.srcSet,
               src: photo.fluid.src,
               caption: photo.caption,
-              fluid: photo.fluid
+              fluid: photo.fluid,
+              alt: photo.alt
             })
           );
 
