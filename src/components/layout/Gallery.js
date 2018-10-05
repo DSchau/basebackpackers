@@ -99,6 +99,7 @@ export default class Gallery extends Component {
           <GalleryItem>
             <Img
               fluid={obj.fluid}
+              alt={obj.alt}
               style={{
                 position: 'absolute',
                 left: 0,
@@ -133,6 +134,7 @@ export default class Gallery extends Component {
           onClickThumbnail={this.gotoImage}
           onClose={this.closeLightbox}
           caption={this.props.images}
+          alt={this.props.images}
         />
       </>
     );

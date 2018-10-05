@@ -93,7 +93,8 @@ export default class HostelPage extends React.Component {
         srcSet: photo.fluid.srcSet,
         src: photo.fluid.src,
         caption: photo.title,
-        fluid: photo.fluid
+        fluid: photo.fluid,
+        alt: photo.alt
       })
     );
 
@@ -102,10 +103,11 @@ export default class HostelPage extends React.Component {
         srcSet: photo.fluid.srcSet,
         src: photo.fluid.src,
         caption: photo.title,
-        fluid: photo.fluid
+        fluid: photo.fluid,
+        alt: photo.alt
       })
     );
-
+    console.log(activitiesImages);
     return (
       <Layout>
         <HelmetDatoCms seo={data.datoCmsHostel.seoMetaTags} />
@@ -126,6 +128,7 @@ export default class HostelPage extends React.Component {
           tagline="Find the rest of the world with us."
           propertyName="Base Backpackers Sydney"
           caption="Crazy Party Tuesdays - Scary Canary Bar "
+          alt={data.datoCmsHostel.featuredImage.alt}
         />
         {/* Intro text here */}
 
@@ -279,7 +282,7 @@ export default class HostelPage extends React.Component {
               </p>
             </div>
             <div>
-              <img src={Giffy} />
+              <img src={Giffy} alt="Yes is the answer" />
             </div>
           </Container>
         </Section>
@@ -296,6 +299,7 @@ export const query = graphql`
       mewsId
       featuredImage {
         url
+        alt
         fluid(
           maxWidth: 1000
           imgixParams: {
@@ -320,6 +324,7 @@ export const query = graphql`
           priceFrom
           features
           roomGallery {
+            alt
             caption: title
             src: url
             fluid(
@@ -342,6 +347,7 @@ export const query = graphql`
       featureGallery {
         id
         title
+        alt
         fluid(
           maxWidth: 1000
           maxHeight: 600
@@ -372,6 +378,7 @@ export const query = graphql`
 
       activitiesGallery {
         id
+        alt
         title
         fluid(
           maxWidth: 600

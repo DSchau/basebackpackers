@@ -67,6 +67,7 @@ const Header = props => {
     >
       <Img
         fluid={props.backgroundImage}
+        alt={props.alt}
         style={{
           position: 'absolute',
           left: 0,
