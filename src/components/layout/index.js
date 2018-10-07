@@ -8,3 +8,4 @@ export * from './Header';
 export * from './IntroText';
 export * from './StickyNav';
 export * from './Gallery';
+export * from './Gal';

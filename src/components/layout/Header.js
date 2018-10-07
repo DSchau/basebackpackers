@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Section, Container, Button } from '../common/';
-import { Navigation } from '../layout/';
-import Gal from '../layout/Gal';
+import { Navigation, Gal } from '../layout/';
 
 // Header Section used on hostel pages includes navigation component
 
