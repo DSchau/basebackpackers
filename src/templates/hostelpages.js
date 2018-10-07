@@ -22,7 +22,6 @@ import {
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
 import Cross from './cross.png';
 import Giffy from './giphy.gif';
-import Gal from '../components/layout/Gal';
 
 const HeadingSpan = styled.span`
   color: #a2a2a2;
@@ -151,6 +150,7 @@ export default class HostelPage extends React.Component {
           propertyName="Base Backpackers Sydney"
           caption="Crazy Party Tuesdays - Scary Canary Bar "
           alt={data.datoCmsHostel.featuredImage.alt}
+          gal={cominedGallery}
         />
         {/* Intro text here */}
 

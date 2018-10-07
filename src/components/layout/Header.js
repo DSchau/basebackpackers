@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Section, Container, Button } from '../common/';
 import { Navigation } from '../layout/';
+import Gal from '../layout/Gal';
 
 // Header Section used on hostel pages includes navigation component
 
@@ -28,14 +29,6 @@ const PageTitle = styled.h1`
 
 const HeaderButton = styled(Button)`
   border: 2px solid ${props => props.theme.primaryColor};
-  @media (min-width: 500px) {
-    width: 200px;
-  }
-`;
-
-const HeaderButtonTran = styled(Button)`
-  border: 2px solid ${props => props.theme.white};
-  background: transparent;
   @media (min-width: 500px) {
     width: 200px;
   }
@@ -96,9 +89,7 @@ const Header = props => {
             Book now
           </HeaderButton>
           &nbsp;
-          <HeaderButtonTran primary className="distributor">
-            View Gallery
-          </HeaderButtonTran>
+          <Gal images={props.gal} />
         </p>
       </HeaderContainer>
 
