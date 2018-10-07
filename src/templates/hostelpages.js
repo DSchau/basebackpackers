@@ -22,6 +22,7 @@ import {
 import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
 import Cross from './cross.png';
 import Giffy from './giphy.gif';
+import Gal from '../components/layout/Gal';
 
 const HeadingSpan = styled.span`
   color: #a2a2a2;
@@ -107,9 +108,30 @@ export default class HostelPage extends React.Component {
         alt: photo.alt
       })
     );
-    console.log(activitiesImages);
+
+    const accomGal = data.datoCmsHostel.accommodationType.map(
+      (block, index) => {
+        const roomGals = block.roomGallery.map(photo =>
+          Object.assign({
+            srcSet: photo.fluid.srcSet,
+            src: photo.fluid.src,
+            caption: photo.caption,
+            fluid: photo.fluid,
+            alt: photo.alt
+          })
+        );
+        return roomGals;
+        // console.log(im1);
+        // console.log(im2);
+      }
+    );
+
+    const combineAccom = [].concat.apply([], accomGal);
+    const cominedGallery = featureImages.concat(activitiesImages, combineAccom);
+
     return (
       <Layout>
+        {/* <Gal test={im2}/> */}
         <HelmetDatoCms seo={data.datoCmsHostel.seoMetaTags} />
         <Helmet>
           <script>
