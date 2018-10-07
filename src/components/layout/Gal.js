@@ -12,7 +12,7 @@ const HeaderButtonTran = styled(Button)`
   }
 `;
 
-export default class Gallery extends Component {
+export default class Gal extends Component {
   constructor() {
     super();
 

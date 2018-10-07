@@ -159,7 +159,7 @@ class Accom extends React.Component {
 }
 
 Accom.propTypes = {
-  hostelName: PropTypes.string,
-  source: PropTypes.object
+  // hostelName: PropTypes.string,
+  // source: PropTypes.object
 };
 export { Accom };
