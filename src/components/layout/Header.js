@@ -27,14 +27,22 @@ const PageTitle = styled.h1`
 `;
 
 const HeaderButton = styled(Button)`
-  display: none;
-  @media (max-width: 500px) {
-    display: block;
+  border: 2px solid ${props => props.theme.primaryColor};
+  @media (min-width: 500px) {
+    width: 200px;
+  }
+`;
+
+const HeaderButtonTran = styled(Button)`
+  border: 2px solid ${props => props.theme.white};
+  background: transparent;
+  @media (min-width: 500px) {
+    width: 200px;
   }
 `;
 
 const HeaderTag = styled.p`
-  font-size: 1.286rem;
+  font-size: 1.15rem;
   font-weight: bold;
   letter-spacing: 0.05rem;
 `;
@@ -83,9 +91,15 @@ const Header = props => {
       <HeaderContainer padding="0rem">
         <PageTitle>{props.pageTitle}</PageTitle>
         <HeaderTag>{props.tagline}</HeaderTag>
-        <HeaderButton primary large className="distributor">
-          Check availability and book
-        </HeaderButton>
+        <p>
+          <HeaderButton primary className="distributor">
+            Book now
+          </HeaderButton>
+          &nbsp;
+          <HeaderButtonTran primary className="distributor">
+            View Gallery
+          </HeaderButtonTran>
+        </p>
       </HeaderContainer>
 
       <HeaderCaption>
