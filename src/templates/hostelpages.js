@@ -120,8 +120,6 @@ export default class HostelPage extends React.Component {
           })
         );
         return roomGals;
-        // console.log(im1);
-        // console.log(im2);
       }
     );
 
