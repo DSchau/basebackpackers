@@ -9,3 +9,4 @@ export * from './IntroText';
 export * from './StickyNav';
 export * from './Gallery';
 export * from './Gal';
+export * from './Map';

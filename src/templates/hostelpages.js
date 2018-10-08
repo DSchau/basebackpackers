@@ -17,9 +17,10 @@ import {
   Accom,
   IntroText,
   StickyNav,
-  Gallery
+  Gallery,
+  Map
 } from '../components/layout/index.js';
-import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
+
 import Cross from './cross.png';
 import Giffy from './giphy.gif';
 
@@ -235,15 +236,14 @@ export default class HostelPage extends React.Component {
           </Container>
           <Container col="2" mobcol="1fr" gap="2rem">
             <div>
-              <Mapbox>
-                <GoogleApiWrapper
-                  title={data.datoCmsHostel.title}
-                  street={data.datoCmsHostel.streetAddress}
-                  city={data.datoCmsHostel.city}
-                  lat={data.datoCmsHostel.location.latitude}
-                  long={data.datoCmsHostel.location.longitude}
-                />
-              </Mapbox>
+              <Map
+                title={data.datoCmsHostel.title}
+                street={data.datoCmsHostel.streetAddress}
+                city={data.datoCmsHostel.city}
+                lat={data.datoCmsHostel.location.latitude}
+                long={data.datoCmsHostel.location.longitude}
+              />
+
               <Contact>
                 <ContactDetails>
                   <a
