@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-
+import GoogleApiWrapper from '../components/layout/GoogleMapsContainer';
 import Layout from '../components/layout';
 import {
   Section,
@@ -236,13 +236,15 @@ export default class HostelPage extends React.Component {
           </Container>
           <Container col="2" mobcol="1fr" gap="2rem">
             <div>
-              <Map
-                title={data.datoCmsHostel.title}
-                street={data.datoCmsHostel.streetAddress}
-                city={data.datoCmsHostel.city}
-                lat={data.datoCmsHostel.location.latitude}
-                long={data.datoCmsHostel.location.longitude}
-              />
+              <Mapbox>
+                <GoogleApiWrapper
+                  title={data.datoCmsHostel.title}
+                  street={data.datoCmsHostel.streetAddress}
+                  city={data.datoCmsHostel.city}
+                  lat={data.datoCmsHostel.location.latitude}
+                  long={data.datoCmsHostel.location.longitude}
+                />
+              </Mapbox>
 
               <Contact>
                 <ContactDetails>
