@@ -43,7 +43,7 @@ class GoogleMapsContainer extends React.Component {
 
     if (!mapActive) {
       map = (
-        <div onClick={this.handleMapClick}>
+        <div onClick={this.handleMapClick} style={{ cursor: 'pointer' }}>
           <Img fluid={this.props.placeholder} alt="Google Map" />
         </div>
       );
