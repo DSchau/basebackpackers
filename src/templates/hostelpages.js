@@ -18,7 +18,7 @@ import {
   IntroText,
   StickyNav,
   Gallery,
-  Map
+  
 } from '../components/layout/index.js';
 
 import Cross from './cross.png';
