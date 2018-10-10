@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import styled from 'styled-components';
-import Giffy from '../images/giphy.gif';
+import Img from 'gatsby-image';
 
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
@@ -43,11 +43,9 @@ class GoogleMapsContainer extends React.Component {
 
     if (!mapActive) {
       map = (
-        <img
-          src={Giffy}
-          alt="Yes is the answer"
-          onClick={this.handleMapClick}
-        />
+        <div onClick={this.handleMapClick}>
+          <Img fluid={this.props.placeholder} alt="Google Map" />
+        </div>
       );
     } else {
       map = (

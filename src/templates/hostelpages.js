@@ -17,8 +17,7 @@ import {
   Accom,
   IntroText,
   StickyNav,
-  Gallery,
-  
+  Gallery
 } from '../components/layout/index.js';
 
 import Cross from './cross.png';
@@ -243,6 +242,7 @@ export default class HostelPage extends React.Component {
                   city={data.datoCmsHostel.city}
                   lat={data.datoCmsHostel.location.latitude}
                   long={data.datoCmsHostel.location.longitude}
+                  placeholder={data.datoCmsHostel.mapScreenShot.fluid}
                 />
               </Mapbox>
 
@@ -365,7 +365,14 @@ export const query = graphql`
           }
         }
       }
-
+      mapScreenShot {
+        fluid(
+          maxWidth: 600
+          imgixParams: { fm: "jpg", auto: "format", q: 50 }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
       featureGallery {
         id
         title
