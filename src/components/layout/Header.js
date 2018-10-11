@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Section, Container, Button } from '../common/';
 import { Navigation, Gal } from '../layout/';
+import vid from '../images/base.mp4';
 
 // Header Section used on hostel pages includes navigation component
 
@@ -65,7 +66,7 @@ const Header = props => {
         minHeight: '25rem'
       }}
     >
-      <Img
+      {/* <Img
         fluid={props.backgroundImage}
         alt={props.alt}
         style={{
@@ -75,9 +76,30 @@ const Header = props => {
           width: '100%',
           height: '100%',
           overflow: 'hidden',
-          zIndex: 1
+          zIndex: 1 
         }}
-      />
+      /> */}
+
+      <video
+        width="100%"
+        height="auto"
+        autoPlay
+        poster={props.poster}
+        muted
+        loop
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          zIndex: 1,
+          objectFit: 'cover'
+        }}
+      >
+        <source src={vid} />
+      </video>
       <Navigation />
 
       <HeaderContainer padding="0rem">

@@ -10,7 +10,6 @@ import {
   Faq,
   Accom,
   IntroText,
-  StickyNav,
   Gallery
 } from '../components/layout/index.js';
 

@@ -143,6 +143,7 @@ export default class HostelPage extends React.Component {
         {/* Header section here */}
         <Header
           backgroundImage={data.datoCmsHostel.featuredImage.fluid}
+          poster={data.datoCmsHostel.featuredImage.url}
           pageTitle={data.datoCmsHostel.title}
           tagline="Find the rest of the world with us."
           propertyName="Base Backpackers Sydney"
