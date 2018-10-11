@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Section, Container, Button } from '../common/';
 import { Navigation, Gal } from '../layout/';
-import vid from '../images/base.mp4';
 
 // Header Section used on hostel pages includes navigation component
 
@@ -98,7 +97,7 @@ const Header = props => {
           objectFit: 'cover'
         }}
       >
-        <source src={vid} />
+        <source src="http://www.stayatbase.com/video/base.mp4" />
       </video>
       <Navigation />
 
