@@ -44,7 +44,8 @@
     "react-scrollspy": "^3.3.5",
     "styled-components": "^3.4.9",
     "typeface-open-sans": "0.0.54",
-    "typeface-pt-sans": "0.0.54"
+    "typeface-pt-sans": "0.0.54",
+    "typeface-pt-sans-narrow": "0.0.54"
   },
   "keywords": [
     "gatsby"
