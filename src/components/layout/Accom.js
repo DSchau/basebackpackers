@@ -30,12 +30,10 @@ const Price = styled.div`
     font-size: 1rem;
   }
 `;
-const AltRoom = styled.span`
+const AltRoom = styled(Button)`
+  background: #fff;
   color: ${props => props.theme.secondaryColor};
-  text-decoration: underline;
-  & :hover {
-    cursor: pointer;
-  }
+  border: 2px solid ${props => props.theme.secondaryColor};
 `;
 
 const PriceBook = styled(Container)`
@@ -103,9 +101,11 @@ class Accom extends React.Component {
             >
               {block.model.apiKey === 'accom' && (
                 <>
-                  <Container>
-                    <p>
-                      {block.intro}.{' '}
+                  <Container col="2">
+                    <div>
+                      <p>{block.intro}.</p>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
                       <AltRoom onClick={this.toggleNext}>
                         Wait! I want to stay in
                         {this.props.source.map((block, index) => (
@@ -117,8 +117,8 @@ class Accom extends React.Component {
                             {block.name}{' '}
                           </span>
                         ))}
-                      </AltRoom>{' '}
-                    </p>
+                      </AltRoom>
+                    </div>
                   </Container>
                   <ScrollContainer
                     padding="0 0 15px 0"

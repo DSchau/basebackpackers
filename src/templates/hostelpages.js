@@ -291,7 +291,7 @@ export default class HostelPage extends React.Component {
               Yes-A-Q‘s <HeadingSpan>Everything else..</HeadingSpan>
             </h2>
           </Container>
-          <Container col="2" mobcol="1fr">
+          <Container col="2" mobcol="1fr" gap="1rem">
             <div>
               {data.datoCmsHostel.yes.map(block => (
                 <div key={block.id} className={block.model.apiKey}>
