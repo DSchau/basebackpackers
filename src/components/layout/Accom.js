@@ -14,6 +14,9 @@ const BookSectionText = styled.div`
   font-weight: bold;
   line-height: 1.4;
   padding-right: 1rem;
+  @media (max-width: 768px) {
+    margin: 0 0 1rem;
+  }
 `;
 
 const BookPriceInc = styled.div`
@@ -32,6 +35,15 @@ const AltRoom = styled.span`
   text-decoration: underline;
   & :hover {
     cursor: pointer;
+  }
+`;
+
+const PriceBook = styled(Container)`
+  grid-template-areas: 'CTA prices';
+  @media (max-width: 768px) {
+    grid-template-areas:
+      'prices'
+      'CTA';
   }
 `;
 
@@ -115,11 +127,12 @@ class Accom extends React.Component {
                   >
                     <Gallery images={im2} />
                   </ScrollContainer>
-                  <Container col="2" gap="1rem" mobcol="1fr">
-                    <div>
+
+                  <PriceBook gap="1rem">
+                    <div style={{ gridArea: 'CTA' }}>
                       <BookSectionText>
                         There are {people} other people looking at staying at{' '}
-                        {this.props.hostelName} right now
+                        {this.props.hostelName} now.
                       </BookSectionText>
                       <Button primary large className="distributor">
                         Check availability and book
@@ -130,11 +143,13 @@ class Accom extends React.Component {
                         </small>
                       </p>
                     </div>
+
                     <Container
                       col="2"
-                      margin="1.5rem 0"
+                      margin="1.5rem 0 0"
                       mobcol="1fr 1fr"
                       gap="1rem"
+                      style={{ gridArea: 'prices' }}
                     >
                       <BookPriceInc>
                         Stay from just
@@ -153,7 +168,7 @@ class Accom extends React.Component {
                         />
                       </div>
                     </Container>
-                  </Container>
+                  </PriceBook>
                 </>
               )}
             </AccomBlock>
