@@ -36,20 +36,22 @@ const ActivityCard = styled.div`
   box-shadow: ${props => props.theme.shadow};
 `;
 
-const ActivityText = styled.p`
-  color: ${props => props.theme.lightGreyText};
-  font-size: 0.8rem;
-  border-bottom: 1px solid ${props => props.theme.lightBlueLine};
-  padding-bottom: 1rem;
-`;
-
 const ActivityHeading = styled.h3`
   color: ${props => props.theme.secondaryColor};
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 `;
 
-const Time = styled.span`
-  font-weight: normal;
+const ActivityText = styled.p`
+  color: ${props => props.theme.lightGreyText};
+  font-size: 1rem;
+  margin-bottom: 0rem;
+`;
+
+const Time = styled.p`
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid ${props => props.theme.lightBlueLine};
 `;
 
 const ActivityLeadCard = styled(ActivityCard)`
@@ -195,14 +197,11 @@ export default class HostelPage extends React.Component {
 
             {data.datoCmsHostel.activities.map(block => (
               <ActivityCard key={block.id}>
-                <ActivityHeading>
-                  {block.day} <Time>Morning</Time>
-                </ActivityHeading>
+                <ActivityHeading>{block.day}</ActivityHeading>
                 <ActivityText>{block.amActivity}</ActivityText>
-                <ActivityHeading>
-                  {block.day} <Time>Evening</Time>
-                </ActivityHeading>
+                <Time>Mornings</Time>
                 <ActivityText>{block.pmActivity}</ActivityText>
+                <Time>Evenings</Time>
               </ActivityCard>
             ))}
           </ScrollContainer>
