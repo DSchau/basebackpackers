@@ -21,7 +21,7 @@ import {
 } from '../components/layout/index.js';
 
 import Cross from './cross.png';
-import Giffy from './giphy.gif';
+import yes from '../components/images/yes.mp4';
 
 const HeadingSpan = styled.span`
   color: #a2a2a2;
@@ -305,7 +305,9 @@ export default class HostelPage extends React.Component {
               </p>
             </div>
             <div>
-              <img src={Giffy} alt="Yes is the answer" />
+              <video width="100%" height="auto" autoPlay muted loop>
+                <source src={yes} />
+              </video>
             </div>
           </Container>
         </Section>
