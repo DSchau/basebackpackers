@@ -153,18 +153,18 @@ export default class HostelPage extends React.Component {
         />
         {/* Intro text here */}
 
-        <IntroText
+        {/* <IntroText
           text="              You’re going to love starting your Australian journey with
               backpackers from all over the world, just like you, in our iconic
               Sydney Hostel. Stay, play, work, study, party or just hang out and
               soak up the local vibe. It's completely up to you."
-        />
+        /> */}
         {/* Navigation in page here */}
 
         <StickyNav />
 
         {/* Accommodation section here */}
-        <Section id="rooms" padding="1rem 3rem 3rem">
+        <Section id="rooms" padding="0rem 3rem 3rem">
           <Accom
             source={data.datoCmsHostel.accommodationType}
             hostelName={data.datoCmsHostel.title}
@@ -345,6 +345,7 @@ export const query = graphql`
           intro
           id
           priceFrom
+          currency
           features
           roomGallery {
             alt

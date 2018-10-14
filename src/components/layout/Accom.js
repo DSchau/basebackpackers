@@ -23,6 +23,9 @@ const BookPriceInc = styled.div`
 
 const Price = styled.div`
   font-size: 4rem;
+  span {
+    font-size: 1rem;
+  }
 `;
 const AltRoom = styled.span`
   color: ${props => props.theme.secondaryColor};
@@ -135,7 +138,10 @@ class Accom extends React.Component {
                     >
                       <BookPriceInc>
                         Stay from just
-                        <Price>${block.priceFrom}</Price>
+                        <Price>
+                          ${block.priceFrom}
+                          <span>{block.currency}</span>
+                        </Price>
                         {block.name === 'Private Rooms'
                           ? 'Per room/per night'
                           : 'Per person/per night'}

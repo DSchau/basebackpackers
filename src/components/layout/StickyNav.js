@@ -1,7 +1,7 @@
 import React from 'react';
 import Scrollspy from 'react-scrollspy';
 import styled from 'styled-components';
-import { Section, Container } from '../common/';
+import { Section, Container, Button } from '../common/';
 
 const NavItem = styled.li`
   padding-left: 0;
@@ -29,7 +29,7 @@ const NavItemLink = styled.a`
 const StickyNav = () => {
   return (
     <Section
-      padding="2rem 0 0rem"
+      padding="2rem 0 1rem"
       style={{ position: 'sticky', top: 0, zIndex: 3 }}
     >
       <Container>
@@ -53,6 +53,9 @@ const StickyNav = () => {
           <NavItem>
             <NavItemLink href="#faq">FAQ</NavItemLink>
           </NavItem>
+          <Button primary className="menucta distributor">
+            Book Now
+          </Button>
         </Scrollspy>
       </Container>
     </Section>

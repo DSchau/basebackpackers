@@ -65,7 +65,7 @@ const Header = props => {
         minHeight: '25rem'
       }}
     >
-      {/* <Img
+      <Img
         fluid={props.backgroundImage}
         alt={props.alt}
         style={{
@@ -75,11 +75,11 @@ const Header = props => {
           width: '100%',
           height: '100%',
           overflow: 'hidden',
-          zIndex: 1 
+          zIndex: 1
         }}
-      /> */}
+      />
 
-      <video
+      {/* <video
         width="100%"
         height="auto"
         autoPlay
@@ -98,7 +98,7 @@ const Header = props => {
         }}
       >
         <source src="http://www.stayatbase.com/video/base.mp4" />
-      </video>
+      </video> */}
       <Navigation />
 
       <HeaderContainer padding="0rem">
