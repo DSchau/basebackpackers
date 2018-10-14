@@ -59,23 +59,8 @@ class Accom extends React.Component {
     });
   };
 
-  componentDidMount() {
-    const localStorageRef = localStorage.getItem('interest in private');
-
-    if (localStorageRef) {
-      this.setState({ showNext: JSON.parse(localStorageRef) });
-    }
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem(
-      'interest in private',
-      JSON.stringify(this.state.showNext)
-    );
-  }
-
   render() {
-    const nextActive = this.state.showNext ? 'show' : '';
+    const nextActive = !this.state.showNext ? 'show' : '';
     const people = Math.floor(Math.random() * 9) + 13;
 
     return (
