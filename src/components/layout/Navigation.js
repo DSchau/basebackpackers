@@ -12,7 +12,6 @@ const Nav = styled.nav`
   z-index: 1;
   position: relative;
   padding: 1.5rem;
-  border-top: 3px solid ${props => props.theme.primaryColor};
   @media (max-width: 500px) {
     padding: 0;
   }

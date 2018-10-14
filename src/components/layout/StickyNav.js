@@ -51,7 +51,7 @@ const StickyNav = () => {
             <NavItemLink href="#location">Location</NavItemLink>
           </NavItem>
           <NavItem>
-            <NavItemLink href="#faq">FAQ</NavItemLink>
+            <NavItemLink href="#faq">Yes-A-Q</NavItemLink>
           </NavItem>
           <Button primary className="menucta distributor">
             Book Now

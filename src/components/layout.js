@@ -35,6 +35,7 @@ const Body = styled.main`
   background: #fcfcfc;
   position: relative;
   width: 100%;
+  border-top: 3px solid ${props => props.theme.primaryColor};
 `;
 
 const Layout = ({ children, data }) => (
