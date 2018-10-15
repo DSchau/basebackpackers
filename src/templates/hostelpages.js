@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import GoogleApiWrapper from '../components/layout/GoogleMapsContainer';
+
 import Layout from '../components/layout';
 import {
   Section,
@@ -17,7 +17,8 @@ import {
   Accom,
   IntroText,
   StickyNav,
-  Gallery
+  Gallery,
+  Location
 } from '../components/layout/index.js';
 
 import Cross from './cross.png';
@@ -65,18 +66,6 @@ const Crossimage = styled.img`
   bottom: 0;
   right: 0;
   margin-bottom: 0;
-`;
-
-const Mapbox = styled.div`
-  position: relative;
-  height: 16rem;
-`;
-
-const Contact = styled.div`
-  margin-top: 1rem;
-`;
-const ContactDetails = styled.div`
-  margin-bottom: 0.5rem;
 `;
 
 export default class HostelPage extends React.Component {
@@ -216,59 +205,18 @@ export default class HostelPage extends React.Component {
         </Section>
 
         {/* Location section here */}
-        <Section id="location" lightBlueBackground>
-          <Container>
-            <h2>Location</h2>
-          </Container>
-          <Container col="2" mobcol="1fr" gap="2rem">
-            <div>
-              <Mapbox>
-                <GoogleApiWrapper
-                  title={data.datoCmsHostel.title}
-                  street={data.datoCmsHostel.streetAddress}
-                  city={data.datoCmsHostel.city}
-                  lat={data.datoCmsHostel.location.latitude}
-                  long={data.datoCmsHostel.location.longitude}
-                  placeholder={data.datoCmsHostel.mapScreenShot.fluid}
-                />
-              </Mapbox>
-
-              <Contact>
-                <ContactDetails>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer "
-                    href="https://www.google.com/maps/dir/?api=1&destination=base+backpackers+sydney"
-                  >
-                    Get directions
-                  </a>
-                </ContactDetails>
-                <ContactDetails>
-                  Address: {data.datoCmsHostel.streetAddress},{' '}
-                  {data.datoCmsHostel.city}
-                </ContactDetails>
-                <ContactDetails>
-                  Phone: {data.datoCmsHostel.phone}
-                </ContactDetails>
-                <ContactDetails>
-                  Email: {data.datoCmsHostel.emailAddress}
-                </ContactDetails>
-              </Contact>
-            </div>
-
-            <div>
-              <h3>Things near by</h3>
-              {data.datoCmsHostel.thingsNearBy.map(near => (
-                <div key={near.id}>
-                  <h4>
-                    {near.time} {near.tripType}
-                  </h4>
-                  <p>{near.name}</p>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
+        <Location
+          title={data.datoCmsHostel.title}
+          streetAddress={data.datoCmsHostel.streetAddress}
+          city={data.datoCmsHostel.city}
+          latitude={data.datoCmsHostel.location.latitude}
+          longitude={data.datoCmsHostel.location.longitude}
+          mapScreenShot={data.datoCmsHostel.mapScreenShot.fluid}
+          streetAddress={data.datoCmsHostel.streetAddress}
+          phone={data.datoCmsHostel.phone}
+          emailAddress={data.datoCmsHostel.emailAddress}
+          thingsNearBy={data.datoCmsHostel.thingsNearBy}
+        />
 
         {/* FAQ */}
         <Section id="faq">
