@@ -18,6 +18,15 @@ const NavItem = styled.li`
   }
 `;
 
+const NavButton = styled(NavItem)`
+  background: ${props => props.theme.primaryColor};
+  padding: 0.5rem;
+  color: ${props => props.theme.white};
+  cursor: pointer;
+  &:hover {
+  }
+`;
+
 const NavItemLink = styled.a`
   color: inherit;
   text-decoration: none;
@@ -53,9 +62,9 @@ const StickyNav = () => {
           <NavItem>
             <NavItemLink href="#faq">Yes-A-Q</NavItemLink>
           </NavItem>
-          <Button primary className="menucta distributor">
+          <NavButton primary className="menucta distributor">
             Book Now
-          </Button>
+          </NavButton>
         </Scrollspy>
       </Container>
     </Section>
