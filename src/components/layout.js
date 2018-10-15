@@ -9,7 +9,6 @@ import { Footer } from '../components/layout/index.js';
 import baseTheme from './theme/base';
 
 require('typeface-pt-sans');
-require('typeface-pt-sans-narrow');
 
 import './layout.css';
 
