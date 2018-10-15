@@ -23,13 +23,6 @@ import {
 import Cross from './cross.png';
 import yes from '../components/images/yes.mp4';
 
-const HeadingSpan = styled.span`
-  color: #a2a2a2;
-  font-size: 1.4rem;
-  margin-left: 0.3rem;
-  font-weight: 400;
-`;
-
 const ActivityCard = styled.div`
   background: ${props => props.theme.white};
   padding: 1.5rem;
@@ -176,9 +169,7 @@ export default class HostelPage extends React.Component {
         {/* Activities section here */}
         <Section id="activities" lightBackground>
           <Container>
-            <h2>
-              Activities <HeadingSpan>Never be lonely</HeadingSpan>{' '}
-            </h2>
+            <h2>Activities</h2>
           </Container>
           <ScrollContainer
             padding="0 0 1rem"
@@ -214,9 +205,7 @@ export default class HostelPage extends React.Component {
         {/* Faciliteis section here */}
         <Section id="facilities">
           <Container>
-            <h2>
-              Facilities <HeadingSpan>Everything you need</HeadingSpan>
-            </h2>
+            <h2>Facilities</h2>
           </Container>
           <Container col="4" gap="1rem" mobcol="1fr 1fr">
             <Gallery images={featureImages} />
@@ -229,9 +218,7 @@ export default class HostelPage extends React.Component {
         {/* Location section here */}
         <Section id="location" lightBlueBackground>
           <Container>
-            <h2>
-              Location <HeadingSpan>The perfect spot in town</HeadingSpan>
-            </h2>
+            <h2>Location</h2>
           </Container>
           <Container col="2" mobcol="1fr" gap="2rem">
             <div>
@@ -286,9 +273,7 @@ export default class HostelPage extends React.Component {
         {/* FAQ */}
         <Section id="faq">
           <Container>
-            <h2>
-              Yes-A-Q‘s <HeadingSpan>Everything else..</HeadingSpan>
-            </h2>
+            <h2>Yes-A-Q‘s</h2>
           </Container>
           <Container col="2" mobcol="1fr" gap="1rem">
             <div>

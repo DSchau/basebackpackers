@@ -34,7 +34,7 @@ const StickyNav = () => {
     >
       <Container>
         <Scrollspy
-          style={{ marginLeft: 0, marginBottom: 0 }}
+          className="ScrollNav"
           items={['rooms', 'activities', 'facilities', 'location', 'faq']}
           currentClassName="is-current"
         >
