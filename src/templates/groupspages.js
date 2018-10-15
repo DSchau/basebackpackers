@@ -11,7 +11,8 @@ import {
   Accom,
   IntroText,
   Gallery,
-  GroupsForm
+  GroupsForm,
+  Location
 } from '../components/layout/index.js';
 
 const SellingPointHeading = styled.h2`
@@ -47,6 +48,7 @@ export default class groupPage extends React.Component {
 
     return (
       <Layout>
+        <HelmetDatoCms seo={seoMetaTags} />
         {/* Header section here */}
         <Header
           backgroundImage={featuredImage.fluid}
@@ -59,15 +61,9 @@ export default class groupPage extends React.Component {
         <IntroText text={intro} />
 
         <Section lightBackground>
-          <HelmetDatoCms seo={seoMetaTags} />
-          <Container col="2" maxWidth="900px" gap="2rem">
-            <div>
-              <Button primary>Enquire now</Button>
-              <Container col="3" gap="1rem">
-                <Gallery images={groupImages} />
-              </Container>
-            </div>
+          <Container col="1" maxWidth="900px">
             <div dangerouslySetInnerHTML={{ __html: body }} />
+            <Button primary>Enquire now</Button>
           </Container>
         </Section>
         <Section>
@@ -75,14 +71,46 @@ export default class groupPage extends React.Component {
             <Gallery images={groupImages} />
           </Container>
         </Section>
+
+        {/* Form here */}
         <GroupsForm sellingPoints={sellingPoints} />
+
+        {/* Location section here */}
+        <Location
+          title={data.datoCmsHostel.title}
+          streetAddress={data.datoCmsHostel.streetAddress}
+          city={data.datoCmsHostel.city}
+          latitude={data.datoCmsHostel.location.latitude}
+          longitude={data.datoCmsHostel.location.longitude}
+          mapScreenShot={data.datoCmsHostel.mapScreenShot.fluid}
+          streetAddress={data.datoCmsHostel.streetAddress}
+          phone={data.datoCmsHostel.phone}
+          emailAddress={data.datoCmsHostel.emailAddress}
+          thingsNearBy={data.datoCmsHostel.thingsNearBy}
+        />
+
+        {/* FAQ */}
+        <Section id="faq">
+          <Container>
+            <h2>FAQ's</h2>
+          </Container>
+          <Container>
+            <div>
+              {data.datoCmsGroup.faq.map(block => (
+                <div key={block.id} className={block.model.apiKey}>
+                  <Faq question={block.question} answer={block.answer} />
+                </div>
+              ))}
+            </div>
+          </Container>
+        </Section>
       </Layout>
     );
   }
 }
 
 export const query = graphql`
-  query GroupPageQuery($slug: String!) {
+  query GroupPageQuery($slug: String!, $hostel: String!) {
     datoCmsGroup(slug: { eq: $slug }) {
       title
       body
@@ -102,6 +130,44 @@ export const query = graphql`
       }
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
+      }
+      faq {
+        ... on DatoCmsQA {
+          model {
+            apiKey
+          }
+          id
+          question
+          answer
+        }
+      }
+    }
+
+    datoCmsHostel(slug: { eq: $hostel }) {
+      title
+      location {
+        latitude
+        longitude
+      }
+      streetAddress
+      suburb
+      city
+      phone
+      emailAddress
+      thingsNearBy {
+        id
+        name
+        time
+        tripType
+      }
+
+      mapScreenShot {
+        fluid(
+          maxWidth: 600
+          imgixParams: { fm: "jpg", auto: "format", q: 50 }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
       }
     }
   }

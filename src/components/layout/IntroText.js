@@ -27,7 +27,7 @@ const IntroText = props => {
   return (
     <Section lightBlueBackground>
       <IntroContainer>
-        <Intro>{props.text}</Intro>
+        <Intro dangerouslySetInnerHTML={{ __html: props.text }} />
         <Heart src={Xo} alt="base hearts and cross" />
       </IntroContainer>
     </Section>

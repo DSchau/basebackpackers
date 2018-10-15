@@ -301,14 +301,7 @@ export const query = graphql`
           }
         }
       }
-      mapScreenShot {
-        fluid(
-          maxWidth: 600
-          imgixParams: { fm: "jpg", auto: "format", q: 50 }
-        ) {
-          ...GatsbyDatoCmsFluid
-        }
-      }
+
       featureGallery {
         id
         title
@@ -374,6 +367,15 @@ export const query = graphql`
         name
         time
         tripType
+      }
+
+      mapScreenShot {
+        fluid(
+          maxWidth: 600
+          imgixParams: { fm: "jpg", auto: "format", q: 50 }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
       }
 
       yes {
