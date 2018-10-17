@@ -11,3 +11,4 @@ export * from './Gallery';
 export * from './Gal';
 export * from './GroupsForm';
 export * from './Location';
+export * from './GlobalStyle';

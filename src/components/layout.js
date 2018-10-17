@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { Footer } from '../components/layout/index.js';
+import { Footer, GlobalStyle } from '../components/layout/index.js';
 
 import baseTheme from './theme/base';
 
@@ -59,8 +59,10 @@ const Layout = ({ children, data }) => (
         >
           <html lang="en" />
         </Helmet>
+
         <ThemeProvider theme={baseTheme}>
           <>
+            <GlobalStyle />
             <Body>{children}</Body>
             <Footer />
           </>
