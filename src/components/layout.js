@@ -10,8 +10,6 @@ import baseTheme from './theme/base';
 
 require('typeface-pt-sans');
 
-import './layout.css';
-
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 25%);
@@ -50,6 +48,7 @@ const Layout = ({ children, data }) => (
     `}
     render={data => (
       <>
+        <GlobalStyle />
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
@@ -62,7 +61,6 @@ const Layout = ({ children, data }) => (
 
         <ThemeProvider theme={baseTheme}>
           <>
-            <GlobalStyle />
             <Body>{children}</Body>
             <Footer />
           </>
