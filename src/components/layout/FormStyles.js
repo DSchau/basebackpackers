@@ -63,4 +63,16 @@ const Optional = styled.span`
   font-size: 0.8rem;
 `;
 
-export { FormGroup, FormLabel, Input, TextArea, Optional, FormGroup2col };
+const Select = styled.select`
+  display: block;
+`;
+
+export {
+  FormGroup,
+  FormLabel,
+  Input,
+  TextArea,
+  Optional,
+  FormGroup2col,
+  Select
+};

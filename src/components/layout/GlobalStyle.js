@@ -584,6 +584,7 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  color: ${props => props.theme.secondaryColor};
 }
 a:active,
 a:hover {

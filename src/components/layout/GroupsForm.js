@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 import { Section, Container, Button } from '../common/';
 import {
   FormGroup,
@@ -7,7 +8,8 @@ import {
   Input,
   TextArea,
   Optional,
-  FormGroup2col
+  FormGroup2col,
+  Select
 } from '../layout/FormStyles';
 
 import Tick from '../images/tick.svg';
@@ -60,7 +62,13 @@ const GroupsForm = props => {
     <Section lightBackground>
       <Container maxwidth="900px">
         <h2>Let’s plan your group’s stay</h2>
-        <p>Fill out this form for more info or to get your booking underway.</p>
+        <p>
+          Fill out this form for more info or to get your booking underway.{' '}
+          Booking for a group of 10 people or less?{' '}
+          <Link to={`hostels/${props.link}`}>
+            You can book online with your credit card here
+          </Link>
+        </p>
       </Container>
       <FormBox>
         <form
@@ -137,6 +145,18 @@ const GroupsForm = props => {
               />
             </div>
           </FormGroup2col>
+          <FormGroup>
+            <FormLabel htmlFor="groupType">
+              Group Type
+              <span className="required">*</span>
+            </FormLabel>
+            <Select id="groupType " name="groupType" required>
+              <option value="School Group">School Group</option>
+              <option value="Sport Group">Sport Group</option>
+              <option value="Hens/Stag Party">Hens/Stag Party</option>
+              <option value="Other">Other</option>
+            </Select>
+          </FormGroup>
           <FormGroup>
             <FormLabel htmlFor="requirements">Special requirements:</FormLabel>
             <TextArea

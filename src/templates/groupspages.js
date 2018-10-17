@@ -46,6 +46,23 @@ export default class groupPage extends React.Component {
       })
     );
 
+    const accomGal = data.datoCmsHostel.accommodationType.map(
+      (block, index) => {
+        const roomGals = block.roomGallery.map(photo =>
+          Object.assign({
+            srcSet: photo.fluid.srcSet,
+            src: photo.fluid.src,
+            caption: photo.caption,
+            fluid: photo.fluid,
+            alt: photo.alt
+          })
+        );
+        return roomGals;
+      }
+    );
+    const combineAccom = [].concat.apply([], accomGal);
+    const cominedGallery = groupImages.concat(combineAccom);
+
     return (
       <Layout>
         <HelmetDatoCms seo={seoMetaTags} />
@@ -53,27 +70,34 @@ export default class groupPage extends React.Component {
         <Header
           backgroundImage={featuredImage.fluid}
           pageTitle={title}
-          tagline="Find the rest of the world with us."
-          propertyName="Base Backpackers Sydney"
-          caption="Crazy Party Tuesdays - Scary Canary Bar "
+          tagline=""
+          propertyName=""
+          caption=" "
+          gal={cominedGallery}
         />
 
         <IntroText text={intro} />
 
         <Section lightBackground>
-          <Container col="1" maxWidth="900px">
+          <Container maxWidth="900px">
             <div dangerouslySetInnerHTML={{ __html: body }} />
             <Button primary>Enquire now</Button>
           </Container>
         </Section>
         <Section>
+          <Container>
+            <h2>Our Rooms</h2>
+          </Container>
           <Container col="4" gap="1rem">
-            <Gallery images={groupImages} />
+            <Gallery images={combineAccom} />
           </Container>
         </Section>
 
         {/* Form here */}
-        <GroupsForm sellingPoints={sellingPoints} />
+        <GroupsForm
+          sellingPoints={sellingPoints}
+          link="{data.datoCmsHostel.slug}"
+        />
 
         {/* Location section here */}
         <Location
@@ -160,7 +184,31 @@ export const query = graphql`
         time
         tripType
       }
-
+      accommodationType {
+        ... on DatoCmsAccom {
+          model {
+            apiKey
+          }
+          roomGallery {
+            alt
+            caption: title
+            src: url
+            fluid(
+              maxWidth: 500
+              imgixParams: {
+                fm: "jpg"
+                fit: "crop"
+                crop: "faces"
+                auto: "format"
+                q: 50
+              }
+            ) {
+              srcSet
+              ...GatsbyDatoCmsFluid
+            }
+          }
+        }
+      }
       mapScreenShot {
         fluid(
           maxWidth: 600
