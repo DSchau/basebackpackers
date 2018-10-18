@@ -34,6 +34,7 @@
     "gatsby-plugin-styled-components": "^3.0.0",
     "gatsby-plugin-twitter": "^2.0.6",
     "gatsby-source-datocms": "^2.0.0",
+    "gatsby-source-filesystem": "^2.0.4",
     "gatsby-transformer-remark": "^2.1.7",
     "gatsby-transformer-sharp": "^2.1.4",
     "google-maps-react": "^2.0.2",
@@ -42,7 +43,7 @@
     "react-helmet": "^5.2.0",
     "react-images": "^0.5.19",
     "react-scrollspy": "^3.3.5",
-    "styled-components": "^4.0.0",
+    "styled-components": "^4.0.2",
     "typeface-pt-sans": "0.0.54"
   },
   "keywords": [
