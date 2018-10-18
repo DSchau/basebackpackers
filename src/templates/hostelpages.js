@@ -134,6 +134,7 @@ export default class HostelPage extends React.Component {
           caption="Crazy Party Tuesdays - Scary Canary Bar "
           alt={data.datoCmsHostel.featuredImage.alt}
           gal={cominedGallery}
+          button="hostel"
         />
         {/* Intro text here */}
 
@@ -270,6 +271,7 @@ export const query = graphql`
           ...GatsbyDatoCmsFluid
         }
       }
+
       accommodationType {
         ... on DatoCmsAccom {
           model {

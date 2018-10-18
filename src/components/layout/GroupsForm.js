@@ -59,7 +59,7 @@ const Small = styled.p`
 
 const GroupsForm = props => {
   return (
-    <Section lightBackground>
+    <Section lightBackground id="bookingform">
       <Container maxwidth="900px">
         <h2>Let’s plan your group’s stay</h2>
         <p>

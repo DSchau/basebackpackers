@@ -74,6 +74,7 @@ export default class groupPage extends React.Component {
           propertyName=""
           caption=" "
           gal={cominedGallery}
+          button="group"
         />
 
         <IntroText text={intro} />
