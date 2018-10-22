@@ -3,7 +3,7 @@ const baseTheme = {
   backgroundColor: 'white',
   primaryColor: '#b60300', //base red #F82A2A'
   secondaryColor: '#0B6070', //aqua blue
-  white: '#f1f1f1',
+  white: '#ffffff',
   black: '#0E0E0E',
   lightGrey: '#f4f4f4', // Used for backgrounds
   lightBlue: '#E2F2F5', // Used for backgrounds
