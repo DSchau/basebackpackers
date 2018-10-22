@@ -1,7 +1,7 @@
 import React from 'react';
 import Scrollspy from 'react-scrollspy';
 import styled from 'styled-components';
-import { Section, Container } from '../common/';
+import { Section, Container, Button } from '../common/';
 
 const NavItem = styled.li`
   padding-left: 0;
@@ -18,6 +18,15 @@ const NavItem = styled.li`
   }
 `;
 
+const NavButton = styled(NavItem)`
+  background: ${props => props.theme.primaryColor};
+  padding: 0.5rem;
+  color: ${props => props.theme.white};
+  cursor: pointer;
+  &:hover {
+  }
+`;
+
 const NavItemLink = styled.a`
   color: inherit;
   text-decoration: none;
@@ -29,12 +38,12 @@ const NavItemLink = styled.a`
 const StickyNav = () => {
   return (
     <Section
-      padding="2rem 0 0rem"
+      padding="2rem 0 1rem"
       style={{ position: 'sticky', top: 0, zIndex: 3 }}
     >
       <Container>
         <Scrollspy
-          style={{ marginLeft: 0, marginBottom: 0 }}
+          className="ScrollNav"
           items={['rooms', 'activities', 'facilities', 'location', 'faq']}
           currentClassName="is-current"
         >
@@ -51,8 +60,11 @@ const StickyNav = () => {
             <NavItemLink href="#location">Location</NavItemLink>
           </NavItem>
           <NavItem>
-            <NavItemLink href="#faq">FAQ</NavItemLink>
+            <NavItemLink href="#faq">Yes-A-Q</NavItemLink>
           </NavItem>
+          <NavButton primary className="menucta distributor">
+            Book Now
+          </NavButton>
         </Scrollspy>
       </Container>
     </Section>

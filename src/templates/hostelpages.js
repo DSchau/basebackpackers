@@ -17,18 +17,12 @@ import {
   Accom,
   IntroText,
   StickyNav,
-  Gallery
+  Gallery,
+  Location
 } from '../components/layout/index.js';
-import GoogleApiWrapper from '../components/layout/GoogleMapsContainer.js';
-import Cross from './cross.png';
-import Giffy from './giphy.gif';
 
-const HeadingSpan = styled.span`
-  color: #a2a2a2;
-  font-size: 1.4rem;
-  margin-left: 0.3rem;
-  font-weight: 400;
-`;
+import Cross from './cross.png';
+import yes from '../components/images/yes.mp4';
 
 const ActivityCard = styled.div`
   background: ${props => props.theme.white};
@@ -36,20 +30,22 @@ const ActivityCard = styled.div`
   box-shadow: ${props => props.theme.shadow};
 `;
 
-const ActivityText = styled.p`
-  color: ${props => props.theme.lightGreyText};
-  font-size: 0.8rem;
-  border-bottom: 1px solid ${props => props.theme.lightBlueLine};
-  padding-bottom: 1rem;
-`;
-
 const ActivityHeading = styled.h3`
   color: ${props => props.theme.secondaryColor};
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 `;
 
-const Time = styled.span`
-  font-weight: normal;
+const ActivityText = styled.p`
+  color: ${props => props.theme.lightGreyText};
+  font-size: 1rem;
+  margin-bottom: 0rem;
+`;
+
+const Time = styled.p`
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid ${props => props.theme.lightBlueLine};
 `;
 
 const ActivityLeadCard = styled(ActivityCard)`
@@ -70,18 +66,6 @@ const Crossimage = styled.img`
   bottom: 0;
   right: 0;
   margin-bottom: 0;
-`;
-
-const Mapbox = styled.div`
-  position: relative;
-  height: 16rem;
-`;
-
-const Contact = styled.div`
-  margin-top: 1rem;
-`;
-const ContactDetails = styled.div`
-  margin-bottom: 0.5rem;
 `;
 
 export default class HostelPage extends React.Component {
@@ -143,27 +127,29 @@ export default class HostelPage extends React.Component {
         {/* Header section here */}
         <Header
           backgroundImage={data.datoCmsHostel.featuredImage.fluid}
+          poster={data.datoCmsHostel.featuredImage.url}
           pageTitle={data.datoCmsHostel.title}
           tagline="Find the rest of the world with us."
           propertyName="Base Backpackers Sydney"
           caption="Crazy Party Tuesdays - Scary Canary Bar "
           alt={data.datoCmsHostel.featuredImage.alt}
           gal={cominedGallery}
+          button="hostel"
         />
         {/* Intro text here */}
 
-        <IntroText
+        {/* <IntroText
           text="              You’re going to love starting your Australian journey with
               backpackers from all over the world, just like you, in our iconic
               Sydney Hostel. Stay, play, work, study, party or just hang out and
               soak up the local vibe. It's completely up to you."
-        />
+        /> */}
         {/* Navigation in page here */}
 
         <StickyNav />
 
         {/* Accommodation section here */}
-        <Section id="rooms" padding="1rem 3rem 3rem">
+        <Section id="rooms" padding="0rem 3rem 3rem">
           <Accom
             source={data.datoCmsHostel.accommodationType}
             hostelName={data.datoCmsHostel.title}
@@ -173,9 +159,7 @@ export default class HostelPage extends React.Component {
         {/* Activities section here */}
         <Section id="activities" lightBackground>
           <Container>
-            <h2>
-              Activities <HeadingSpan>Never be lonely</HeadingSpan>{' '}
-            </h2>
+            <h2>Activities</h2>
           </Container>
           <ScrollContainer
             padding="0 0 1rem"
@@ -194,14 +178,11 @@ export default class HostelPage extends React.Component {
 
             {data.datoCmsHostel.activities.map(block => (
               <ActivityCard key={block.id}>
-                <ActivityHeading>
-                  {block.day} <Time>Morning</Time>
-                </ActivityHeading>
+                <ActivityHeading>{block.day}</ActivityHeading>
                 <ActivityText>{block.amActivity}</ActivityText>
-                <ActivityHeading>
-                  {block.day} <Time>Evening</Time>
-                </ActivityHeading>
+                <Time>Mornings</Time>
                 <ActivityText>{block.pmActivity}</ActivityText>
+                <Time>Evenings</Time>
               </ActivityCard>
             ))}
           </ScrollContainer>
@@ -214,9 +195,7 @@ export default class HostelPage extends React.Component {
         {/* Faciliteis section here */}
         <Section id="facilities">
           <Container>
-            <h2>
-              Facilities <HeadingSpan>Everything you need</HeadingSpan>
-            </h2>
+            <h2>Facilities</h2>
           </Container>
           <Container col="4" gap="1rem" mobcol="1fr 1fr">
             <Gallery images={featureImages} />
@@ -227,68 +206,25 @@ export default class HostelPage extends React.Component {
         </Section>
 
         {/* Location section here */}
-        <Section id="location" lightBlueBackground>
-          <Container>
-            <h2>
-              Location <HeadingSpan>The perfect spot in town</HeadingSpan>
-            </h2>
-          </Container>
-          <Container col="2" mobcol="1fr" gap="2rem">
-            <div>
-              <Mapbox>
-                <GoogleApiWrapper
-                  title={data.datoCmsHostel.title}
-                  street={data.datoCmsHostel.streetAddress}
-                  city={data.datoCmsHostel.city}
-                  lat={data.datoCmsHostel.location.latitude}
-                  long={data.datoCmsHostel.location.longitude}
-                />
-              </Mapbox>
-              <Contact>
-                <ContactDetails>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer "
-                    href="https://www.google.com/maps/dir/?api=1&destination=base+backpackers+sydney"
-                  >
-                    Get directions
-                  </a>
-                </ContactDetails>
-                <ContactDetails>
-                  Address: {data.datoCmsHostel.streetAddress},{' '}
-                  {data.datoCmsHostel.city}
-                </ContactDetails>
-                <ContactDetails>
-                  Phone: {data.datoCmsHostel.phone}
-                </ContactDetails>
-                <ContactDetails>
-                  Email: {data.datoCmsHostel.emailAddress}
-                </ContactDetails>
-              </Contact>
-            </div>
-
-            <div>
-              <h3>Things near by</h3>
-              {data.datoCmsHostel.thingsNearBy.map(near => (
-                <div key={near.id}>
-                  <h4>
-                    {near.time} {near.tripType}
-                  </h4>
-                  <p>{near.name}</p>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
+        <Location
+          title={data.datoCmsHostel.title}
+          streetAddress={data.datoCmsHostel.streetAddress}
+          city={data.datoCmsHostel.city}
+          latitude={data.datoCmsHostel.location.latitude}
+          longitude={data.datoCmsHostel.location.longitude}
+          mapScreenShot={data.datoCmsHostel.mapScreenShot.fluid}
+          streetAddress={data.datoCmsHostel.streetAddress}
+          phone={data.datoCmsHostel.phone}
+          emailAddress={data.datoCmsHostel.emailAddress}
+          thingsNearBy={data.datoCmsHostel.thingsNearBy}
+        />
 
         {/* FAQ */}
         <Section id="faq">
           <Container>
-            <h2>
-              Yes-A-Q‘s <HeadingSpan>Everything else..</HeadingSpan>
-            </h2>
+            <h2>Yes-A-Q‘s</h2>
           </Container>
-          <Container col="2" mobcol="1fr">
+          <Container col="2" mobcol="1fr" gap="1rem">
             <div>
               {data.datoCmsHostel.yes.map(block => (
                 <div key={block.id} className={block.model.apiKey}>
@@ -302,7 +238,9 @@ export default class HostelPage extends React.Component {
               </p>
             </div>
             <div>
-              <img src={Giffy} alt="Yes is the answer" />
+              <video width="100%" height="auto" autoPlay muted loop>
+                <source src={yes} />
+              </video>
             </div>
           </Container>
         </Section>
@@ -333,6 +271,7 @@ export const query = graphql`
           ...GatsbyDatoCmsFluid
         }
       }
+
       accommodationType {
         ... on DatoCmsAccom {
           model {
@@ -342,6 +281,7 @@ export const query = graphql`
           intro
           id
           priceFrom
+          currency
           features
           roomGallery {
             alt
@@ -429,6 +369,15 @@ export const query = graphql`
         name
         time
         tripType
+      }
+
+      mapScreenShot {
+        fluid(
+          maxWidth: 600
+          imgixParams: { fm: "jpg", auto: "format", q: 50 }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
       }
 
       yes {

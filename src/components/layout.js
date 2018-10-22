@@ -4,11 +4,9 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { Footer } from '../components/layout/index.js';
+import { Footer, GlobalStyle } from '../components/layout/index.js';
 
 import baseTheme from './theme/base';
-
-import './layout.css';
 
 const Container = styled.div`
   display: grid;
@@ -32,6 +30,7 @@ const Body = styled.main`
   background: #fcfcfc;
   position: relative;
   width: 100%;
+  border-top: 3px solid ${props => props.theme.primaryColor};
 `;
 
 const Layout = ({ children, data }) => (
@@ -56,8 +55,10 @@ const Layout = ({ children, data }) => (
         >
           <html lang="en" />
         </Helmet>
+
         <ThemeProvider theme={baseTheme}>
           <>
+            <GlobalStyle />
             <Body>{children}</Body>
             <Footer />
           </>

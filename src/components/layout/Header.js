@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
@@ -52,22 +52,73 @@ const HeaderCaption = styled.div`
   }
 `;
 
-const Header = props => {
-  return (
-    <Section
-      id="header"
-      padding="0rem"
-      style={{
-        margin: 0,
-        overflow: 'hidden',
-        position: 'relative',
-        zIndex: 2,
-        minHeight: '25rem'
-      }}
-    >
-      <Img
-        fluid={props.backgroundImage}
-        alt={props.alt}
+class Header extends Component {
+  render() {
+    const props = this.props;
+    const buttonThere = props.button;
+
+    let button;
+
+    switch (buttonThere) {
+      case 'hostel':
+        button = (
+          <p>
+            <HeaderButton primary className="distributor">
+              Book now
+            </HeaderButton>
+            &nbsp;
+            <Gal images={props.gal} />
+          </p>
+        );
+        break;
+      case 'group':
+        button = (
+          <p>
+            <a href="#bookingform">
+              <HeaderButton primary>Book now</HeaderButton>
+            </a>
+            &nbsp;
+            <Gal images={props.gal} />
+          </p>
+        );
+        break;
+      default:
+        null;
+    }
+
+    return (
+      <Section
+        id="header"
+        padding="0rem"
+        style={{
+          margin: 0,
+          overflow: 'hidden',
+          position: 'relative',
+          zIndex: 2,
+          minHeight: '25rem'
+        }}
+      >
+        <Img
+          fluid={props.backgroundImage}
+          alt={props.alt}
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: '100%',
+            height: '100%',
+            overflow: 'hidden',
+            zIndex: 1
+          }}
+        />
+
+        {/* <video
+        width="100%"
+        height="auto"
+        autoPlay
+        poster={props.poster}
+        muted
+        loop
         style={{
           position: 'absolute',
           left: 0,
@@ -75,30 +126,28 @@ const Header = props => {
           width: '100%',
           height: '100%',
           overflow: 'hidden',
-          zIndex: 1
+          zIndex: 1,
+          objectFit: 'cover'
         }}
-      />
-      <Navigation />
+      >
+        <source src="http://www.stayatbase.com/video/base.mp4" />
+      </video> */}
+        <Navigation />
 
-      <HeaderContainer padding="0rem">
-        <PageTitle>{props.pageTitle}</PageTitle>
-        <HeaderTag>{props.tagline}</HeaderTag>
-        <p>
-          <HeaderButton primary className="distributor">
-            Book now
-          </HeaderButton>
-          &nbsp;
-          <Gal images={props.gal} />
-        </p>
-      </HeaderContainer>
+        <HeaderContainer padding="0rem">
+          <PageTitle>{props.pageTitle}</PageTitle>
+          <HeaderTag>{props.tagline}</HeaderTag>
+          {button}
+        </HeaderContainer>
 
-      <HeaderCaption>
-        <div>{props.caption}</div>
-        <div>@ {props.propertyName}</div>
-      </HeaderCaption>
-    </Section>
-  );
-};
+        <HeaderCaption>
+          <div>{props.caption}</div>
+          <div>@ {props.propertyName}</div>
+        </HeaderCaption>
+      </Section>
+    );
+  }
+}
 
 Header.propTypes = {
   backgroundImage: PropTypes.object.isRequired,

@@ -45,7 +45,6 @@ class Faq extends React.Component {
         />
         <Answer className={`${detailsActive}`}>
           <div dangerouslySetInnerHTML={{ __html: this.props.answer }} />
-          {/* <Close onClick={this.toggleDetails}>Close x</Close> */}
         </Answer>
       </>
     );

@@ -14,6 +14,9 @@ const BookSectionText = styled.div`
   font-weight: bold;
   line-height: 1.4;
   padding-right: 1rem;
+  @media (max-width: 768px) {
+    margin: 0 0 1rem;
+  }
 `;
 
 const BookPriceInc = styled.div`
@@ -23,12 +26,22 @@ const BookPriceInc = styled.div`
 
 const Price = styled.div`
   font-size: 4rem;
+  span {
+    font-size: 1rem;
+  }
 `;
-const AltRoom = styled.span`
+const AltRoom = styled(Button)`
+  background: #fff;
   color: ${props => props.theme.secondaryColor};
-  text-decoration: underline;
-  & :hover {
-    cursor: pointer;
+  border: 2px solid ${props => props.theme.secondaryColor};
+`;
+
+const PriceBook = styled(Container)`
+  grid-template-areas: 'CTA prices';
+  @media (max-width: 768px) {
+    grid-template-areas:
+      'prices'
+      'CTA';
   }
 `;
 
@@ -46,23 +59,8 @@ class Accom extends React.Component {
     });
   };
 
-  componentDidMount() {
-    const localStorageRef = localStorage.getItem('interest in private');
-
-    if (localStorageRef) {
-      this.setState({ showNext: JSON.parse(localStorageRef) });
-    }
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem(
-      'interest in private',
-      JSON.stringify(this.state.showNext)
-    );
-  }
-
   render() {
-    const nextActive = this.state.showNext ? 'show' : '';
+    const nextActive = !this.state.showNext ? 'show' : '';
     const people = Math.floor(Math.random() * 9) + 13;
 
     return (
@@ -88,9 +86,11 @@ class Accom extends React.Component {
             >
               {block.model.apiKey === 'accom' && (
                 <>
-                  <Container>
-                    <p>
-                      {block.intro}.{' '}
+                  <Container col="2">
+                    <div>
+                      <p>{block.intro}.</p>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
                       <AltRoom onClick={this.toggleNext}>
                         Wait! I want to stay in
                         {this.props.source.map((block, index) => (
@@ -102,8 +102,8 @@ class Accom extends React.Component {
                             {block.name}{' '}
                           </span>
                         ))}
-                      </AltRoom>{' '}
-                    </p>
+                      </AltRoom>
+                    </div>
                   </Container>
                   <ScrollContainer
                     padding="0 0 15px 0"
@@ -112,11 +112,12 @@ class Accom extends React.Component {
                   >
                     <Gallery images={im2} />
                   </ScrollContainer>
-                  <Container col="2" gap="1rem" mobcol="1fr">
-                    <div>
+
+                  <PriceBook gap="1rem">
+                    <div style={{ gridArea: 'CTA' }}>
                       <BookSectionText>
                         There are {people} other people looking at staying at{' '}
-                        {this.props.hostelName} right now
+                        {this.props.hostelName} now.
                       </BookSectionText>
                       <Button primary large className="distributor">
                         Check availability and book
@@ -127,15 +128,20 @@ class Accom extends React.Component {
                         </small>
                       </p>
                     </div>
+
                     <Container
                       col="2"
-                      margin="1.5rem 0"
+                      margin="1.5rem 0 0"
                       mobcol="1fr 1fr"
                       gap="1rem"
+                      style={{ gridArea: 'prices' }}
                     >
                       <BookPriceInc>
                         Stay from just
-                        <Price>${block.priceFrom}</Price>
+                        <Price>
+                          ${block.priceFrom}
+                          <span>{block.currency}</span>
+                        </Price>
                         {block.name === 'Private Rooms'
                           ? 'Per room/per night'
                           : 'Per person/per night'}
@@ -147,7 +153,7 @@ class Accom extends React.Component {
                         />
                       </div>
                     </Container>
-                  </Container>
+                  </PriceBook>
                 </>
               )}
             </AccomBlock>

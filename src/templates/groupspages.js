@@ -10,16 +10,10 @@ import {
   Faq,
   Accom,
   IntroText,
-  StickyNav,
-  Gallery
+  Gallery,
+  GroupsForm,
+  Location
 } from '../components/layout/index.js';
-
-import {
-  FormGroup,
-  FormLabel,
-  Input,
-  TextArea
-} from '../components/layout/FormStyles';
 
 const SellingPointHeading = styled.h2`
   line-height: 1.8rem;
@@ -52,123 +46,87 @@ export default class groupPage extends React.Component {
       })
     );
 
+    const accomGal = data.datoCmsHostel.accommodationType.map(
+      (block, index) => {
+        const roomGals = block.roomGallery.map(photo =>
+          Object.assign({
+            srcSet: photo.fluid.srcSet,
+            src: photo.fluid.src,
+            caption: photo.caption,
+            fluid: photo.fluid,
+            alt: photo.alt
+          })
+        );
+        return roomGals;
+      }
+    );
+    const combineAccom = [].concat.apply([], accomGal);
+    const cominedGallery = groupImages.concat(combineAccom);
+
     return (
       <Layout>
+        <HelmetDatoCms seo={seoMetaTags} />
         {/* Header section here */}
         <Header
           backgroundImage={featuredImage.fluid}
           pageTitle={title}
-          tagline="Find the rest of the world with us."
-          propertyName="Base Backpackers Sydney"
-          caption="Crazy Party Tuesdays - Scary Canary Bar "
+          tagline=""
+          propertyName=""
+          caption=" "
+          gal={cominedGallery}
+          button="group"
         />
 
         <IntroText text={intro} />
 
         <Section lightBackground>
-          <HelmetDatoCms seo={seoMetaTags} />
-          <Container col="2" maxWidth="900px" gap="2rem">
-            <div>
-              <SellingPointHeading>
-                Everything you need for your group
-              </SellingPointHeading>
-              <div dangerouslySetInnerHTML={{ __html: sellingPoints }} />
-              <Button primary>Enquire now</Button>
-              <Container col="3" gap="1rem">
-                <Gallery images={groupImages} />
-              </Container>
-            </div>
+          <Container maxWidth="900px">
             <div dangerouslySetInnerHTML={{ __html: body }} />
-          </Container>
-        </Section>
-        <Section>
-          <Container col="4" gap="1rem">
-            <Gallery images={groupImages} />
+            <Button primary>Enquire now</Button>
           </Container>
         </Section>
         <Section>
           <Container>
-            <form
-              name="MAD booking form"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-            >
-              <div style={{ color: 'red', textAlign: 'right' }}>
-                <small>* Required field</small>
-              </div>
-              {/* Hidden form variables below */}
+            <h2>Our Rooms</h2>
+          </Container>
+          <Container col="4" gap="1rem">
+            <Gallery images={combineAccom} />
+          </Container>
+        </Section>
 
-              <FormGroup>
-                <FormLabel htmlFor="name">
-                  Your Name:
-                  <span className="required">*</span>
-                </FormLabel>
-                <Input
-                  id="name"
-                  type="text"
-                  name="name"
-                  placeholder="Excited Bob"
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <FormLabel htmlFor="email">
-                  Your Email:
-                  <span className="required">*</span>{' '}
-                </FormLabel>
-                <Input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="bob@bringonthemadness.com"
-                  required
-                />
-                <Small>We won't share your email with anyone</Small>
-              </FormGroup>
-              <FormGroup>
-                <FormLabel htmlFor="phone">Your Phone Number:</FormLabel>
-                <Input
-                  id="phone"
-                  type="phone"
-                  name="phone"
-                  placeholder="+61 420 420 420"
-                />
-                <Small>
-                  It's so much easier for you if we can talk about detais on the
-                  phone
-                </Small>
-              </FormGroup>
-              <FormGroup>
-                <FormLabel htmlFor="date">
-                  When would you like to go/start:
-                  <span className="required">*</span>
-                </FormLabel>
-                <Input id="date" type="date" name="date" required />
-              </FormGroup>
-              <FormGroup>
-                <FormLabel htmlFor="requirements">
-                  Special requirements:
-                </FormLabel>
-                <TextArea
-                  id="requirements"
-                  name="requirements"
-                  placeholder="I'm a vego aka meat is murder"
-                />
-              </FormGroup>
+        {/* Form here */}
+        <GroupsForm
+          sellingPoints={sellingPoints}
+          link="{data.datoCmsHostel.slug}"
+        />
 
-              <p style={{ display: 'none' }}>
-                <label>
-                  Don’t fill this out if you're human:{' '}
-                  <input name="bot-field" />
-                </label>
-              </p>
-              <FormGroup>
-                <Button primary type="submit">
-                  Book it !!!
-                </Button>
-              </FormGroup>
-            </form>
+        {/* Location section here */}
+        <Location
+          title={data.datoCmsHostel.title}
+          streetAddress={data.datoCmsHostel.streetAddress}
+          city={data.datoCmsHostel.city}
+          latitude={data.datoCmsHostel.location.latitude}
+          longitude={data.datoCmsHostel.location.longitude}
+          mapScreenShot={data.datoCmsHostel.mapScreenShot.fluid}
+          streetAddress={data.datoCmsHostel.streetAddress}
+          phone={data.datoCmsHostel.phone}
+          emailAddress={data.datoCmsHostel.emailAddress}
+          thingsNearBy={data.datoCmsHostel.thingsNearBy}
+        />
+
+        {/* FAQ */}
+        <Section id="faq">
+          <Container>
+            <h2>FAQ's</h2>
+          </Container>
+          <Container>
+            <div>
+              {data.datoCmsGroup.faq.map(block => (
+                <div key={block.id} className={block.model.apiKey}>
+                  <Faq question={block.question} answer={block.answer} />
+                </div>
+              ))}
+            </div>
           </Container>
         </Section>
       </Layout>
@@ -177,7 +135,7 @@ export default class groupPage extends React.Component {
 }
 
 export const query = graphql`
-  query GroupPageQuery($slug: String!) {
+  query GroupPageQuery($slug: String!, $hostel: String!) {
     datoCmsGroup(slug: { eq: $slug }) {
       title
       body
@@ -197,6 +155,68 @@ export const query = graphql`
       }
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
+      }
+      faq {
+        ... on DatoCmsQA {
+          model {
+            apiKey
+          }
+          id
+          question
+          answer
+        }
+      }
+    }
+
+    datoCmsHostel(slug: { eq: $hostel }) {
+      title
+      location {
+        latitude
+        longitude
+      }
+      streetAddress
+      suburb
+      city
+      phone
+      emailAddress
+      thingsNearBy {
+        id
+        name
+        time
+        tripType
+      }
+      accommodationType {
+        ... on DatoCmsAccom {
+          model {
+            apiKey
+          }
+          roomGallery {
+            alt
+            caption: title
+            src: url
+            fluid(
+              maxWidth: 500
+              imgixParams: {
+                fm: "jpg"
+                fit: "crop"
+                crop: "faces"
+                auto: "format"
+                q: 50
+              }
+            ) {
+              srcSet
+              ...GatsbyDatoCmsFluid
+            }
+          }
+        }
+      }
+      mapScreenShot {
+        fluid(
+          maxWidth: 600
+          imgixParams: { fm: "jpg", auto: "format", q: 50 }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
       }
     }
   }

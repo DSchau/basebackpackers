@@ -16,7 +16,7 @@ module.exports = {
 
         // Include GTM in development.
         // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: true
+        includeInDevelopment: false
 
         // Specify optional GTM environment details.
         // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_AUTH_STRING",
@@ -32,6 +32,13 @@ module.exports = {
         apiToken: `2f10bdfdabc47fc2f76f98ef230ceb`,
         previewMode: false,
         disableLiveReload: false
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`
       }
     },
 

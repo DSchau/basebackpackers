@@ -1,9 +1,9 @@
 const baseTheme = {
   id: 'base',
   backgroundColor: 'white',
-  primaryColor: '#F82A2A', //base red
+  primaryColor: '#b60300', //base red #F82A2A'
   secondaryColor: '#0B6070', //aqua blue
-  white: 'white',
+  white: '#ffffff',
   black: '#0E0E0E',
   lightGrey: '#f4f4f4', // Used for backgrounds
   lightBlue: '#E2F2F5', // Used for backgrounds
