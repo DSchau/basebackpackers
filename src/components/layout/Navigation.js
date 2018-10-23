@@ -93,6 +93,8 @@ class Navigation extends React.Component {
         </Logo>
         <Menu id="Topnav" className={`topnav ${burgerActive}`}>
           {/* <NavLink to="/destinations/">Destinations</NavLink> */}
+          <NavLinka href="http://www.stayatbase.com/groups">Locations</NavLinka>
+          <NavLinka href="http://www.stayatbase.com/groups">Groups</NavLinka>
           <NavLinka href="http://www.stayatbase.com/packages">Deals</NavLinka>
           <NavLinka href="http://www.stayatbase.com/base/about-base">
             About us
