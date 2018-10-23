@@ -34,7 +34,8 @@ export default class groupPage extends React.Component {
       imageGallery,
       sellingPoints,
       seoMetaTags,
-      body
+      body,
+      featureList
     } = data.datoCmsGroup;
 
     const groupImages = imageGallery.map(photo =>
@@ -80,8 +81,14 @@ export default class groupPage extends React.Component {
         <IntroText text={intro} />
 
         <Section lightBackground>
-          <Container maxWidth="900px">
-            <div dangerouslySetInnerHTML={{ __html: body }} />
+          <Container col="2" mobcol="1fr" maxWidth="900px" gap="2rem">
+            <div>
+              <div dangerouslySetInnerHTML={{ __html: body }} />
+            </div>
+            <div>
+              <h2>Facilities</h2>
+              <div dangerouslySetInnerHTML={{ __html: featureList }} />
+            </div>
             <Button primary>Enquire now</Button>
           </Container>
         </Section>
@@ -141,6 +148,7 @@ export const query = graphql`
       body
       intro
       sellingPoints
+      featureList
       featuredImage {
         url
         fluid(maxWidth: 1000) {
