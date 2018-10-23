@@ -259,7 +259,7 @@ export const query = graphql`
         url
         alt
         fluid(
-          maxWidth: 1000
+          maxWidth: 2000
           imgixParams: {
             fm: "jpg"
             fit: "crop"

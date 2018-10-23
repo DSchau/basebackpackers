@@ -14,6 +14,9 @@ html {
 
 /* Misc - Todo - Most needs to be refactored out */
 
+.darker {
+  filter: brightness(.7);
+}
 
 .includes li {
   list-style: none;
