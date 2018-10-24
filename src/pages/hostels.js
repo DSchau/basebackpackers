@@ -33,6 +33,7 @@ const DestinationsPage = ({ data }) => (
             title={hostel.title}
             fluid={hostel.featuredImage.fluid}
             key={hostel.id}
+            alt={hostel.alt}
             url={`hostels/${hostel.slug} `}
           />
         ))}
@@ -48,6 +49,7 @@ const DestinationsPage = ({ data }) => (
             title={hostel.title}
             fluid={hostel.featuredImage.fluid}
             key={hostel.id}
+            alt={hostel.alt}
             url={`hostels/${hostel.slug} `}
           />
         ))}
@@ -76,6 +78,7 @@ export const query = graphql`
           title
           slug
           featuredImage {
+            alt
             fluid(
               maxWidth: 300
               maxHeight: 200

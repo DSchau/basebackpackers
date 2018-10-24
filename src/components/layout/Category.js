@@ -2,6 +2,7 @@ import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
+import PropTypes from 'prop-types';
 
 const CategoryItem = styled.div`
   box-shadow: ${props => props.theme.shadow};
@@ -50,6 +51,13 @@ const Category = props => {
       </Link>
     </CategoryItem>
   );
+};
+
+Category.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  fluid: PropTypes.object.isRequired,
+  alt: PropTypes.string.isRequired
 };
 
 export { Category };

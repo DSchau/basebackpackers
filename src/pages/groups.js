@@ -34,6 +34,7 @@ const GroupsPage = ({ data }) => (
             fluid={hostel.featuredImage.fluid}
             key={hostel.id}
             url={`groups/${hostel.slug} `}
+            alt={hostel.alt}
           />
         ))}
       </Container>
@@ -49,6 +50,7 @@ const GroupsPage = ({ data }) => (
             fluid={hostel.featuredImage.fluid}
             key={hostel.id}
             url={`groups/${hostel.slug} `}
+            alt={hostel.alt}
           />
         ))}
       </Container>
@@ -78,6 +80,7 @@ export const query = graphql`
           title
           slug
           featuredImage {
+            alt
             fluid(
               maxWidth: 300
               maxHeight: 200
