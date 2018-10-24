@@ -1,14 +1,31 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-
-import { Navigation } from '../components/layout/index.js';
+import styled from 'styled-components';
+import { Header } from '../components/layout/index.js';
 import { Section, Container } from '../components/common/index.js';
 
 import Layout from '../components/layout';
 
+const BookingForm = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  max-width: ${props => props.theme.maxwidth};
+  margin: 2rem auto;
+`;
+
 const IndexPage = ({ data }) => (
   <Layout>
-    <Navigation />
+    <Header
+      backgroundImage={data.file.childImageSharp.fluid}
+      pageTitle="Find the rest of the world with us"
+      tagline="Awesome backpacker hostels in Australia and New Zealands top locations"
+      propertyName="Base Magnetic Island"
+      caption="Sunset Walking Tour"
+    />
+    <BookingForm>
+      <div>Where you heading?</div>
+      <div>form here</div>
+    </BookingForm>
     <Section lightBackground>
       <Container>
         <p>
@@ -51,6 +68,15 @@ export default IndexPage;
 
 export const query = graphql`
   query IndexQuery {
+    file(relativePath: { eq: "backpacker-destinations-australia-nz.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     allDatoCmsHostel {
       edges {
         node {
