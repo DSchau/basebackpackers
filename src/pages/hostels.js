@@ -27,7 +27,7 @@ const DestinationsPage = ({ data }) => (
       <Container>
         <h2>Australian hostels</h2>
       </Container>
-      <Container col="3" gap="2rem">
+      <Container col="3" gap="2rem" mobcol="1fr">
         {data.australia.edges.map(({ node: hostel }) => (
           <Category
             title={hostel.title}
@@ -42,7 +42,7 @@ const DestinationsPage = ({ data }) => (
       <Container>
         <h2>New Zealand Hostels</h2>
       </Container>
-      <Container col="3" gap="2rem">
+      <Container col="3" gap="2rem" mobcol="1fr">
         {data.nz.edges.map(({ node: hostel }) => (
           <Category
             title={hostel.title}

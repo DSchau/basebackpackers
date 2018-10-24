@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import { Header } from '../components/layout/index.js';
+import { Header, Category } from '../components/layout/index.js';
 import {
   Section,
   Container,
@@ -9,8 +9,7 @@ import {
   CardBody,
   CardLink,
   CardHeading,
-  Card,
-  Button
+  Card
 } from '../components/common/index.js';
 
 import Layout from '../components/layout';
@@ -26,37 +25,33 @@ const GroupsPage = ({ data }) => (
 
     <Section lightBackground>
       <Container>
-        <h2>Australian hostels</h2>
+        <h2>Australian Locations</h2>
       </Container>
-      <Container col="3" gap="2rem">
+      <Container col="3" gap="2rem" mobcol="1fr">
         {data.australia.edges.map(({ node: hostel }) => (
-          <Card key={hostel.id}>
-            <CardLink url={`hostels/${hostel.slug}`}>
-              <CardImage image={hostel.featuredImage.fluid} />
-              <CardBody>
-                <CardHeading title={hostel.title} />
-              </CardBody>
-            </CardLink>
-          </Card>
+          <Category
+            title={hostel.title}
+            fluid={hostel.featuredImage.fluid}
+            key={hostel.id}
+            url={`groups/${hostel.slug} `}
+          />
         ))}
       </Container>
     </Section>
     <Section>
-      {/* <Container>
-        <h2>New Zealand Hostels</h2>
+      <Container>
+        <h2>New Zealand Locations</h2>
       </Container>
-      <Container col="3" gap="2rem">
+      <Container col="3" gap="2rem" mobcol="1fr">
         {data.nz.edges.map(({ node: hostel }) => (
-          <Card key={hostel.id} lightBackground>
-            <CardLink url={`hostels/${hostel.slug}`}>
-              <CardImage image={hostel.featuredImage.fluid} />
-              <CardBody>
-                <CardHeading title={hostel.title} />
-              </CardBody>
-            </CardLink>
-          </Card>
+          <Category
+            title={hostel.title}
+            fluid={hostel.featuredImage.fluid}
+            key={hostel.id}
+            url={`groups/${hostel.slug} `}
+          />
         ))}
-      </Container> */}
+      </Container>
     </Section>
   </Layout>
 );
@@ -99,7 +94,9 @@ export const query = graphql`
         }
       }
     }
-    nz: allDatoCmsGroup(filter: { hostel: { country: { eq: "NZ" } } }) {
+    nz: allDatoCmsGroup(
+      filter: { hostel: { country: { eq: "New Zealand" } } }
+    ) {
       edges {
         node {
           id
