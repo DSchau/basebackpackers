@@ -20,22 +20,12 @@ const BodyContainer = styled.div`
   }
 `;
 
-const Author = styled.div`
-  grid-column: span 1 / -1 !important;
-  border-left: 2px solid yellow;
-  font-size: 0.85rem;
-  padding: 10px;
-  margin-top: 1rem;
-
-  @media (max-width: 500px) {
-    grid-template-columns: 1fr;
-    margin: 0;
-  }
-`;
-
 const Figure = styled.figure`
   max-width: 900px;
   margin: 0 auto;
+  figcaption {
+    margin-top: 0.7rem;
+  }
 `;
 
 const Attribution = styled.p`

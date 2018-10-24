@@ -70,7 +70,8 @@ span.room-0.show {
 
 
 .gatsby-image-outer-wrapper, .article img, .image_block {
-  grid-column: 1 / -1;
+  grid-column: 2 / -2;
+  
 }
 
 .topnav .icon {
