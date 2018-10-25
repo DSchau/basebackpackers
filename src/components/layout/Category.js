@@ -30,7 +30,7 @@ const CategoryItem = styled.div`
   }
 `;
 
-const Category = props => {
+function Category(props) {
   return (
     <CategoryItem>
       <Link to={props.url}>
@@ -51,7 +51,7 @@ const Category = props => {
       </Link>
     </CategoryItem>
   );
-};
+}
 
 Category.propTypes = {
   url: PropTypes.string.isRequired,
