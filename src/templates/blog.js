@@ -154,14 +154,9 @@ export const query = graphql`
           attribution
           image {
             fluid(
-              maxWidth: 900
-              maxHeight: 450
-              imgixParams: {
-                fm: "jpg"
-                auto: "compress"
-                fit: "crop"
-                crop: "faces"
-              }
+              maxWidth: 800
+
+              imgixParams: { fm: "jpg", auto: "compress" }
             ) {
               ...GatsbyDatoCmsFluid
             }
