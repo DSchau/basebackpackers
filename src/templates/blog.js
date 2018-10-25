@@ -25,6 +25,8 @@ const Figure = styled.figure`
   margin: 0 auto;
   figcaption {
     margin-top: 0.7rem;
+    font-size: 0.8rem;
+    font-style: italic;
   }
 `;
 
@@ -124,8 +126,8 @@ export const query = graphql`
       featuredImage {
         url
         fluid(
-          maxWidth: 1000
-          maxHeight: 400
+          maxWidth: 2000
+          maxHeight: 800
           imgixParams: {
             fm: "jpg"
             auto: "compress"
