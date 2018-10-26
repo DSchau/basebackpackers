@@ -72,6 +72,19 @@ export default class HostelPage extends React.Component {
   render() {
     const { data } = this.props;
 
+    const {
+      title,
+      slug,
+      intro,
+      featuredImage,
+      emailAddress,
+      phone,
+      city,
+      streetAddress,
+      accommodationType,
+      country
+    } = data.datoCmsHostel;
+
     const featureImages = data.datoCmsHostel.featureGallery.map(photo =>
       Object.assign({
         srcSet: photo.fluid.srcSet,
@@ -110,6 +123,37 @@ export default class HostelPage extends React.Component {
     const combineAccom = [].concat.apply([], accomGal);
     const cominedGallery = featureImages.concat(activitiesImages, combineAccom);
 
+    // schema mark up
+
+    const rootUrl = `${data.site.siteMetadata.siteUrl}`;
+    const pagePath = `/hostels/${slug}`;
+    const postURL = rootUrl + pagePath;
+
+    const schemaOrgJSONLD = [
+      {
+        '@context': 'http://schema.org',
+        '@type': 'Hostel',
+        url: postURL,
+        image: `${featuredImage.url}`,
+        name: `${title}`,
+        description: `${intro}`,
+        telephone: `${phone}`,
+        email: `${emailAddress}`,
+        priceRange: `Stay from ${accommodationType.priceFrom}`,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: `${city}`,
+          // addressRegion: 'WA',
+          // postalCode: '98052',
+          streetAddress: `${streetAddress}`,
+          addressCountry: {
+            '@type': 'Country',
+            name: `${country}`
+          }
+        }
+      }
+    ];
+
     return (
       <Layout>
         {/* <Gal test={im2}/> */}
@@ -122,17 +166,20 @@ export default class HostelPage extends React.Component {
           data.datoCmsHostel.mewsId
         }']]);`}
           </script>
+          <script type="application/ld+json">
+            {JSON.stringify(schemaOrgJSONLD)}
+          </script>
         </Helmet>
 
         {/* Header section here */}
         <Header
-          backgroundImage={data.datoCmsHostel.featuredImage.fluid}
-          poster={data.datoCmsHostel.featuredImage.url}
-          pageTitle={data.datoCmsHostel.title}
+          backgroundImage={featuredImage.fluid}
+          poster={featuredImage.url}
+          pageTitle={title}
           tagline="Find the rest of the world with us."
           propertyName="Base Backpackers Sydney"
           caption="Crazy Party Tuesdays - Scary Canary Bar "
-          alt={data.datoCmsHostel.featuredImage.alt}
+          alt={featuredImage.alt}
           gal={cominedGallery}
           button="hostel"
         />
@@ -152,7 +199,7 @@ export default class HostelPage extends React.Component {
         <Section id="rooms" padding="0rem 3rem 3rem">
           <Accom
             source={data.datoCmsHostel.accommodationType}
-            hostelName={data.datoCmsHostel.title}
+            hostelName={title}
           />
         </Section>
 
@@ -207,15 +254,14 @@ export default class HostelPage extends React.Component {
 
         {/* Location section here */}
         <Location
-          title={data.datoCmsHostel.title}
-          streetAddress={data.datoCmsHostel.streetAddress}
-          city={data.datoCmsHostel.city}
+          title={title}
+          streetAddress={streetAddress}
+          city={city}
           latitude={data.datoCmsHostel.location.latitude}
           longitude={data.datoCmsHostel.location.longitude}
           mapScreenShot={data.datoCmsHostel.mapScreenShot.fluid}
-          streetAddress={data.datoCmsHostel.streetAddress}
-          phone={data.datoCmsHostel.phone}
-          emailAddress={data.datoCmsHostel.emailAddress}
+          phone={phone}
+          emailAddress={emailAddress}
           thingsNearBy={data.datoCmsHostel.thingsNearBy}
         />
 
@@ -252,10 +298,17 @@ export default class HostelPage extends React.Component {
 
 export const query = graphql`
   query HostelPageQuery($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     datoCmsHostel(slug: { eq: $slug }) {
       title
       intro
+      slug
       mewsId
+      country
       featuredImage {
         url
         alt
