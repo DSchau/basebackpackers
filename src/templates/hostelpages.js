@@ -248,6 +248,7 @@ export default class HostelPage extends React.Component {
     );
   }
 }
+//  code change to push update
 
 export const query = graphql`
   query HostelPageQuery($slug: String!) {
