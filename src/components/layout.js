@@ -54,6 +54,10 @@ const Layout = ({ children, data }) => (
           ]}
         >
           <html lang="en" />
+
+          <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+          <link rel="dns-prefetch" href="//connect.facebook.net" />
+          <link rel="dns-prefetch" href="//script.tapfiliate.com" />
         </Helmet>
 
         <ThemeProvider theme={baseTheme}>

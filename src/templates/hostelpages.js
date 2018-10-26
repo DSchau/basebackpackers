@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import SiteLogo from '../components/base-logo-white.png';
 
 import Layout from '../components/layout';
 import {
@@ -134,6 +135,8 @@ export default class HostelPage extends React.Component {
         '@context': 'http://schema.org',
         '@type': 'Hostel',
         url: postURL,
+        brand: 'Base Backpackers',
+        // logo: SiteLogo,
         image: `${featuredImage.url}`,
         name: `${title}`,
         description: `${intro}`,
@@ -169,6 +172,8 @@ export default class HostelPage extends React.Component {
           <script type="application/ld+json">
             {JSON.stringify(schemaOrgJSONLD)}
           </script>
+          <link rel="dns-prefetch" href="//www.mews.li" />
+          <link rel="dns-prefetch" href="//cdn.mews.li" />
         </Helmet>
 
         {/* Header section here */}
