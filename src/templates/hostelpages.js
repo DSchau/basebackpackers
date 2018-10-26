@@ -23,7 +23,7 @@ import {
 } from '../components/layout/index.js';
 
 import Cross from './cross.png';
-import yes from '../components/images/yes.mp4';
+// import yes from '../components/images/yes.mp4';
 
 const ActivityCard = styled.div`
   background: ${props => props.theme.white};
@@ -289,9 +289,9 @@ export default class HostelPage extends React.Component {
               </p>
             </div>
             <div>
-              <video width="100%" height="auto" autoPlay muted loop>
+              {/* <video width="100%" height="auto" autoPlay muted loop>
                 <source src={yes} />
-              </video>
+              </video> */}
             </div>
           </Container>
         </Section>
