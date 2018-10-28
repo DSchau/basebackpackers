@@ -133,7 +133,7 @@ span.room-0.show {
     padding: 3px 10px;
     text-decoration: none;
     display: block;
-    text-align: left;
+    text-align: left; 
 }
 
 
@@ -142,6 +142,7 @@ span.room-0.show {
     background-color: #ddd;
     color: black;
 }
+/* Bumop */
 
 /* Show the dropdown menu when the user moves the mouse over the dropdown button */
 .dropdown:hover .dropdown-content {
