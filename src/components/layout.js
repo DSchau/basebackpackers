@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
 import { Footer, GlobalStyle } from '../components/layout/index.js';
+import DataLayer from './layout/DataLayer';
 
 import baseTheme from './theme/base';
 
@@ -65,6 +66,7 @@ const Layout = ({ children, data }) => (
             <GlobalStyle />
             <Body>{children}</Body>
             <Footer />
+            <DataLayer />
           </>
         </ThemeProvider>
       </>
