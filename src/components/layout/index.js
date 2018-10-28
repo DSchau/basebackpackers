@@ -13,3 +13,4 @@ export * from './GroupsForm';
 export * from './Location';
 export * from './GlobalStyle';
 export * from './Category';
+export * from './DataLayer';

@@ -133,7 +133,7 @@ span.room-0.show {
     padding: 3px 10px;
     text-decoration: none;
     display: block;
-    text-align: right;
+    text-align: left;
 }
 
 
