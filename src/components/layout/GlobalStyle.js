@@ -14,6 +14,23 @@ html {
 
 /* Misc - Todo - Most needs to be refactored out */
 
+.video-responsive {
+	position:relative;
+	padding-bottom:45%;
+	padding-top:30px;
+	height:0;
+  margin-bottom:2rem;
+	overflow:hidden;
+}
+
+.video-responsive iframe, .video-responsive object, .video-responsive embed {
+	position:absolute !important;
+	top:0 !important;
+	left:0 !important;
+	width:100% !important;
+	height:100% ;
+}
+
 .darker {
   filter: brightness(.7);
 }
