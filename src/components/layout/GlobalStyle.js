@@ -95,6 +95,58 @@ span.room-0.show {
   display: none;
 }
 
+
+
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 5px 10px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 3px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+}
+
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 /* Add a dark background on topnav links and the dropdown button on hover */
 .topnav a:hover, .dropdown:hover .dropbtn {
   background-color: #555;
@@ -113,7 +165,7 @@ span.room-0.show {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative; padding:2rem; background:#000000ab;}
+  .topnav.responsive {position: relative; padding:2rem; background:#000000ab; min-width: 200px;}
   .topnav.responsive a.icon {
     position: absolute;
     right: 0;
@@ -122,13 +174,13 @@ span.room-0.show {
   .topnav.responsive a {
     float: none;
     display: block;
-    text-align: right;
+    text-align: left;
     font: size 1.4rem;
     line-height: 3rem;
 
   }
   .topnav.responsive .dropdown {float: none;}
-  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown-content {position: relative; font-size:1rem;}
   .topnav.responsive .dropdown .dropbtn {
     display: block;
     width: 100%;
