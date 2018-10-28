@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import { Article, Header } from '../components/layout/index.js';
+import EmbedContainer from 'react-oembed-container';
 
 import Layout from '../components/layout';
 
@@ -35,6 +36,9 @@ const Attribution = styled.p`
 `;
 
 export default class BlogPost extends React.Component {
+  componentDidMount() {
+    <script async="" src="//www.instagram.com/embed.js" />;
+  }
   render() {
     const { data } = this.props;
     const {
@@ -61,7 +65,6 @@ export default class BlogPost extends React.Component {
 
     return (
       <Layout>
-        {/* <script async defer src="https://www.instagram.com/embed.js" /> */}
         <Header
           backgroundImage={featuredImage.fluid}
           poster={featuredImage.url}
@@ -84,20 +87,23 @@ export default class BlogPost extends React.Component {
           </Helmet>
 
           <BodyContainer className="article">
+            <div />
             {body.map(block => (
               <div key={block.id} className={block.model.apiKey}>
-                {block.model.apiKey === 'text' && (
-                  <div dangerouslySetInnerHTML={{ __html: block.text }} />
-                )}
-                {block.model.apiKey === 'image_block' && (
-                  <Figure>
-                    <Img fluid={block.image.fluid} />
-                    <figcaption>{block.caption}</figcaption>
-                    <Attribution
-                      dangerouslySetInnerHTML={{ __html: block.attribution }}
-                    />
-                  </Figure>
-                )}
+                <EmbedContainer markup={block.text}>
+                  {block.model.apiKey === 'text' && (
+                    <div dangerouslySetInnerHTML={{ __html: block.text }} />
+                  )}
+                  {block.model.apiKey === 'image_block' && (
+                    <Figure>
+                      <Img fluid={block.image.fluid} />
+                      <figcaption>{block.caption}</figcaption>
+                      <Attribution
+                        dangerouslySetInnerHTML={{ __html: block.attribution }}
+                      />
+                    </Figure>
+                  )}
+                </EmbedContainer>
               </div>
             ))}
           </BodyContainer>

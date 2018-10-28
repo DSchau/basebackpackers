@@ -42,6 +42,7 @@
     "react-dom": "^16.6.0",
     "react-helmet": "^5.2.0",
     "react-images": "^0.5.19",
+    "react-oembed-container": "^0.3.0",
     "react-scrollspy": "^3.3.5",
     "styled-components": "^4.0.2",
     "typeface-pt-sans": "0.0.54"
