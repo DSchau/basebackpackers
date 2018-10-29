@@ -45,12 +45,9 @@ const ActivityText = styled.p`
 const Time = styled.p`
   font-weight: bold;
   font-size: 0.8rem;
-<<<<<<< HEAD
   padding-bottom: 0.5rem;
-=======
   padding-bottom: 1rem;
   margin-top: 1rem;
->>>>>>> 27dddfac9f37e52161fe0474b82dd5be496a6c48
   border-bottom: 1px solid ${props => props.theme.lightBlueLine};
 `;
 
@@ -88,7 +85,9 @@ export default class HostelPage extends React.Component {
       city,
       streetAddress,
       accommodationType,
-      country
+      country,
+      postcode,
+      state
     } = data.datoCmsHostel;
 
     const featureImages = data.datoCmsHostel.featureGallery.map(photo =>
@@ -151,8 +150,8 @@ export default class HostelPage extends React.Component {
         address: {
           '@type': 'PostalAddress',
           addressLocality: `${city}`,
-          // addressRegion: 'WA',
-          // postalCode: '98052',
+          addressRegion: `${state}`,
+          postalCode: `${postcode}`,
           streetAddress: `${streetAddress}`,
           addressCountry: {
             '@type': 'Country',

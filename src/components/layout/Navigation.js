@@ -82,13 +82,13 @@ class Navigation extends React.Component {
       <Nav>
         <Logo>
           <LogoWrapper>
-            <a href="http://www.stayatbase.com">
+            <Link to="/">
               <img
                 src={SiteLogo}
                 style={{ width: 110 }}
                 alt="Mad Backpacker Travel Agency Australia"
               />
-            </a>
+            </Link>
           </LogoWrapper>
         </Logo>
         <Menu id="Topnav" className={`topnav ${burgerActive}`}>
