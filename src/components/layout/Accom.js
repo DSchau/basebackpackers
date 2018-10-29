@@ -86,7 +86,7 @@ class Accom extends React.Component {
             >
               {block.model.apiKey === 'accom' && (
                 <>
-                  <Container col="2">
+                  <Container col="2" gap="1rem">
                     <div>
                       <p>{block.intro}.</p>
                     </div>
