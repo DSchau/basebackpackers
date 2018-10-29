@@ -90,20 +90,20 @@ export default class BlogPost extends React.Component {
             <div />
             {body.map(block => (
               <div key={block.id} className={block.model.apiKey}>
-                <EmbedContainer markup={block.text}>
-                  {block.model.apiKey === 'text' && (
+                {block.model.apiKey === 'text' && (
+                  <EmbedContainer markup={block.text}>
                     <div dangerouslySetInnerHTML={{ __html: block.text }} />
-                  )}
-                  {block.model.apiKey === 'image_block' && (
-                    <Figure>
-                      <Img fluid={block.image.fluid} />
-                      <figcaption>{block.caption}</figcaption>
-                      <Attribution
-                        dangerouslySetInnerHTML={{ __html: block.attribution }}
-                      />
-                    </Figure>
-                  )}
-                </EmbedContainer>
+                  </EmbedContainer>
+                )}
+                {block.model.apiKey === 'image_block' && (
+                  <Figure>
+                    <Img fluid={block.image.fluid} />
+                    <figcaption>{block.caption}</figcaption>
+                    <Attribution
+                      dangerouslySetInnerHTML={{ __html: block.attribution }}
+                    />
+                  </Figure>
+                )}
               </div>
             ))}
           </BodyContainer>
