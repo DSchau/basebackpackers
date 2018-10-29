@@ -67,10 +67,12 @@ export default class BlogPost extends React.Component {
       <Layout>
         <Header
           backgroundImage={featuredImage.fluid}
+          alt={featuredImage.alt}
           poster={featuredImage.url}
           pageTitle={title}
           tagline={`Written by: ${author.name}`}
           darken="true"
+          caption={featuredImage.title}
           // propertyName="Base Backpackers Sydney"
           // caption="Crazy Party Tuesdays - Scary Canary Bar "
           // alt={data.datoCmsHostel.featuredImage.alt}
@@ -131,6 +133,8 @@ export const query = graphql`
       }
       featuredImage {
         url
+        title
+        alt
         fluid(
           maxWidth: 2000
           maxHeight: 800

@@ -143,7 +143,12 @@ class Header extends Component {
 
         <HeaderCaption>
           <div>{props.caption}</div>
-          <div>@ {props.propertyName}</div>
+
+          {props.propertyName && (
+            <div>
+              <div>@ {props.propertyName}</div>
+            </div>
+          )}
         </HeaderCaption>
       </Section>
     );

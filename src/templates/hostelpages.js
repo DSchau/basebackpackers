@@ -182,8 +182,8 @@ export default class HostelPage extends React.Component {
           poster={featuredImage.url}
           pageTitle={title}
           tagline="Find the rest of the world with us."
-          propertyName="Base Backpackers Sydney"
-          caption="Crazy Party Tuesdays - Scary Canary Bar "
+          propertyName={title}
+          caption={featuredImage.title}
           alt={featuredImage.alt}
           gal={cominedGallery}
           button="hostel"
@@ -317,6 +317,7 @@ export const query = graphql`
       featuredImage {
         url
         alt
+        title
         fluid(
           maxWidth: 2000
           imgixParams: {
@@ -365,8 +366,9 @@ export const query = graphql`
 
       featureGallery {
         id
-        title
+
         alt
+        title
         fluid(
           maxWidth: 1000
           maxHeight: 600
