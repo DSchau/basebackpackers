@@ -232,9 +232,9 @@ export default class HostelPage extends React.Component {
               <ActivityCard key={block.id}>
                 <ActivityHeading>{block.day}</ActivityHeading>
                 <ActivityText>{block.amActivity}</ActivityText>
-                <Time>Mornings</Time>
+                <Time>Daytime</Time>
                 <ActivityText>{block.pmActivity}</ActivityText>
-                <Time>Evenings</Time>
+                <Time>Nighttime</Time>
               </ActivityCard>
             ))}
           </ScrollContainer>
