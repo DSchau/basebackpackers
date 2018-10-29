@@ -18,6 +18,7 @@ const PageTitle = styled.h1`
   width: 50%;
   font-size: 3.63rem;
   line-height: 4rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.46);
 
   @media (max-width: 500px) {
     width: 20rem;
