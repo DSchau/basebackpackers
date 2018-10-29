@@ -99,7 +99,7 @@ export default class BlogPost extends React.Component {
                 )}
                 {block.model.apiKey === 'image_block' && (
                   <Figure>
-                    <Img fluid={block.image.fluid} />
+                    <Img alt={block.image.alt} fluid={block.image.fluid} />
                     <figcaption>{block.caption}</figcaption>
                     <Attribution
                       dangerouslySetInnerHTML={{ __html: block.attribution }}
@@ -165,6 +165,7 @@ export const query = graphql`
           caption
           attribution
           image {
+            alt
             fluid(
               maxWidth: 800
 
