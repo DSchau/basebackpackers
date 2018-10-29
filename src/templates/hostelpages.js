@@ -38,7 +38,7 @@ const ActivityHeading = styled.h3`
 
 const ActivityText = styled.p`
   color: ${props => props.theme.lightGreyText};
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-bottom: 0rem;
 `;
 
@@ -46,6 +46,7 @@ const Time = styled.p`
   font-weight: bold;
   font-size: 0.8rem;
   padding-bottom: 1rem;
+  margin-top: 1rem;
   border-bottom: 1px solid ${props => props.theme.lightBlueLine};
 `;
 
@@ -216,7 +217,7 @@ export default class HostelPage extends React.Component {
           <ScrollContainer
             padding="0 0 1rem"
             maxwidth="960px"
-            colwidth="16rem"
+            colwidth="17rem"
             className="scroll"
           >
             <ActivityLeadCard>
