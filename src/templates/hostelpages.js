@@ -45,7 +45,7 @@ const ActivityText = styled.p`
 const Time = styled.p`
   font-weight: bold;
   font-size: 0.8rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid ${props => props.theme.lightBlueLine};
 `;
 

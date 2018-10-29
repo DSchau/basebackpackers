@@ -1,16 +1,8 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import { Header, Category } from '../components/layout/index.js';
-import {
-  Section,
-  Container,
-  CardImage,
-  CardBody,
-  CardLink,
-  CardHeading,
-  Card
-} from '../components/common/index.js';
+import { Section, Container } from '../components/common/index.js';
 
 import Layout from '../components/layout';
 

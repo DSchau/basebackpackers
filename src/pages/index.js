@@ -68,10 +68,8 @@ export default IndexPage;
 
 export const query = graphql`
   query IndexQuery {
-    file(relativePath: { eq: "backpacker-destinations-australia-nz.jpg" }) {
+    file(relativePath: { eq: "base-magentic-island.jpg" }) {
       childImageSharp {
-        # Specify the image processing specifications right in the query.
-        # Makes it trivial to update as your page's design changes.
         fluid {
           ...GatsbyImageSharpFluid
         }
