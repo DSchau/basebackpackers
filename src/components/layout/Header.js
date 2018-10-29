@@ -86,6 +86,7 @@ class Header extends Component {
         null;
     }
 
+    const darkClass = props.darken && 'darker';
     return (
       <Section
         id="header"
@@ -101,14 +102,14 @@ class Header extends Component {
         <Img
           fluid={props.backgroundImage}
           alt={props.alt}
+          className={darkClass}
           style={{
             position: 'absolute',
             left: 0,
             top: 0,
             width: '100%',
             height: '100%',
-            overflow: 'hidden',
-            zIndex: 1
+            overflow: 'hidden'
           }}
         />
 
@@ -142,7 +143,12 @@ class Header extends Component {
 
         <HeaderCaption>
           <div>{props.caption}</div>
-          <div>@ {props.propertyName}</div>
+
+          {props.propertyName && (
+            <div>
+              <div>@ {props.propertyName}</div>
+            </div>
+          )}
         </HeaderCaption>
       </Section>
     );

@@ -12,6 +12,7 @@ const Nav = styled.nav`
   z-index: 1;
   position: relative;
   padding: 1.5rem;
+
   @media (max-width: 500px) {
     padding: 0;
   }
@@ -32,33 +33,32 @@ const LogoWrapper = styled.div`
 `;
 
 const Menu = styled.div`
-  text-align: right;
-  padding: 1.2rem;
+  text-align: left;
+  padding: 0.8rem;
+  justify-self: end;
 `;
 
 const NavLink = styled(Link)`
   display: inline-block;
   color: #fff;
-  text-align: right;
-  padding: 0px 10px;
+  text-align: left;
+  padding: 5px 10px;
   text-decoration: none;
   font-size: 1rem;
+  float: left;
 `;
 const NavLinka = styled.a`
   display: inline-block;
   color: #fff;
-  text-align: right;
-  padding: 0px 10px;
+  text-align: left;
+  padding: 5px 10px;
   text-decoration: none;
   font-size: 1rem;
-`;
-
-const NavCta = styled(Button)`
-  display: inline-block;
+  float: left;
 `;
 
 const NavButton = styled.a`
-  float: right;
+  float: left;
   display: inline-block;
   color: #f2f2f2;
   text-align: center;
@@ -93,10 +93,38 @@ class Navigation extends React.Component {
         </Logo>
         <Menu id="Topnav" className={`topnav ${burgerActive}`}>
           {/* <NavLink to="/destinations/">Destinations</NavLink> */}
+          <NavLink to="/hostels">Locations</NavLink>
+          <NavLink to="/groups">Groups</NavLink>
           <NavLinka href="http://www.stayatbase.com/packages">Deals</NavLinka>
-          <NavLinka href="http://www.stayatbase.com/base/about-base">
-            About us
-          </NavLinka>
+          <NavLink to="/blog">Guides</NavLink>
+
+          <div className="dropdown">
+            <button className="dropbtn">Social</button>
+            <div className="dropdown-content">
+              <a
+                href="https://www.instagram.com/basehostels/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.facebook.com/BaseBackpackers/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
+              <a
+                href="https://www.pinterest.com/basebackpackers/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Pinterest
+              </a>
+            </div>
+          </div>
+
           <Button primary className="menucta distributor">
             Book Now
           </Button>

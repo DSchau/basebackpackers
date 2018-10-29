@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import { Header } from '../components/layout/index.js';
+import { Header, Category } from '../components/layout/index.js';
 import {
   Section,
   Container,
@@ -9,8 +9,7 @@ import {
   CardBody,
   CardLink,
   CardHeading,
-  Card,
-  Button
+  Card
 } from '../components/common/index.js';
 
 import Layout from '../components/layout';
@@ -28,35 +27,33 @@ const DestinationsPage = ({ data }) => (
       <Container>
         <h2>Australian hostels</h2>
       </Container>
-      <Container col="3" gap="2rem">
+      <Container col="3" gap="2rem" mobcol="1fr">
         {data.australia.edges.map(({ node: hostel }) => (
-          <Card key={hostel.id}>
-            <CardLink url={`hostels/${hostel.slug}`}>
-              <CardImage image={hostel.featuredImage.fluid} />
-              <CardBody>
-                <CardHeading title={hostel.title} />
-              </CardBody>
-            </CardLink>
-          </Card>
+          <Category
+            title={hostel.title}
+            fluid={hostel.featuredImage.fluid}
+            key={hostel.id}
+            alt={hostel.alt}
+            url={`hostels/${hostel.slug} `}
+          />
         ))}
       </Container>
     </Section>
     <Section>
-      {/* <Container>
+      <Container>
         <h2>New Zealand Hostels</h2>
       </Container>
-      <Container col="3" gap="2rem">
+      <Container col="3" gap="2rem" mobcol="1fr">
         {data.nz.edges.map(({ node: hostel }) => (
-          <Card key={hostel.id} lightBackground>
-            <CardLink url={`hostels/${hostel.slug}`}>
-              <CardImage image={hostel.featuredImage.fluid} />
-              <CardBody>
-                <CardHeading title={hostel.title} />
-              </CardBody>
-            </CardLink>
-          </Card>
+          <Category
+            title={hostel.title}
+            fluid={hostel.featuredImage.fluid}
+            key={hostel.id}
+            alt={hostel.alt}
+            url={`hostels/${hostel.slug} `}
+          />
         ))}
-      </Container> */}
+      </Container>
     </Section>
   </Layout>
 );
@@ -81,6 +78,7 @@ export const query = graphql`
           title
           slug
           featuredImage {
+            alt
             fluid(
               maxWidth: 300
               maxHeight: 200
@@ -97,7 +95,7 @@ export const query = graphql`
         }
       }
     }
-    nz: allDatoCmsHostel(filter: { country: { eq: "NZ" } }) {
+    nz: allDatoCmsHostel(filter: { country: { eq: "New Zealand" } }) {
       edges {
         node {
           id
@@ -106,7 +104,7 @@ export const query = graphql`
           featuredImage {
             fluid(
               maxWidth: 300
-              maxHeight: 200
+              maxHeight: 300
               imgixParams: {
                 fm: "jpg"
                 auto: "compress"

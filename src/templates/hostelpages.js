@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import SiteLogo from '../components/base-logo-white.png';
 
 import Layout from '../components/layout';
 import {
@@ -22,7 +23,7 @@ import {
 } from '../components/layout/index.js';
 
 import Cross from './cross.png';
-import yes from '../components/images/yes.mp4';
+// import yes from '../components/images/yes.mp4';
 
 const ActivityCard = styled.div`
   background: ${props => props.theme.white};
@@ -72,6 +73,19 @@ export default class HostelPage extends React.Component {
   render() {
     const { data } = this.props;
 
+    const {
+      title,
+      slug,
+      intro,
+      featuredImage,
+      emailAddress,
+      phone,
+      city,
+      streetAddress,
+      accommodationType,
+      country
+    } = data.datoCmsHostel;
+
     const featureImages = data.datoCmsHostel.featureGallery.map(photo =>
       Object.assign({
         srcSet: photo.fluid.srcSet,
@@ -110,6 +124,39 @@ export default class HostelPage extends React.Component {
     const combineAccom = [].concat.apply([], accomGal);
     const cominedGallery = featureImages.concat(activitiesImages, combineAccom);
 
+    // schema mark up
+
+    const rootUrl = `${data.site.siteMetadata.siteUrl}`;
+    const pagePath = `/hostels/${slug}`;
+    const postURL = rootUrl + pagePath;
+
+    const schemaOrgJSONLD = [
+      {
+        '@context': 'http://schema.org',
+        '@type': 'Hostel',
+        url: postURL,
+        brand: 'Base Backpackers',
+        // logo: SiteLogo,
+        image: `${featuredImage.url}`,
+        name: `${title}`,
+        description: `${intro}`,
+        telephone: `${phone}`,
+        email: `${emailAddress}`,
+        priceRange: `Stay from ${accommodationType.priceFrom}`,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: `${city}`,
+          // addressRegion: 'WA',
+          // postalCode: '98052',
+          streetAddress: `${streetAddress}`,
+          addressCountry: {
+            '@type': 'Country',
+            name: `${country}`
+          }
+        }
+      }
+    ];
+
     return (
       <Layout>
         {/* <Gal test={im2}/> */}
@@ -122,17 +169,22 @@ export default class HostelPage extends React.Component {
           data.datoCmsHostel.mewsId
         }']]);`}
           </script>
+          <script type="application/ld+json">
+            {JSON.stringify(schemaOrgJSONLD)}
+          </script>
+          <link rel="dns-prefetch" href="//www.mews.li" />
+          <link rel="dns-prefetch" href="//cdn.mews.li" />
         </Helmet>
 
         {/* Header section here */}
         <Header
-          backgroundImage={data.datoCmsHostel.featuredImage.fluid}
-          poster={data.datoCmsHostel.featuredImage.url}
-          pageTitle={data.datoCmsHostel.title}
+          backgroundImage={featuredImage.fluid}
+          poster={featuredImage.url}
+          pageTitle={title}
           tagline="Find the rest of the world with us."
-          propertyName="Base Backpackers Sydney"
-          caption="Crazy Party Tuesdays - Scary Canary Bar "
-          alt={data.datoCmsHostel.featuredImage.alt}
+          propertyName={title}
+          caption={featuredImage.title}
+          alt={featuredImage.alt}
           gal={cominedGallery}
           button="hostel"
         />
@@ -152,7 +204,7 @@ export default class HostelPage extends React.Component {
         <Section id="rooms" padding="0rem 3rem 3rem">
           <Accom
             source={data.datoCmsHostel.accommodationType}
-            hostelName={data.datoCmsHostel.title}
+            hostelName={title}
           />
         </Section>
 
@@ -180,9 +232,9 @@ export default class HostelPage extends React.Component {
               <ActivityCard key={block.id}>
                 <ActivityHeading>{block.day}</ActivityHeading>
                 <ActivityText>{block.amActivity}</ActivityText>
-                <Time>Mornings</Time>
+                <Time>Daytime</Time>
                 <ActivityText>{block.pmActivity}</ActivityText>
-                <Time>Evenings</Time>
+                <Time>Nighttime</Time>
               </ActivityCard>
             ))}
           </ScrollContainer>
@@ -207,15 +259,14 @@ export default class HostelPage extends React.Component {
 
         {/* Location section here */}
         <Location
-          title={data.datoCmsHostel.title}
-          streetAddress={data.datoCmsHostel.streetAddress}
-          city={data.datoCmsHostel.city}
+          title={title}
+          streetAddress={streetAddress}
+          city={city}
           latitude={data.datoCmsHostel.location.latitude}
           longitude={data.datoCmsHostel.location.longitude}
           mapScreenShot={data.datoCmsHostel.mapScreenShot.fluid}
-          streetAddress={data.datoCmsHostel.streetAddress}
-          phone={data.datoCmsHostel.phone}
-          emailAddress={data.datoCmsHostel.emailAddress}
+          phone={phone}
+          emailAddress={emailAddress}
           thingsNearBy={data.datoCmsHostel.thingsNearBy}
         />
 
@@ -238,9 +289,9 @@ export default class HostelPage extends React.Component {
               </p>
             </div>
             <div>
-              <video width="100%" height="auto" autoPlay muted loop>
+              {/* <video width="100%" height="auto" autoPlay muted loop>
                 <source src={yes} />
-              </video>
+              </video> */}
             </div>
           </Container>
         </Section>
@@ -248,18 +299,27 @@ export default class HostelPage extends React.Component {
     );
   }
 }
+//  code change to push update
 
 export const query = graphql`
   query HostelPageQuery($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     datoCmsHostel(slug: { eq: $slug }) {
       title
       intro
+      slug
       mewsId
+      country
       featuredImage {
         url
         alt
+        title
         fluid(
-          maxWidth: 1000
+          maxWidth: 2000
           imgixParams: {
             fm: "jpg"
             fit: "crop"
@@ -306,8 +366,9 @@ export const query = graphql`
 
       featureGallery {
         id
-        title
+
         alt
+        title
         fluid(
           maxWidth: 1000
           maxHeight: 600

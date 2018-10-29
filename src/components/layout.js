@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
 import { Footer, GlobalStyle } from '../components/layout/index.js';
+import DataLayer from './layout/DataLayer';
 
 import baseTheme from './theme/base';
 
@@ -54,6 +55,10 @@ const Layout = ({ children, data }) => (
           ]}
         >
           <html lang="en" />
+
+          <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+          <link rel="dns-prefetch" href="//connect.facebook.net" />
+          <link rel="dns-prefetch" href="//script.tapfiliate.com" />
         </Helmet>
 
         <ThemeProvider theme={baseTheme}>
@@ -61,6 +66,7 @@ const Layout = ({ children, data }) => (
             <GlobalStyle />
             <Body>{children}</Body>
             <Footer />
+            <DataLayer />
           </>
         </ThemeProvider>
       </>
