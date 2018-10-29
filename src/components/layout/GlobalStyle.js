@@ -10,8 +10,6 @@ html {
   font-size:calc(14px + .25vw)!important
 }
 
-
-
 /* Misc - Todo - Most needs to be refactored out */
 
 .video-responsive {
