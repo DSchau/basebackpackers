@@ -77,6 +77,12 @@ const GroupsForm = props => {
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
+          <input
+            id="propertyName"
+            name="Property Name"
+            type="hidden"
+            value={props.propertyName}
+          />
           <div style={{ color: 'red', textAlign: 'right' }}>
             <Small>* Required field</Small>
           </div>

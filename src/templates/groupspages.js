@@ -1,28 +1,17 @@
 import React from 'react';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import { Section, Container, Button } from '../components/common';
 import {
   Header,
   Faq,
-  Accom,
   IntroText,
   Gallery,
   GroupsForm,
   Location
 } from '../components/layout/index.js';
-
-const SellingPointHeading = styled.h2`
-  line-height: 1.8rem;
-  margin-bottom: 1.2rem;
-`;
-const Small = styled.div`
-  font-size: 0.7rem;
-  color: #00000099;
-`;
 
 export default class groupPage extends React.Component {
   render() {
@@ -35,7 +24,8 @@ export default class groupPage extends React.Component {
       sellingPoints,
       seoMetaTags,
       body,
-      featureList
+      featureList,
+      hostel
     } = data.datoCmsGroup;
 
     const groupImages = imageGallery.map(photo =>
@@ -104,7 +94,8 @@ export default class groupPage extends React.Component {
         {/* Form here */}
         <GroupsForm
           sellingPoints={sellingPoints}
-          link="{data.datoCmsHostel.slug}"
+          link={data.datoCmsHostel.slug}
+          propertyName={hostel.title}
         />
 
         {/* Location section here */}
@@ -115,7 +106,6 @@ export default class groupPage extends React.Component {
           latitude={data.datoCmsHostel.location.latitude}
           longitude={data.datoCmsHostel.location.longitude}
           mapScreenShot={data.datoCmsHostel.mapScreenShot.fluid}
-          streetAddress={data.datoCmsHostel.streetAddress}
           phone={data.datoCmsHostel.phone}
           emailAddress={data.datoCmsHostel.emailAddress}
           thingsNearBy={data.datoCmsHostel.thingsNearBy}
@@ -149,6 +139,9 @@ export const query = graphql`
       intro
       sellingPoints
       featureList
+      hostel {
+        title
+      }
       featuredImage {
         url
         fluid(maxWidth: 1000) {
