@@ -72,7 +72,7 @@ const GroupsForm = props => {
       </Container>
       <FormBox>
         <form
-          name="MAD booking form"
+          name="Group Booking form"
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
