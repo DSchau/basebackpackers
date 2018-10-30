@@ -29,7 +29,7 @@ const BlogPage = ({ data }) => (
       </Container>
 
       <Container col="4" gap="20px">
-        {data.featured.edges.map(({ node: blog }) => (
+        {/* {data.featured.edges.map(({ node: blog }) => (
           <Card key={blog.id}>
             <CardLink url={`/${blog.destination.slug}/${blog.slug}`}>
               <CardImage image={blog.featuredImage.fluid} />
@@ -39,7 +39,7 @@ const BlogPage = ({ data }) => (
               </CardBody>
             </CardLink>
           </Card>
-        ))}
+        ))} */}
       </Container>
       <Container maxWidth="1400px">
         <h2>Latest Articles</h2>
