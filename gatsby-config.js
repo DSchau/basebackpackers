@@ -41,18 +41,6 @@ module.exports = {
     },
 
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: 'base-backpackers-australia-new-zealand',
-        short_name: 'Base Backpackers',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/logo.png' // This path is relative to the root of the site.
-      }
-    },
-    {
       resolve: 'gatsby-plugin-sentry',
       options: {
         dsn: 'https://42693edd59064d2f9e482fa434fad3f3@sentry.io/1296197'
