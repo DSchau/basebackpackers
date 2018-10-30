@@ -66,7 +66,7 @@ const Layout = ({ children, data }) => (
             <GlobalStyle />
             <Body>{children}</Body>
             <Footer />
-            <DataLayer />
+            {/* <DataLayer /> */}
           </>
         </ThemeProvider>
       </>
