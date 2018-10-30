@@ -34,7 +34,7 @@ const DestinationsPage = ({ data }) => (
             fluid={hostel.featuredImage.fluid}
             key={hostel.id}
             alt={hostel.alt}
-            url={`hostels/${hostel.slug} `}
+            url={`hostels/${hostel.slug}`}
           />
         ))}
       </Container>
