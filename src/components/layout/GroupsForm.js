@@ -72,39 +72,23 @@ const GroupsForm = props => {
       </Container>
       <FormBox>
         <form
-          name="MAD booking form"
+          name="Group Booking form"
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
+          action="/success"
         >
+          <Input
+            id="propertyName"
+            name="Property Name"
+            type="hidden"
+            value={props.propertyName}
+            readOnly
+          />
           <div style={{ color: 'red', textAlign: 'right' }}>
-            <small>* Required field</small>
+            <Small>* Required field</Small>
           </div>
           {/* Hidden form variables below */}
-          <input
-            type="hidden"
-            name="form-name"
-            defaultValue="MAD booking form"
-            readOnly
-          />
-          <Input
-            type="hidden"
-            name="product name"
-            defaultValue={props.name}
-            readOnly
-          />
-          <Input
-            type="hidden"
-            name="price"
-            defaultValue={props.price}
-            readOnly
-          />
-          <Input
-            type="hidden"
-            name="currency code"
-            defaultValue={props.currency}
-            readOnly
-          />
 
           <FormGroup>
             <FormLabel htmlFor="name">
@@ -134,7 +118,9 @@ const GroupsForm = props => {
             <Small>We won't share your email with anyone</Small>
           </FormGroup>
           <FormGroup>
-            <FormLabel htmlFor="phone">Your Phone Number:</FormLabel>
+            <FormLabel htmlFor="phone">
+              Your Phone Number: <Optional>Optional</Optional>
+            </FormLabel>
             <Input
               id="phone"
               type="phone"
@@ -146,12 +132,38 @@ const GroupsForm = props => {
               phone
             </Small>
           </FormGroup>
+          <FormGroup2col col="2">
+            <div>
+              <FormLabel htmlFor="arrivalDate">
+                Arrival:
+                <span className="required">*</span>
+              </FormLabel>
+              <Input id="arrivalDate" type="date" name="arival date" required />
+            </div>
+            <div>
+              <FormLabel htmlFor="date">
+                Departure
+                <span className="required">*</span>
+              </FormLabel>
+              <Input
+                id="departureDate"
+                type="date"
+                name="departure date"
+                required
+              />
+            </div>
+          </FormGroup2col>
           <FormGroup>
-            <FormLabel htmlFor="date">
-              When would you like to go/start:
+            <FormLabel htmlFor="groupType">
+              Group Type
               <span className="required">*</span>
             </FormLabel>
-            <Input id="date" type="date" name="date" required />
+            <Select id="groupType " name="groupType" required>
+              <option value="School Group">School Group</option>
+              <option value="Sport Group">Sport Group</option>
+              <option value="Hens/Stag Party">Hens/Stag Party</option>
+              <option value="Other">Other</option>
+            </Select>
           </FormGroup>
           <FormGroup>
             <FormLabel htmlFor="requirements">Special requirements:</FormLabel>
@@ -161,26 +173,11 @@ const GroupsForm = props => {
               placeholder="I'm a vego aka meat is murder"
             />
           </FormGroup>
-          <FormGroup>
-            <Input
-              id="terms"
-              type="Checkbox"
-              name="terms"
-              inline
-              required
-              defaultValue="true"
-            />{' '}
-            <label htmlFor="terms">
-              Of course I read and understood the{' '}
-              <a href="/about/terms-and-conditions" target="_blank">
-                terms and conditions
-              </a>
-              .<span className="required">*</span>
-            </label>
-          </FormGroup>
+
           <p style={{ display: 'none' }}>
             <label>
-              Don’t fill this out if you're human: <input name="bot-field" />
+              Don’t fill this out if you're human:{' '}
+              <input type="hidden" name="bot-field" />
             </label>
           </p>
           <FormGroup>
@@ -189,7 +186,6 @@ const GroupsForm = props => {
             </Button>
           </FormGroup>
         </form>
-
         <SellingPoints>
           <h2>Reasons to love staying with us</h2>
           <div dangerouslySetInnerHTML={{ __html: props.sellingPoints }} />
