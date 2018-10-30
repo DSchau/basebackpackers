@@ -35,14 +35,6 @@ const Input = styled.input`
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
-  ${props =>
-    props.inline &&
-    css`
-      width: inherit;
-      display: inline-block;
-      margin-right: 5px;
-    `};
 `;
 
 const TextArea = styled.textarea`
