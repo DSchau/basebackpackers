@@ -76,7 +76,7 @@ const GroupsForm = props => {
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/success"
+          action="/success?no-cache=1"
         >
           <Input
             id="propertyName"
